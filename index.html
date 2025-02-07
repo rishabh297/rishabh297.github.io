@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rishabh Goel - Interactive Biomedical Data Scientist</title>
-  <!-- Google Fonts for an artsy, modern look -->
+  <title>Rishabh Goel - Biomedical Data Scientist & Entrepreneur</title>
+  <!-- Google Fonts for an artsy yet professional look -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <style>
     /* Basic Reset */
@@ -12,7 +12,7 @@
     html, body { height: 100%; }
     body { font-family: 'Roboto', sans-serif; background: #0e0e0e; color: #fff; }
 
-    /* p5.js canvas styling – full-screen background */
+    /* p5.js canvas styling – full-screen interactive background */
     canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
     /* Navigation Bar */
@@ -20,7 +20,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       padding: 1rem;
       z-index: 1000;
     }
@@ -34,19 +34,67 @@
     }
     nav ul li a:hover { color: #ffcc00; }
 
+    /* Hero Section (Executive Summary) */
+    header {
+      padding: 120px 2rem 80px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4); /* subtle overlay */
+      position: relative;
+    }
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    header h2 {
+      font-size: 1.8rem;
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    .hero-buttons {
+      margin-top: 1.5rem;
+    }
+    .hero-buttons .btn {
+      background: #ffcc00;
+      color: #333;
+      padding: 0.8rem 1.2rem;
+      margin: 0 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    .hero-buttons .btn:hover { background: #e6b800; }
+
     /* Section Styles */
     section {
       padding: 100px 2rem;
       text-align: center;
     }
-    section h1, section h2 {
+    section h2 {
       font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffcc00;
     }
-    section h1 { font-size: 3rem; margin-bottom: 1rem; }
-    section h2 { font-size: 2.5rem; margin-bottom: 1rem; color: #ffcc00; }
-    section p { font-size: 1.2rem; margin-bottom: 1rem; color: #ddd; }
+    section p { font-size: 1.1rem; margin-bottom: 1.2rem; color: #ccc; }
 
-    /* Headshot Styling (for the About section) */
+    /* Headshot Styling */
     .headshot {
       border-radius: 50%;
       width: 150px;
@@ -107,25 +155,24 @@
       color: #333;
     }
 
-    /* Button Styles */
-    .btn {
-      background: #ffcc00;
-      color: #333;
-      padding: 0.8rem 1.2rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s;
-      font-size: 1.1rem;
+    /* Footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.9);
+      color: #aaa;
+      font-size: 0.9rem;
     }
-    .btn:hover { background: #e6b800; }
   </style>
 </head>
 <body>
+  <!-- p5.js Canvas (Interactive Background) -->
+  <!-- The canvas is created dynamically by the p5.js sketch below -->
+
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="#intro">Home</a></li>
+      <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#research">Research</a></li>
@@ -136,56 +183,77 @@
     </ul>
   </nav>
 
-  <!-- Intro Section -->
-  <section id="intro">
-    <h1>Welcome to My Interactive World</h1>
-    <p>Explore the fusion of art, science, and play in biomedical data.</p>
-    <p>Click anywhere on the background to unleash creativity!</p>
-  </section>
+  <!-- Hero Section (Executive Summary) -->
+  <header id="hero">
+    <div class="hero-content">
+      <h1>Rishabh Goel</h1>
+      <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
+      <p>
+        With over 3 years of industry experience, I leverage multi-modal clinical and genomic data to drive innovative healthcare solutions. My work has attracted over <strong>$1.8M in investment</strong> and secured grants exceeding <strong>$749k</strong>, demonstrating a powerful blend of scientific expertise and entrepreneurial vision.
+      </p>
+      <p>
+        I combine data science with creative expression to transform how we understand and innovate in medicine.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn" onclick="scrollToSection('about')">Learn More</button>
+        <button class="btn" onclick="scrollToSection('contact')">Contact Me</button>
+      </div>
+    </div>
+  </header>
 
   <!-- About Section with Headshot -->
   <section id="about">
     <h2>About Me</h2>
-    <!-- Add your headshot image (ensure headshot.jpg is in your repository) -->
     <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot" />
-    <p>I am Rishabh Goel—a biomedical data scientist who combines technical innovation with artistic expression to bring data to life.</p>
+    <p>
+      I am passionate about merging data science with healthcare innovation. My background spans cutting-edge research, entrepreneurship, and creative problem-solving—ensuring every solution is both effective and inspired.
+    </p>
   </section>
 
   <!-- Education Section -->
   <section id="education">
     <h2>Education</h2>
-    <p>Harvard Medical School &amp; UC Berkeley—where technology meets art.</p>
+    <p>
+      <strong>Harvard Medical School</strong> – Masters in Biomedical Informatics<br>
+      <strong>University of California, Berkeley</strong> – BA in Molecular and Cellular Biology, BS in Business Administration
+    </p>
   </section>
 
   <!-- Research Section -->
   <section id="research">
     <h2>Research</h2>
-    <p>My work uses interactive visualizations and playful data exploration to decode complex biological systems.</p>
+    <p>
+      I explore advanced machine learning techniques, neural networks, and deep learning models to unlock insights from clinical and genomic data—driving forward precision medicine and novel therapeutic strategies.
+    </p>
   </section>
 
   <!-- Experience Section -->
   <section id="experience">
     <h2>Experience</h2>
-    <p>From pioneering startups to innovative research projects, I bridge the gap between science and art.</p>
+    <p>
+      From co-founding innovative startups to leading high-impact research projects, I have applied my expertise to develop AI-driven solutions that redefine healthcare delivery and patient stratification.
+    </p>
   </section>
 
   <!-- Awards Gallery Section -->
   <section id="awards">
     <h2>Awards</h2>
-    <p>These accolades celebrate my journey and achievements. Click on an image to view details.</p>
+    <p>
+      These accolades and recognitions reflect my commitment to excellence and innovation in biomedical data science.
+    </p>
     <div class="awards-gallery">
-      <!-- Replace the src values with your actual award images -->
+      <!-- Replace these image file names with your actual award images -->
       <img src="award1.jpg" alt="Award 1" />
       <img src="award2.jpg" alt="Award 2" />
       <img src="award3.jpg" alt="Award 3" />
-      <!-- Add more images as desired -->
+      <!-- You can add more images as needed -->
     </div>
   </section>
 
-  <!-- Resume Section -->
+  <!-- Resume Section with Modal Trigger -->
   <section id="resume">
     <h2>Resume</h2>
-    <p>Discover my journey and achievements in detail.</p>
+    <p>Explore my professional journey, achievements, and skills in detail.</p>
     <button class="btn" id="openModalBtn">View Resume</button>
   </section>
 
@@ -196,11 +264,16 @@
     <p>Phone: 310-849-1687</p>
   </section>
 
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
+  </footer>
+
   <!-- Resume Modal -->
   <div id="resumeModal" class="modal">
     <div class="modal-content">
       <span class="close" id="closeModalBtn">&times;</span>
-      <!-- Ensure your resume.pdf is in the repository root or adjust the path accordingly -->
+      <!-- Ensure your resume.pdf is in the repository root or update the path accordingly -->
       <iframe src="resume.pdf"></iframe>
     </div>
   </div>
@@ -214,14 +287,14 @@
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
-      // Initialize a swarm of particles
+      // Initialize particles
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
       }
     }
 
     function draw() {
-      // Use a semi-transparent background for a trailing effect
+      // Semi-transparent background for trailing effect
       background(10, 10, 30, 50);
       for (let p of particles) {
         p.update();
@@ -230,9 +303,8 @@
       }
     }
 
-    // Spawn additional particles on mouse click (if not over the navigation area)
+    // Spawn additional particles on mouse click (if not over UI)
     function mousePressed() {
-      // Prevent adding particles if clicking on UI elements (e.g., top 100px)
       if (mouseY > 100) {
         particles.push(new Particle(mouseX, mouseY));
       }
@@ -241,25 +313,19 @@
     class Particle {
       constructor(x, y) {
         this.pos = createVector(x || random(width), y || random(height));
-        this.vel = p5.Vector.random2D();
-        this.vel.mult(random(1, 3));
+        this.vel = p5.Vector.random2D().mult(random(1, 3));
         this.size = random(3, 8);
         this.hue = random(360);
       }
 
       update() {
         this.pos.add(this.vel);
-        // Gradually change the hue for a shifting color effect
         this.hue = (this.hue + 0.5) % 360;
       }
 
       edges() {
-        if (this.pos.x > width || this.pos.x < 0) {
-          this.vel.x *= -1;
-        }
-        if (this.pos.y > height || this.pos.y < 0) {
-          this.vel.y *= -1;
-        }
+        if (this.pos.x > width || this.pos.x < 0) this.vel.x *= -1;
+        if (this.pos.y > height || this.pos.y < 0) this.vel.y *= -1;
       }
 
       show() {
@@ -289,10 +355,15 @@
       resumeModal.style.display = 'none';
     });
     window.addEventListener('click', (event) => {
-      if (event.target == resumeModal) {
+      if (event.target === resumeModal) {
         resumeModal.style.display = 'none';
       }
     });
+
+    // Smooth scroll helper for buttons in the hero section
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>

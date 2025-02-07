@@ -1,201 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rishabh Goel - Biomedical Data Scientist</title>
-  <!-- Animate.css for entrance animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- AOS Library for scroll animations -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts for a minimal aesthetic -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    /* === Basic Reset & Body Styles === */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Open Sans', sans-serif; background: #0e0e0e; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
-
-    /* === Particles.js Background === */
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    /* Basic Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
     }
 
-    /* === Navigation === */
+    /* Navigation */
     nav {
       position: fixed;
+      top: 0;
       width: 100%;
-      background: rgba(0,0,0,0.7);
-      padding: 1rem;
-      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+      z-index: 100;
     }
-    nav ul { display: flex; justify-content: center; list-style: none; }
-    nav ul li { margin: 0 1rem; }
-    nav ul li a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
-    nav ul li a:hover { color: #ffcc00; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul li {
+      margin: 0 1rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: #0077cc; }
 
-    /* === Header / Hero Section === */
+    /* Header / Hero Section */
     header {
+      padding: 6rem 2rem 4rem;
       text-align: center;
-      padding: 10rem 1rem 5rem;
-      position: relative;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      margin-top: 70px; /* Space for the fixed nav */
     }
     header h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
     }
     header p {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin-bottom: 2rem;
+      color: #555;
     }
-    /* Typewriter effect */
-    .typewriter h2 {
-      overflow: hidden;
-      border-right: .15em solid orange;
-      white-space: nowrap;
-      margin: 0 auto;
-      letter-spacing: .15em;
-      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-      max-width: 90%;
-      font-size: 1.8rem;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: orange; }
-    }
-    /* DNA Helix container */
-    .dna-container {
-      margin: 2rem auto;
-      width: 200px;
-      height: 200px;
-      position: relative;
-      cursor: pointer;
-    }
-    .dna {
-      width: 100%;
-      height: 100%;
-      animation: rotateDNA 10s linear infinite;
-    }
-    /* Default DNA rotation animation */
-    @keyframes rotateDNA {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    header .tagline {
+      font-style: italic;
+      color: #888;
     }
 
-    /* === Section Styles === */
+    /* Section Styles */
     section {
-      padding: 4rem 1rem;
-      max-width: 1000px;
-      margin: 0 auto 2rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
     }
     section h2 {
-      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0077cc;
+    }
+    section p {
+      font-size: 1rem;
+      color: #666;
       margin-bottom: 1.5rem;
-      font-size: 2.5rem;
-      color: #ffcc00;
     }
-    section p { font-size: 1.1rem; line-height: 1.6; }
 
-    /* === Projects Section with Interactive Cards === */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 1rem;
+    /* Button for Modal */
+    .btn {
+      display: inline-block;
+      background: #0077cc;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s;
     }
-    .project-card {
-      background: rgba(0,0,0,0.6);
-      perspective: 1000px;
-      cursor: pointer;
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 300px;
+    .btn:hover { background: #005fa3; }
+
+    /* Footer */
+    footer {
+      padding: 2rem;
       text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
-    .project-card:hover .card-inner { transform: rotateY(180deg); }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .card-front { background: #0077cc; }
-    .card-back {
-      background: #ffcc00;
-      transform: rotateY(180deg);
-      color: #000;
+      background: #f5f5f5;
+      color: #777;
+      font-size: 0.9rem;
     }
 
-    /* === Resume Modal Styles === */
+    /* Minimal Modal Styles */
     .modal {
       display: none;
       position: fixed;
-      z-index: 20;
+      z-index: 200;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
     }
     .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 1rem;
-      border: 1px solid #888;
+      background: #fff;
       width: 80%;
-      height: 80%;
+      max-width: 600px;
+      padding: 2rem;
       border-radius: 8px;
       position: relative;
     }
     .modal-content iframe {
+      width: 100%;
+      height: 80vh;
       border: none;
     }
     .close {
-      color: #aaa;
       position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 2rem;
-      font-weight: bold;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      color: #333;
       cursor: pointer;
     }
-    .close:hover,
-    .close:focus { color: #000; text-decoration: none; cursor: pointer; }
-
-    /* === Footer === */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.9);
-    }
-    footer p { font-size: 0.9rem; }
   </style>
 </head>
 <body>
-  <!-- Particles.js Background -->
-  <div id="particles-js"></div>
-
   <!-- Navigation -->
   <nav>
     <ul>
@@ -203,107 +150,53 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Header / Hero Section -->
+  <!-- Header / Hero -->
   <header>
-    <h1 class="animate__animated animate__fadeInDown">Rishabh Goel</h1>
-    <p class="animate__animated animate__fadeInUp">Biomedical Data Scientist & Entrepreneur</p>
-    <div class="typewriter">
-      <h2>Innovating at the Intersection of Medicine & Data</h2>
-    </div>
-    <div class="dna-container" id="dnaContainer" data-aos="zoom-in">
-      <!-- Rotating DNA Helix SVG -->
-      <svg class="dna" viewBox="0 0 200 200">
-        <defs>
-          <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#ffcc00" />
-            <stop offset="100%" stop-color="#0077cc" />
-          </linearGradient>
-        </defs>
-        <path d="M100,10 C150,50 150,150 100,190 C50,150 50,50 100,10" fill="none" stroke="url(#gradient)" stroke-width="3" />
-      </svg>
-    </div>
+    <h1>Rishabh Goel</h1>
+    <p>Biomedical Data Scientist &amp; Entrepreneur</p>
+    <p class="tagline">Innovating where art meets science</p>
   </header>
 
   <!-- About Section -->
-  <section id="about" data-aos="fade-up">
+  <section id="about">
     <h2>About Me</h2>
-    <p>I am a Biomedical Data Scientist and Entrepreneur with over 3 years of experience harnessing multi-modal data analytics, deep learning, and innovative computing to transform healthcare. My work merges medicine with cutting-edge data science, propelling breakthroughs in personalized medicine and biomedical research.</p>
+    <p>I blend biomedical research and data science with a creative spirit, forging innovative solutions that improve lives and inspire artistic expression.</p>
   </section>
 
   <!-- Education Section -->
-  <section id="education" data-aos="fade-up">
+  <section id="education">
     <h2>Education</h2>
-    <p>At Harvard Medical School and UC Berkeley, I mastered Biomedical Informatics and Molecular Biology, complemented by advanced data science training to tackle complex challenges in healthcare innovation.</p>
+    <p>Harvard Medical School &amp; UC Berkeley — where science, technology, and art converge.</p>
   </section>
 
   <!-- Research Section -->
-  <section id="research" data-aos="fade-up">
+  <section id="research">
     <h2>Research</h2>
-    <p>My research explores machine learning, neural networks, and data integration techniques to decode clinical and genomic data, paving the way for novel insights into disease mechanisms and therapeutic interventions.</p>
+    <p>Exploring novel algorithms and machine learning techniques to unlock insights from complex biological data, all with a touch of creative vision.</p>
   </section>
 
   <!-- Experience Section -->
-  <section id="experience" data-aos="fade-up">
+  <section id="experience">
     <h2>Experience</h2>
-    <p>From co-founding innovative startups to leading impactful research projects, I apply state-of-the-art technologies to real-world healthcare challenges—driving progress and improving patient outcomes.</p>
+    <p>Leading impactful projects and startups, I apply technical prowess and artistic flair to drive innovation in healthcare.</p>
   </section>
 
-  <!-- Projects Section with Interactive Cards -->
-  <section id="projects" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="card-inner">
-          <div class="card-front">
-            <h3>Project Alpha</h3>
-          </div>
-          <div class="card-back">
-            <p>AI-driven analysis for ARDS subphenotyping.</p>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-inner">
-          <div class="card-front">
-            <h3>Project Beta</h3>
-          </div>
-          <div class="card-back">
-            <p>Neural-ODE modeling for pharmacokinetics data.</p>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-inner">
-          <div class="card-front">
-            <h3>Project Gamma</h3>
-          </div>
-          <div class="card-back">
-            <p>Computer vision for precise last-mile delivery.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Resume Section with Interactive Modal Trigger -->
-  <section id="resume" data-aos="fade-up">
+  <!-- Resume Section -->
+  <section id="resume">
     <h2>Resume</h2>
-    <p>Click the button below to view my resume.</p>
-    <div style="text-align: center; margin-top: 1rem;">
-      <button id="openModalBtn" style="padding: 1rem 2rem; font-size: 1.1rem; background: #0077cc; color: #fff; border: none; border-radius: 4px; cursor: pointer;">View Resume</button>
-    </div>
+    <p>Curious about the details? Click the button below to view my resume.</p>
+    <a class="btn" id="openModalBtn" href="javascript:void(0)">View Resume</a>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
+  <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu" style="color: #ffcc00;">rishabh_goel@hms.harvard.edu</a></p>
+    <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu" style="color: #0077cc; text-decoration: none;">rishabh_goel@hms.harvard.edu</a></p>
     <p>Phone: 310-849-1687</p>
   </section>
 
@@ -315,78 +208,29 @@
   <!-- Resume Modal -->
   <div id="resumeModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <!-- Replace 'resume.pdf' with the actual path to your resume file -->
-      <iframe src="resume.pdf" style="width:100%;height:100%;"></iframe>
+      <span class="close" id="closeModalBtn">&times;</span>
+      <!-- Ensure your resume.pdf is at the correct location in your repository -->
+      <iframe src="resume.pdf"></iframe>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <!-- AOS Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Scripts for Modal Functionality -->
   <script>
-    // Initialize AOS for scroll animations
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-
-    // Initialize particles.js with a custom configuration
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-        "opacity": { "value": 0.5, "random": false },
-        "size": { "value": 3, "random": true },
-        "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        },
-        "modes": {
-          "repulse": { "distance": 200 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
-
-    // --- Interactive DNA Helix ---
-    // Toggle faster rotation when the DNA helix is clicked.
-    const dnaContainer = document.getElementById('dnaContainer');
-    let fastRotate = false;
-    dnaContainer.addEventListener('click', () => {
-      fastRotate = !fastRotate;
-      const dnaSVG = dnaContainer.querySelector('.dna');
-      // Toggle between the default 10s and a faster 3s rotation speed.
-      dnaSVG.style.animationDuration = fastRotate ? '3s' : '10s';
-    });
-
-    // --- Resume Modal Functionality ---
-    const modal = document.getElementById('resumeModal');
     const openModalBtn = document.getElementById('openModalBtn');
-    const closeModalSpan = document.querySelector('.modal .close');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const resumeModal = document.getElementById('resumeModal');
 
     openModalBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
+      resumeModal.style.display = 'flex';
     });
-    closeModalSpan.addEventListener('click', () => {
-      modal.style.display = 'none';
+    closeModalBtn.addEventListener('click', () => {
+      resumeModal.style.display = 'none';
     });
     window.addEventListener('click', (event) => {
-      if (event.target == modal) { modal.style.display = 'none'; }
+      if (event.target == resumeModal) {
+        resumeModal.style.display = 'none';
+      }
     });
-
-    // --- Optional: Smooth Scrolling for Navigation (if not already supported) ---
-    // Most modern browsers support CSS 'scroll-behavior: smooth' (set on body above).
   </script>
 </body>
 </html>

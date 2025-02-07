@@ -4,303 +4,389 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rishabh Goel - Biomedical Data Scientist</title>
+  <!-- Animate.css for entrance animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS Library for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset & Basic Styling */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    ul {
-      list-style: none;
+    /* === Basic Reset & Body Styles === */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Open Sans', sans-serif; background: #0e0e0e; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+
+    /* === Particles.js Background === */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
 
-    /* Navigation */
+    /* === Navigation === */
     nav {
       position: fixed;
       width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      top: 0;
-      left: 0;
-      z-index: 1000;
+      background: rgba(0,0,0,0.7);
+      padding: 1rem;
+      z-index: 10;
     }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      padding: 1rem 0;
-    }
-    nav ul li {
-      margin: 0 1rem;
-    }
-    nav ul li a {
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover {
-      color: #ffcc00;
-    }
+    nav ul { display: flex; justify-content: center; list-style: none; }
+    nav ul li { margin: 0 1rem; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    nav ul li a:hover { color: #ffcc00; }
 
-    /* Header / Hero Section */
+    /* === Header / Hero Section === */
     header {
-      background: #0077cc;
-      color: #fff;
-      padding: 6rem 1rem 3rem;
       text-align: center;
-      margin-top: 60px; /* Space for fixed nav */
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .social a {
-      margin: 0 0.5rem;
-      font-size: 1.2rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
-    .social a:hover {
-      color: #ffcc00;
-    }
-
-    /* Section Styling */
-    section {
-      background: #fff;
-      margin: 2rem auto;
-      max-width: 1000px;
-      padding: 2rem;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    section h2 {
-      border-bottom: 2px solid #0077cc;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      color: #0077cc;
-    }
-    .content-item {
-      margin-bottom: 1.5rem;
-    }
-    .content-item h3 {
-      color: #005fa3;
-      margin-bottom: 0.3rem;
-    }
-    .content-item p {
-      margin-bottom: 0.5rem;
-    }
-    .content-item ul li {
-      margin-bottom: 0.3rem;
-      padding-left: 1rem;
+      padding: 10rem 1rem 5rem;
       position: relative;
     }
-    .content-item ul li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #0077cc;
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    /* Typewriter effect */
+    .typewriter h2 {
+      overflow: hidden;
+      border-right: .15em solid orange;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .15em;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+      max-width: 90%;
+      font-size: 1.8rem;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: orange; }
+    }
+    /* DNA Helix container */
+    .dna-container {
+      margin: 2rem auto;
+      width: 200px;
+      height: 200px;
+      position: relative;
+      cursor: pointer;
+    }
+    .dna {
+      width: 100%;
+      height: 100%;
+      animation: rotateDNA 10s linear infinite;
+    }
+    /* Default DNA rotation animation */
+    @keyframes rotateDNA {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
-    /* Footer */
-    footer {
-      background: #333;
-      color: #fff;
+    /* === Section Styles === */
+    section {
+      padding: 4rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto 2rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    section h2 {
       text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      color: #ffcc00;
+    }
+    section p { font-size: 1.1rem; line-height: 1.6; }
+
+    /* === Projects Section with Interactive Cards === */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
       padding: 1rem;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-      }
-      nav ul li {
-        margin: 0.5rem 0;
-      }
+    .project-card {
+      background: rgba(0,0,0,0.6);
+      perspective: 1000px;
+      cursor: pointer;
     }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .project-card:hover .card-inner { transform: rotateY(180deg); }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .card-front { background: #0077cc; }
+    .card-back {
+      background: #ffcc00;
+      transform: rotateY(180deg);
+      color: #000;
+    }
+
+    /* === Resume Modal Styles === */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 1rem;
+      border: 1px solid #888;
+      width: 80%;
+      height: 80%;
+      border-radius: 8px;
+      position: relative;
+    }
+    .modal-content iframe {
+      border: none;
+    }
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus { color: #000; text-decoration: none; cursor: pointer; }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.9);
+    }
+    footer p { font-size: 0.9rem; }
   </style>
 </head>
 <body>
+  <!-- Particles.js Background -->
+  <div id="particles-js"></div>
+
   <!-- Navigation -->
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Technical Skills</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Header / Hero -->
+  <!-- Header / Hero Section -->
   <header>
-    <h1>Rishabh Goel</h1>
-    <p>Biomedical Data Scientist & Entrepreneur</p>
-    <p>310-849-1687 | <a href="mailto:rishabh_goel@hms.harvard.edu" style="color:#ffcc00;">rishabh_goel@hms.harvard.edu</a></p>
-    <div class="social">
-      <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/your-github" target="_blank">GitHub</a>
+    <h1 class="animate__animated animate__fadeInDown">Rishabh Goel</h1>
+    <p class="animate__animated animate__fadeInUp">Biomedical Data Scientist & Entrepreneur</p>
+    <div class="typewriter">
+      <h2>Innovating at the Intersection of Medicine & Data</h2>
+    </div>
+    <div class="dna-container" id="dnaContainer" data-aos="zoom-in">
+      <!-- Rotating DNA Helix SVG -->
+      <svg class="dna" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffcc00" />
+            <stop offset="100%" stop-color="#0077cc" />
+          </linearGradient>
+        </defs>
+        <path d="M100,10 C150,50 150,150 100,190 C50,150 50,50 100,10" fill="none" stroke="url(#gradient)" stroke-width="3" />
+      </svg>
     </div>
   </header>
 
   <!-- About Section -->
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
-    <p>
-      I am a Biomedical Data Scientist and Entrepreneur with over 3 years of industry experience leveraging multi-modal data analysis, clinical and genomic data integration, machine learning techniques, and cutting-edge deep learning tools to drive transformative healthcare solutions.
-    </p>
+    <p>I am a Biomedical Data Scientist and Entrepreneur with over 3 years of experience harnessing multi-modal data analytics, deep learning, and innovative computing to transform healthcare. My work merges medicine with cutting-edge data science, propelling breakthroughs in personalized medicine and biomedical research.</p>
   </section>
 
   <!-- Education Section -->
-  <section id="education">
+  <section id="education" data-aos="fade-up">
     <h2>Education</h2>
-    <div class="content-item">
-      <h3>Harvard Medical School, Boston, MA</h3>
-      <p><strong>Masters of Medical Sciences in Biomedical Informatics</strong> (May 2026) | GPA: 4.0</p>
-      <p><em>Coursework:</em> Advanced Coding and Statistics for Biomedical Informatics; Precision Medicine: Integrating Clinical and Genomic Data; Foundations of Biomedical Informatics; Revolutionary Ventures: How to Invent and Deploy Transformative Technologies</p>
-    </div>
-    <div class="content-item">
-      <h3>University of California, Berkeley</h3>
-      <p><strong>Bachelor of Arts in Molecular and Cellular Biology: Biochemistry</strong> (Minor in Data Science) &amp; <strong>Bachelor of Science in Business Administration</strong> (May 2022) | GPA: 3.68</p>
-      <p><em>Coursework:</em> Biophysical Chemistry; Pathways Mechanisms and Regulation; Advanced Machine Learning Algorithms; Principles &amp; Techniques of Data Science; Structure and Interpretation of Computer Programs; Data Structures and Algorithms</p>
+    <p>At Harvard Medical School and UC Berkeley, I mastered Biomedical Informatics and Molecular Biology, complemented by advanced data science training to tackle complex challenges in healthcare innovation.</p>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" data-aos="fade-up">
+    <h2>Research</h2>
+    <p>My research explores machine learning, neural networks, and data integration techniques to decode clinical and genomic data, paving the way for novel insights into disease mechanisms and therapeutic interventions.</p>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" data-aos="fade-up">
+    <h2>Experience</h2>
+    <p>From co-founding innovative startups to leading impactful research projects, I apply state-of-the-art technologies to real-world healthcare challenges—driving progress and improving patient outcomes.</p>
+  </section>
+
+  <!-- Projects Section with Interactive Cards -->
+  <section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Project Alpha</h3>
+          </div>
+          <div class="card-back">
+            <p>AI-driven analysis for ARDS subphenotyping.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Project Beta</h3>
+          </div>
+          <div class="card-back">
+            <p>Neural-ODE modeling for pharmacokinetics data.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Project Gamma</h3>
+          </div>
+          <div class="card-back">
+            <p>Computer vision for precise last-mile delivery.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Technical Skills Section -->
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="content-item">
-      <h3>Languages &amp; Tools</h3>
-      <p>Python, R, Jupyter Notebook, SQL, Matlab, Java, GitHub, AWS (S3, EC2, Athena), GCP, Google Colab</p>
+  <!-- Resume Section with Interactive Modal Trigger -->
+  <section id="resume" data-aos="fade-up">
+    <h2>Resume</h2>
+    <p>Click the button below to view my resume.</p>
+    <div style="text-align: center; margin-top: 1rem;">
+      <button id="openModalBtn" style="padding: 1rem 2rem; font-size: 1.1rem; background: #0077cc; color: #fff; border: none; border-radius: 4px; cursor: pointer;">View Resume</button>
     </div>
-    <div class="content-item">
-      <h3>Data Science Libraries</h3>
-      <p>Pandas, Sklearn, SciPy, NumPy, PyTorch, TensorFlow, Matplotlib, BeautifulSoup, Plotly, Seaborn</p>
-    </div>
-    <div class="content-item">
-      <h3>Bioinformatics Tools</h3>
-      <p>Bulk RNA-Seq, ScRNA-Seq, Bioconductor, Public Databases (GEO, TCGA, Drugbank, PRIDE, Uniprot)</p>
-    </div>
-  </section>
-
-  <!-- Research Experience Section -->
-  <section id="research">
-    <h2>Research Experience</h2>
-    <div class="content-item">
-      <h3>Computational Research Specialist</h3>
-      <p><strong>Dai Lab for Molecular Design and Synthetic Biology, Rice University, Houston, TX</strong> (July 2023 – July 2024)</p>
-      <ul>
-        <li>Automated sequencing read alignment from FASTA files using Bowtie 2 in Python, achieving a 5-fold increase in pipeline efficiency.</li>
-        <li>Developed primer design software for cPCR using a simulated annealing optimization algorithm in MATLAB for up to 121-plex design with minimal interference.</li>
-        <li>Improved software performance by 15% on an 86-gene T-Cell panel through API integration with public genomic databases.</li>
-      </ul>
-    </div>
-    <div class="content-item">
-      <h3>Data Discovery Project Research Fellow</h3>
-      <p><strong>Merck &amp; Co, Rahway, NJ</strong> (December 2021 – May 2022)</p>
-      <ul>
-        <li>Awarded a 3-month Data Science Discovery Fellowship with Merck through UC Berkeley’s Computing, Data Science, and Society Department.</li>
-        <li>Designed a Neural-ODE model using TensorFlow to predict pharmacokinetics (PK) in patients, increasing accuracy by 4% over state-of-the-art methods.</li>
-        <li>Organized and shared project resources on GitHub, improving stakeholder visibility by 50% and earning the “Best Undergraduate Research Project” award at the 2023 ADSA Annual Meeting.</li>
-      </ul>
-    </div>
-    <div class="content-item">
-      <h3>Biomedical Informatics Research Associate</h3>
-      <p><strong>Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – December 2021)</p>
-      <ul>
-        <li>Developed a tool to accelerate drug repurposing by comparing gene expression changes from over 1,100 GEO and EBI Atlas experiments.</li>
-        <li>Validated disease hypotheses through gene set enrichment analysis (GSEA) using KEGG and GO databases, leading to the discovery of 2 novel disease indications.</li>
-        <li>Created visualizations with R (heatmaps and volcano plots) to enhance the disease selection process two-fold.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Professional Experience Section -->
-  <section id="experience">
-    <h2>Professional Experience</h2>
-    <div class="content-item">
-      <h3>Co-founder, Doorsep.ai</h3>
-      <p><strong>San Francisco, CA</strong> (August 2023 – August 2024)</p>
-      <ul>
-        <li>Raised approximately ~$1.8 Million in investments from notable backers including Cercano Management, Antler, Kleiner Perkins Scout, Cassius VC, and others.</li>
-        <li>Led a team of 3 engineers to build an AI-driven product enabling 100% accurate last-mile delivery through visual guidance.</li>
-        <li>Developed computer vision algorithms with PyTorch to predict user location within 0.5 meters and built XGBoost models to classify phone poses with over 99% accuracy.</li>
-        <li>Secured ~$50,000 in non-dilutive grant awards from various venture funds and pitch competitions.</li>
-      </ul>
-    </div>
-    <div class="content-item">
-      <h3>Biomedical Data Scientist, GEn1E Lifesciences</h3>
-      <p><strong>Palo Alto, CA</strong> (May 2022 – March 2024)</p>
-      <ul>
-        <li>Developed a support vector machine model to identify ARDS patient subphenotypes from high-dimensional clinical and biomarker data, achieving 97%+ accuracy.</li>
-        <li>Received a $749,000 grant from BARDA’s DRIVe for Patient Stratification Using AI and co-authored a journal article (currently under review at BMJ).</li>
-        <li>Awarded finalist status at the Digital Health Hub Awards 2023 and accepted into NVIDIA’s Inception Program.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Awards & Patents Section -->
-  <section id="awards">
-    <h2>Awards &amp; Patents</h2>
-    <ul>
-      <li>Provisional Patent for “Techniques For Machine Learning-Assisted Precise Wayfinding”</li>
-      <li>Provisional Patent for “Machine Learning Systems for Acute Respiratory Distress Syndrome Patient Sub-Phenotyping”</li>
-      <li>$749,000 Grant from BARDA's DRIVe for Patient Stratification Using AI</li>
-      <li>$1.8 Million Investment for Doorsep.ai from leading industry backers</li>
-      <li>$50,000 in Grant Awards from multiple venture funds and pitch competitions</li>
-      <li>Best Undergraduate Research Project at the 2023 ADSA Annual Meeting</li>
-      <li>Data Science Discovery Program Research Fellowship with Merck</li>
-    </ul>
-  </section>
-
-  <!-- Publications & Presentations Section -->
-  <section id="publications">
-    <h2>Publications &amp; Presentations</h2>
-    <ul>
-      <li>
-        Mehta M, Goel R, Goel NN, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-phenotypes”
-        <em>(manuscript submitted for review, CHEST-CRITCARE-D-24-00041, 2024)</em>.
-      </li>
-      <li>
-        Lal R, Goel R, Mehta M, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-phenotypes”
-        <em>(Presentation at the 2024 ATS International Conference, San Diego, 2024)</em>.
-      </li>
-      <li>
-        Goel, R. (2023). “Is Neural-ODE an Effective Method for Modeling Pharmacokinetics (PK) Data in Real-world Clinical Settings?”
-        <a href="https://adsa.pubpub.org/pub/d5dohi00" target="_blank">View Publication</a>.
-      </li>
-    </ul>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a></p>
+    <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu" style="color: #ffcc00;">rishabh_goel@hms.harvard.edu</a></p>
     <p>Phone: 310-849-1687</p>
-    <p>Location: Boston, MA 02115</p>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
   </footer>
+
+  <!-- Resume Modal -->
+  <div id="resumeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <!-- Replace 'resume.pdf' with the actual path to your resume file -->
+      <iframe src="resume.pdf" style="width:100%;height:100%;"></iframe>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS for scroll animations
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Initialize particles.js with a custom configuration
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+        "opacity": { "value": 0.5, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "repulse": { "distance": 200 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // --- Interactive DNA Helix ---
+    // Toggle faster rotation when the DNA helix is clicked.
+    const dnaContainer = document.getElementById('dnaContainer');
+    let fastRotate = false;
+    dnaContainer.addEventListener('click', () => {
+      fastRotate = !fastRotate;
+      const dnaSVG = dnaContainer.querySelector('.dna');
+      // Toggle between the default 10s and a faster 3s rotation speed.
+      dnaSVG.style.animationDuration = fastRotate ? '3s' : '10s';
+    });
+
+    // --- Resume Modal Functionality ---
+    const modal = document.getElementById('resumeModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalSpan = document.querySelector('.modal .close');
+
+    openModalBtn.addEventListener('click', () => {
+      modal.style.display = 'block';
+    });
+    closeModalSpan.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    window.addEventListener('click', (event) => {
+      if (event.target == modal) { modal.style.display = 'none'; }
+    });
+
+    // --- Optional: Smooth Scrolling for Navigation (if not already supported) ---
+    // Most modern browsers support CSS 'scroll-behavior: smooth' (set on body above).
+  </script>
 </body>
 </html>

@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rishabh Goel - Biomedical Data Scientist & Entrepreneur</title>
   <!-- Google Fonts for a modern, professional look -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Inline CSS -->
   <style>
-    /* Reset and Base Styles */
+    /* ----------------------------------------
+       Base & Reset
+    ---------------------------------------- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Roboto', sans-serif; background: #111; color: #eee; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #111;
+      color: #eee;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    /* p5.js canvas: Full-screen interactive background */
-    canvas { position: fixed; top: 0; left: 0; z-index: -2; }
+    /* ----------------------------------------
+       p5.js Canvas (Interactive Background)
+    ---------------------------------------- */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+    }
 
-    /* Navigation Bar */
+    /* ----------------------------------------
+       Navigation
+    ---------------------------------------- */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 12px 20px;
       z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    nav ul {
+      list-style: none;
       display: flex;
       justify-content: center;
+      gap: 20px;
     }
-    nav ul { list-style: none; display: flex; gap: 20px; }
     nav ul li a {
       color: #eee;
       text-decoration: none;
@@ -36,29 +58,30 @@
     }
     nav ul li a:hover { color: #ffcc00; }
 
-    /* Hero Section: Executive Summary */
+    /* ----------------------------------------
+       Hero Section (Executive Summary)
+    ---------------------------------------- */
     header.hero {
       height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 20px;
       position: relative;
       z-index: 1;
     }
-    header.hero .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 2rem;
+    .hero-content {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 2.5rem;
       border-radius: 8px;
+      max-width: 900px;
     }
     header.hero h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 4rem;
       margin-bottom: 10px;
+      letter-spacing: 1px;
     }
     header.hero h2 {
       font-size: 1.8rem;
@@ -66,16 +89,22 @@
       margin-bottom: 20px;
     }
     header.hero p {
-      max-width: 600px;
-      margin-bottom: 30px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
       line-height: 1.5;
     }
-    .hero-buttons { display: flex; gap: 20px; }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
     .btn {
       padding: 12px 24px;
       border: none;
       background: #ffcc00;
-      color: #333;
+      color: #111;
       font-size: 1rem;
       font-weight: 700;
       border-radius: 4px;
@@ -84,18 +113,35 @@
     }
     .btn:hover { background: #e6b800; }
 
-    /* Sections */
-    section { padding: 80px 20px; text-align: center; }
+    /* ----------------------------------------
+       Section Layouts
+    ---------------------------------------- */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
     section h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 20px;
       color: #ffcc00;
     }
-    section p { max-width: 800px; margin: 0 auto 20px; line-height: 1.6; }
+    section p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
 
-    /* About Section */
-    .about-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    /* ----------------------------------------
+       About Section
+    ---------------------------------------- */
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
     .headshot {
       width: 200px;
       height: 200px;
@@ -104,7 +150,9 @@
       object-fit: cover;
     }
 
-    /* Awards Gallery */
+    /* ----------------------------------------
+       Awards Gallery
+    ---------------------------------------- */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -120,7 +168,9 @@
     }
     .gallery img:hover { transform: scale(1.05); }
 
-    /* Modal Styles (for Resume & Award Lightbox) */
+    /* ----------------------------------------
+       Modal Styles (for Resume & Awards)
+    ---------------------------------------- */
     .modal {
       display: none;
       position: fixed;
@@ -144,7 +194,8 @@
       max-height: 90vh;
       overflow: auto;
     }
-    .modal-content iframe, .modal-content img {
+    .modal-content iframe,
+    .modal-content img {
       width: 100%;
       height: auto;
     }
@@ -157,7 +208,9 @@
       cursor: pointer;
     }
 
-    /* Footer */
+    /* ----------------------------------------
+       Footer
+    ---------------------------------------- */
     footer {
       padding: 20px;
       background: #000;
@@ -168,7 +221,7 @@
   </style>
 </head>
 <body>
-  <!-- The p5.js library will create an interactive canvas as the background -->
+  <!-- p5.js will render the interactive particle background on a canvas -->
 
   <!-- Navigation -->
   <nav>
@@ -187,10 +240,9 @@
       <h1>Rishabh Goel</h1>
       <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
       <p>
-        Innovating at the intersection of advanced healthcare and data-driven insights.
-        With over 3 years of industry experience, my work has attracted investments exceeding <strong>$1.8M</strong>
-        and grants over <strong>$749k</strong>.
-        I fuse scientific rigor with creative vision to redefine precision medicine.
+        I harness multi-modal clinical and genomic data to drive transformative healthcare solutions.
+        With over 3 years of experience, my work has attracted investments exceeding <strong>$1.8M</strong>
+        and grants over <strong>$749k</strong>. I blend scientific rigor with creative vision to redefine precision medicine.
       </p>
       <div class="hero-buttons">
         <button class="btn" onclick="scrollToSection('about')">About Me</button>
@@ -205,33 +257,31 @@
     <div class="about-container">
       <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot">
       <p>
-        I am a passionate biomedical data scientist and entrepreneur who combines technical expertise with creative problem-solving.
-        My work leverages multi-modal data analytics to drive transformative healthcare solutions.
+        I am passionate about integrating advanced data science techniques with healthcare innovation.
+        My work spans research, entrepreneurship, and creative problem-solving—ensuring every solution is both effective and inspiring.
       </p>
     </div>
   </section>
 
   <!-- Awards Section -->
   <section id="awards">
-    <h2>Awards & Recognitions</h2>
+    <h2>Awards &amp; Recognitions</h2>
     <p>
-      My journey has been decorated with accolades that celebrate innovation, leadership, and excellence in biomedical data science.
-      Click on any award to learn more.
+      My journey is marked by accolades that celebrate innovation, leadership, and excellence in biomedical data science.
+      Click any award to see more details.
     </p>
     <div class="gallery">
+      <!-- Award images. Replace src values with your actual files -->
       <img src="award1.jpg" alt="Award 1" onclick="openModal('award1')">
       <img src="award2.jpg" alt="Award 2" onclick="openModal('award2')">
       <img src="award3.jpg" alt="Award 3" onclick="openModal('award3')">
-      <!-- Add additional award images as needed -->
     </div>
   </section>
 
   <!-- Resume Section -->
   <section id="resume">
     <h2>Resume</h2>
-    <p>
-      Explore my professional journey, achievements, and skill set in detail.
-    </p>
+    <p>Discover my professional journey and skill set in detail.</p>
     <button class="btn" onclick="openModal('resume')">View Resume</button>
   </section>
 
@@ -247,16 +297,20 @@
     <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
   </footer>
 
-  <!-- Modal for Resume -->
+  <!-- ----------------------------------------
+       Modals for Resume & Awards
+  ---------------------------------------- -->
+
+  <!-- Resume Modal -->
   <div id="modal-resume" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('resume')">&times;</span>
-      <!-- The resume.pdf file should be in the repository root or adjust the path -->
+      <!-- Adjust the path if your resume file is elsewhere -->
       <iframe src="resume.pdf"></iframe>
     </div>
   </div>
 
-  <!-- Modal for Award 1 -->
+  <!-- Award 1 Modal -->
   <div id="modal-award1" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('award1')">&times;</span>
@@ -265,7 +319,7 @@
     </div>
   </div>
 
-  <!-- Modal for Award 2 -->
+  <!-- Award 2 Modal -->
   <div id="modal-award2" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('award2')">&times;</span>
@@ -274,7 +328,7 @@
     </div>
   </div>
 
-  <!-- Modal for Award 3 -->
+  <!-- Award 3 Modal -->
   <div id="modal-award3" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('award3')">&times;</span>
@@ -283,23 +337,24 @@
     </div>
   </div>
 
-  <!-- p5.js Library -->
+  <!-- ----------------------------------------
+       p5.js Interactive Background
+  ---------------------------------------- -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-  <!-- p5.js Interactive Background Sketch -->
   <script>
     let particles = [];
     const numParticles = 200;
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
-      // Initialize particles
+      // Initialize an array of particles
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
       }
     }
 
     function draw() {
-      // Semi-transparent background for a trail effect
+      // Use a semi-transparent background for a trailing effect
       background(15, 15, 25, 50);
       for (let p of particles) {
         p.update();
@@ -308,8 +363,8 @@
       }
     }
 
+    // Add particles on mouse click (if not over the nav area)
     function mousePressed() {
-      // Add particles on click if not over UI (avoid top area)
       if (mouseY > 80) {
         particles.push(new Particle(mouseX, mouseY));
       }
@@ -347,7 +402,9 @@
     }
   </script>
 
-  <!-- Modal and Smooth Scroll Functionality -->
+  <!-- ----------------------------------------
+       Modal & Smooth Scroll Functionality
+  ---------------------------------------- -->
   <script>
     function openModal(type) {
       document.getElementById('modal-' + type).style.display = 'flex';
@@ -357,16 +414,14 @@
       document.getElementById('modal-' + type).style.display = 'none';
     }
 
-    // Close modal when clicking outside its content
+    // Close any modal if clicking outside the modal content
     window.addEventListener('click', function(e) {
       document.querySelectorAll('.modal').forEach(modal => {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-        }
+        if (e.target === modal) modal.style.display = 'none';
       });
     });
 
-    // Smooth scroll helper for navigation and buttons
+    // Helper function for smooth scrolling to sections
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }

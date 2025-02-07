@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rishabh Goel - Biomedical Data Scientist & Entrepreneur</title>
-  <!-- Google Fonts for an artsy yet professional look -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts for a modern, professional look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    /* Basic Reset */
+    /* Reset and Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
-    body { font-family: 'Roboto', sans-serif; background: #0e0e0e; color: #fff; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: #111; color: #eee; }
 
-    /* p5.js canvas styling – full-screen interactive background */
-    canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+    /* p5.js canvas: Full-screen interactive background */
+    canvas { position: fixed; top: 0; left: 0; z-index: -2; }
 
     /* Navigation Bar */
     nav {
@@ -21,106 +21,106 @@
       top: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.8);
-      padding: 1rem;
+      padding: 10px 20px;
       z-index: 1000;
+      display: flex;
+      justify-content: center;
     }
-    nav ul { list-style: none; display: flex; justify-content: center; }
-    nav ul li { margin: 0 1rem; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
     nav ul li a {
-      color: #fff;
+      color: #eee;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       transition: color 0.3s;
     }
     nav ul li a:hover { color: #ffcc00; }
 
-    /* Hero Section (Executive Summary) */
-    header {
-      padding: 120px 2rem 80px;
+    /* Hero Section: Executive Summary */
+    header.hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      background: rgba(0, 0, 0, 0.4); /* subtle overlay */
+      padding: 20px;
       position: relative;
+      z-index: 1;
     }
-    .hero-content {
+    header.hero .hero-content {
       max-width: 900px;
       margin: 0 auto;
       background: rgba(0, 0, 0, 0.6);
       padding: 2rem;
       border-radius: 8px;
     }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
+    header.hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      margin-bottom: 10px;
     }
-    header h2 {
+    header.hero h2 {
       font-size: 1.8rem;
       color: #ffcc00;
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
     }
-    header p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      color: #ddd;
+    header.hero p {
+      max-width: 600px;
+      margin-bottom: 30px;
+      line-height: 1.5;
     }
-    .hero-buttons {
-      margin-top: 1.5rem;
-    }
-    .hero-buttons .btn {
+    .hero-buttons { display: flex; gap: 20px; }
+    .btn {
+      padding: 12px 24px;
+      border: none;
       background: #ffcc00;
       color: #333;
-      padding: 0.8rem 1.2rem;
-      margin: 0 0.5rem;
-      border: none;
+      font-size: 1rem;
+      font-weight: 700;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 1.1rem;
       transition: background 0.3s;
     }
-    .hero-buttons .btn:hover { background: #e6b800; }
+    .btn:hover { background: #e6b800; }
 
-    /* Section Styles */
-    section {
-      padding: 100px 2rem;
-      text-align: center;
-    }
+    /* Sections */
+    section { padding: 80px 20px; text-align: center; }
     section h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 2.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
       color: #ffcc00;
     }
-    section p { font-size: 1.1rem; margin-bottom: 1.2rem; color: #ccc; }
+    section p { max-width: 800px; margin: 0 auto 20px; line-height: 1.6; }
 
-    /* Headshot Styling */
+    /* About Section */
+    .about-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
     .headshot {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      width: 150px;
-      height: 150px;
+      border: 5px solid #ffcc00;
       object-fit: cover;
-      margin: 0 auto 1rem;
-      border: 3px solid #ffcc00;
     }
 
-    /* Awards Gallery Styling */
-    .awards-gallery {
+    /* Awards Gallery */
+    .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .awards-gallery img {
+    .gallery img {
       width: 100%;
       border-radius: 8px;
+      cursor: pointer;
       transition: transform 0.3s;
     }
-    .awards-gallery img:hover {
-      transform: scale(1.05);
-    }
+    .gallery img:hover { transform: scale(1.05); }
 
-    /* Resume Modal Styles */
+    /* Modal Styles (for Resume & Award Lightbox) */
     .modal {
       display: none;
       position: fixed;
@@ -129,138 +129,116 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
     .modal-content {
-      background: #fff;
-      width: 80%;
-      max-width: 800px;
-      padding: 1rem;
-      border-radius: 8px;
       position: relative;
-    }
-    .modal-content iframe {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
       width: 100%;
-      height: 80vh;
-      border: none;
+      max-height: 90vh;
+      overflow: auto;
     }
-    .close {
+    .modal-content iframe, .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+    .modal .close {
       position: absolute;
       top: 10px;
-      right: 20px;
+      right: 15px;
       font-size: 2rem;
-      cursor: pointer;
       color: #333;
+      cursor: pointer;
     }
 
     /* Footer */
     footer {
-      padding: 2rem;
+      padding: 20px;
+      background: #000;
       text-align: center;
-      background: rgba(0, 0, 0, 0.9);
-      color: #aaa;
       font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <!-- p5.js Canvas (Interactive Background) -->
-  <!-- The canvas is created dynamically by the p5.js sketch below -->
+  <!-- The p5.js library will create an interactive canvas as the background -->
 
   <!-- Navigation -->
   <nav>
     <ul>
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#awards">Awards</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section (Executive Summary) -->
-  <header id="hero">
+  <!-- Hero Section -->
+  <header id="hero" class="hero">
     <div class="hero-content">
       <h1>Rishabh Goel</h1>
       <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
       <p>
-        With over 3 years of industry experience, I leverage multi-modal clinical and genomic data to drive innovative healthcare solutions. My work has attracted over <strong>$1.8M in investment</strong> and secured grants exceeding <strong>$749k</strong>, demonstrating a powerful blend of scientific expertise and entrepreneurial vision.
-      </p>
-      <p>
-        I combine data science with creative expression to transform how we understand and innovate in medicine.
+        Innovating at the intersection of advanced healthcare and data-driven insights.
+        With over 3 years of industry experience, my work has attracted investments exceeding <strong>$1.8M</strong>
+        and grants over <strong>$749k</strong>.
+        I fuse scientific rigor with creative vision to redefine precision medicine.
       </p>
       <div class="hero-buttons">
-        <button class="btn" onclick="scrollToSection('about')">Learn More</button>
-        <button class="btn" onclick="scrollToSection('contact')">Contact Me</button>
+        <button class="btn" onclick="scrollToSection('about')">About Me</button>
+        <button class="btn" onclick="openModal('resume')">View Resume</button>
       </div>
     </div>
   </header>
 
-  <!-- About Section with Headshot -->
+  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot" />
-    <p>
-      I am passionate about merging data science with healthcare innovation. My background spans cutting-edge research, entrepreneurship, and creative problem-solving—ensuring every solution is both effective and inspired.
-    </p>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education">
-    <h2>Education</h2>
-    <p>
-      <strong>Harvard Medical School</strong> – Masters in Biomedical Informatics<br>
-      <strong>University of California, Berkeley</strong> – BA in Molecular and Cellular Biology, BS in Business Administration
-    </p>
-  </section>
-
-  <!-- Research Section -->
-  <section id="research">
-    <h2>Research</h2>
-    <p>
-      I explore advanced machine learning techniques, neural networks, and deep learning models to unlock insights from clinical and genomic data—driving forward precision medicine and novel therapeutic strategies.
-    </p>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience">
-    <h2>Experience</h2>
-    <p>
-      From co-founding innovative startups to leading high-impact research projects, I have applied my expertise to develop AI-driven solutions that redefine healthcare delivery and patient stratification.
-    </p>
-  </section>
-
-  <!-- Awards Gallery Section -->
-  <section id="awards">
-    <h2>Awards</h2>
-    <p>
-      These accolades and recognitions reflect my commitment to excellence and innovation in biomedical data science.
-    </p>
-    <div class="awards-gallery">
-      <!-- Replace these image file names with your actual award images -->
-      <img src="award1.jpg" alt="Award 1" />
-      <img src="award2.jpg" alt="Award 2" />
-      <img src="award3.jpg" alt="Award 3" />
-      <!-- You can add more images as needed -->
+    <div class="about-container">
+      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot">
+      <p>
+        I am a passionate biomedical data scientist and entrepreneur who combines technical expertise with creative problem-solving.
+        My work leverages multi-modal data analytics to drive transformative healthcare solutions.
+      </p>
     </div>
   </section>
 
-  <!-- Resume Section with Modal Trigger -->
+  <!-- Awards Section -->
+  <section id="awards">
+    <h2>Awards & Recognitions</h2>
+    <p>
+      My journey has been decorated with accolades that celebrate innovation, leadership, and excellence in biomedical data science.
+      Click on any award to learn more.
+    </p>
+    <div class="gallery">
+      <img src="award1.jpg" alt="Award 1" onclick="openModal('award1')">
+      <img src="award2.jpg" alt="Award 2" onclick="openModal('award2')">
+      <img src="award3.jpg" alt="Award 3" onclick="openModal('award3')">
+      <!-- Add additional award images as needed -->
+    </div>
+  </section>
+
+  <!-- Resume Section -->
   <section id="resume">
     <h2>Resume</h2>
-    <p>Explore my professional journey, achievements, and skills in detail.</p>
-    <button class="btn" id="openModalBtn">View Resume</button>
+    <p>
+      Explore my professional journey, achievements, and skill set in detail.
+    </p>
+    <button class="btn" onclick="openModal('resume')">View Resume</button>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu" style="color: #ffcc00;">rishabh_goel@hms.harvard.edu</a></p>
+    <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu" style="color:#ffcc00;">rishabh_goel@hms.harvard.edu</a></p>
     <p>Phone: 310-849-1687</p>
   </section>
 
@@ -269,21 +247,48 @@
     <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
   </footer>
 
-  <!-- Resume Modal -->
-  <div id="resumeModal" class="modal">
+  <!-- Modal for Resume -->
+  <div id="modal-resume" class="modal">
     <div class="modal-content">
-      <span class="close" id="closeModalBtn">&times;</span>
-      <!-- Ensure your resume.pdf is in the repository root or update the path accordingly -->
+      <span class="close" onclick="closeModal('resume')">&times;</span>
+      <!-- The resume.pdf file should be in the repository root or adjust the path -->
       <iframe src="resume.pdf"></iframe>
+    </div>
+  </div>
+
+  <!-- Modal for Award 1 -->
+  <div id="modal-award1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award1')">&times;</span>
+      <img src="award1.jpg" alt="Award 1">
+      <p>Details about Award 1 and its significance.</p>
+    </div>
+  </div>
+
+  <!-- Modal for Award 2 -->
+  <div id="modal-award2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award2')">&times;</span>
+      <img src="award2.jpg" alt="Award 2">
+      <p>Details about Award 2 and its significance.</p>
+    </div>
+  </div>
+
+  <!-- Modal for Award 3 -->
+  <div id="modal-award3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award3')">&times;</span>
+      <img src="award3.jpg" alt="Award 3">
+      <p>Details about Award 3 and its significance.</p>
     </div>
   </div>
 
   <!-- p5.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-  <!-- p5.js Sketch for Interactive Background -->
+  <!-- p5.js Interactive Background Sketch -->
   <script>
     let particles = [];
-    const numParticles = 150;
+    const numParticles = 200;
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
@@ -294,8 +299,8 @@
     }
 
     function draw() {
-      // Semi-transparent background for trailing effect
-      background(10, 10, 30, 50);
+      // Semi-transparent background for a trail effect
+      background(15, 15, 25, 50);
       for (let p of particles) {
         p.update();
         p.edges();
@@ -303,9 +308,9 @@
       }
     }
 
-    // Spawn additional particles on mouse click (if not over UI)
     function mousePressed() {
-      if (mouseY > 100) {
+      // Add particles on click if not over UI (avoid top area)
+      if (mouseY > 80) {
         particles.push(new Particle(mouseX, mouseY));
       }
     }
@@ -313,14 +318,14 @@
     class Particle {
       constructor(x, y) {
         this.pos = createVector(x || random(width), y || random(height));
-        this.vel = p5.Vector.random2D().mult(random(1, 3));
-        this.size = random(3, 8);
+        this.vel = p5.Vector.random2D().mult(random(0.5, 3));
+        this.size = random(2, 6);
         this.hue = random(360);
       }
 
       update() {
         this.pos.add(this.vel);
-        this.hue = (this.hue + 0.5) % 360;
+        this.hue = (this.hue + 1) % 360;
       }
 
       edges() {
@@ -342,25 +347,26 @@
     }
   </script>
 
-  <!-- Modal Functionality -->
+  <!-- Modal and Smooth Scroll Functionality -->
   <script>
-    const openModalBtn = document.getElementById('openModalBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const resumeModal = document.getElementById('resumeModal');
+    function openModal(type) {
+      document.getElementById('modal-' + type).style.display = 'flex';
+    }
 
-    openModalBtn.addEventListener('click', () => {
-      resumeModal.style.display = 'flex';
-    });
-    closeModalBtn.addEventListener('click', () => {
-      resumeModal.style.display = 'none';
-    });
-    window.addEventListener('click', (event) => {
-      if (event.target === resumeModal) {
-        resumeModal.style.display = 'none';
-      }
+    function closeModal(type) {
+      document.getElementById('modal-' + type).style.display = 'none';
+    }
+
+    // Close modal when clicking outside its content
+    window.addEventListener('click', function(e) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
     });
 
-    // Smooth scroll helper for buttons in the hero section
+    // Smooth scroll helper for navigation and buttons
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }

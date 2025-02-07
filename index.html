@@ -3,33 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>John Doe - Creative Technologist</title>
-  <!-- Google Fonts for a modern look -->
+  <title>Jane Doe Portfolio</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- AOS Library CSS for scroll animations -->
+  <!-- AOS CSS for scroll animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    /* Basic Reset and Base Styles */
+    /* Base Styles & Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Open Sans', sans-serif; background: #111; color: #eee; line-height: 1.6; }
+    body { font-family: 'Open Sans', sans-serif; background: #f4f4f4; color: #333; line-height: 1.6; }
 
     /* Navigation */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0, 0, 0, 0.85);
       padding: 1rem 2rem;
       z-index: 1000;
       box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; }
     nav ul li a {
-      color: #eee;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      color: #fff; font-weight: 700; letter-spacing: 0.5px; text-decoration: none;
       transition: color 0.3s;
     }
     nav ul li a:hover { color: #ffcc00; }
@@ -37,62 +34,127 @@
     /* Hero Section */
     header.hero {
       height: 100vh;
-      background: linear-gradient(135deg, #1e1e1e, #333);
+      background: linear-gradient(135deg, #141e30, #243b55);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 0 20px;
+      color: #fff;
+    }
+    .hero-content {
+      max-width: 800px;
     }
     header.hero h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 4rem;
       margin-bottom: 20px;
-      color: #fff;
     }
     header.hero p {
       font-size: 1.5rem;
-      max-width: 600px;
       margin-bottom: 30px;
       color: #ccc;
     }
-    .hero .btn {
-      padding: 15px 30px;
+    .btn {
+      padding: 12px 30px;
       background: #ffcc00;
       border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
       border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
       transition: background 0.3s;
     }
-    .hero .btn:hover { background: #e6b800; }
+    .btn:hover { background: #e6b800; }
 
     /* Sections */
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
+    section { padding: 80px 20px; text-align: center; }
     section h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 20px;
-      color: #ffcc00;
+      color: #333;
     }
-    section p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto 20px;
-      color: #bbb;
+    section p { max-width: 800px; margin: 0 auto 20px; font-size: 1.1rem; color: #555; }
+
+    /* About Section */
+    .about { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .about img {
+      width: 200px; height: 200px;
+      border-radius: 50%; object-fit: cover;
+      border: 4px solid #ffcc00;
+    }
+
+    /* Projects Section */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .project-card:hover { transform: translateY(-5px); }
+    .project-card h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }
+    .project-card p { font-size: 0.95rem; color: #666; }
+
+    /* Contact Section */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: #ffcc00;
     }
 
     /* Footer */
-    footer {
+    footer { background: #222; color: #aaa; padding: 20px; text-align: center; }
+
+    /* Modal for Project Details */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
       padding: 20px;
-      text-align: center;
-      background: #000;
-      color: #777;
-      font-size: 0.9rem;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+    }
+    .modal-content h3 { margin-bottom: 10px; }
+    .modal-content p { color: #555; }
+    .modal .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 3rem; }
+      header.hero p { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -102,7 +164,6 @@
     <ul>
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -110,54 +171,109 @@
 
   <!-- Hero Section -->
   <header id="hero" class="hero" data-aos="fade-up">
-    <h1>John Doe</h1>
-    <p>Crafting innovative digital experiences that captivate and inspire.</p>
-    <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
+    <div class="hero-content">
+      <h1>Jane Doe</h1>
+      <p>Designer • Developer • Creative Thinker</p>
+      <button class="btn" onclick="scrollToSection('about')">Discover More</button>
+    </div>
   </header>
 
   <!-- About Section -->
   <section id="about" data-aos="fade-up" data-aos-delay="200">
     <h2>About Me</h2>
-    <p>
-      I’m a creative technologist specializing in digital design and development. With a passion for innovation and a keen eye for detail, I build memorable experiences that blend art with technology.
-    </p>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" data-aos="fade-up" data-aos-delay="400">
-    <h2>Experience</h2>
-    <p>
-      Over the past decade, I have collaborated with industry-leading brands and startups to deliver impactful digital projects—from interactive installations to award-winning websites.
-    </p>
+    <div class="about">
+      <img src="headshot.jpg" alt="Jane Doe Headshot">
+      <p>
+        I’m Jane Doe, a creative technologist passionate about building digital experiences that blend design and development.
+        With expertise in modern web technologies and a keen eye for aesthetics, I create solutions that are both beautiful and functional.
+      </p>
+    </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" data-aos="fade-up" data-aos-delay="600">
+  <section id="projects" data-aos="fade-up" data-aos-delay="400">
     <h2>Projects</h2>
-    <p>
-      My portfolio spans a diverse range of projects that showcase my expertise in both creative design and technical development. Each project is a testament to a commitment to excellence and innovation.
-    </p>
+    <div class="projects">
+      <div class="project-card" onclick="openModal('project1')">
+        <h3>Project One</h3>
+        <p>A responsive website redesign for a leading brand.</p>
+      </div>
+      <div class="project-card" onclick="openModal('project2')">
+        <h3>Project Two</h3>
+        <p>An interactive web application that brings data to life.</p>
+      </div>
+      <div class="project-card" onclick="openModal('project3')">
+        <h3>Project Three</h3>
+        <p>A mobile-first approach to streamline user experience.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up" data-aos-delay="800">
+  <section id="contact" data-aos="fade-up" data-aos-delay="600">
     <h2>Contact</h2>
-    <p>
-      Interested in collaborating or learning more about my work? Reach out at <a href="mailto:email@example.com" style="color:#ffcc00;">email@example.com</a>.
-    </p>
+    <p>If you’d like to work together or just want to say hello, drop me a message!</p>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 John Doe. All rights reserved.</p>
+    <p>&copy; 2025 Jane Doe. All rights reserved.</p>
   </footer>
+
+  <!-- Modal Structure for Project Details -->
+  <div id="modal-project1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project1')">&times;</span>
+      <h3>Project One</h3>
+      <p>Detailed description of Project One. Explain your role, challenges, and the impact of the project. Include visuals or links if available.</p>
+    </div>
+  </div>
+
+  <div id="modal-project2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project2')">&times;</span>
+      <h3>Project Two</h3>
+      <p>Detailed description of Project Two. Highlight the innovative features, technologies used, and the overall outcome.</p>
+    </div>
+  </div>
+
+  <div id="modal-project3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('project3')">&times;</span>
+      <h3>Project Three</h3>
+      <p>Detailed description of Project Three. Describe the design process, technical challenges, and results achieved.</p>
+    </div>
+  </div>
 
   <!-- AOS Animation Library -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
+    AOS.init({ duration: 1000, once: true });
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openModal(projectId) {
+      document.getElementById('modal-' + projectId).style.display = 'flex';
+    }
+
+    function closeModal(projectId) {
+      document.getElementById('modal-' + projectId).style.display = 'none';
+    }
+
+    window.addEventListener('click', function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
     });
   </script>
 </body>

@@ -46,6 +46,32 @@
     section h2 { font-size: 2.5rem; margin-bottom: 1rem; color: #ffcc00; }
     section p { font-size: 1.2rem; margin-bottom: 1rem; color: #ddd; }
 
+    /* Headshot Styling (for the About section) */
+    .headshot {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 3px solid #ffcc00;
+    }
+
+    /* Awards Gallery Styling */
+    .awards-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .awards-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+    .awards-gallery img:hover {
+      transform: scale(1.05);
+    }
+
     /* Resume Modal Styles */
     .modal {
       display: none;
@@ -104,44 +130,66 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#awards">Awards</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Sections -->
+  <!-- Intro Section -->
   <section id="intro">
     <h1>Welcome to My Interactive World</h1>
     <p>Explore the fusion of art, science, and play in biomedical data.</p>
     <p>Click anywhere on the background to unleash creativity!</p>
   </section>
 
+  <!-- About Section with Headshot -->
   <section id="about">
     <h2>About Me</h2>
+    <!-- Add your headshot image (ensure headshot.jpg is in your repository) -->
+    <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot" />
     <p>I am Rishabh Goel—a biomedical data scientist who combines technical innovation with artistic expression to bring data to life.</p>
   </section>
 
+  <!-- Education Section -->
   <section id="education">
     <h2>Education</h2>
     <p>Harvard Medical School &amp; UC Berkeley—where technology meets art.</p>
   </section>
 
+  <!-- Research Section -->
   <section id="research">
     <h2>Research</h2>
     <p>My work uses interactive visualizations and playful data exploration to decode complex biological systems.</p>
   </section>
 
+  <!-- Experience Section -->
   <section id="experience">
     <h2>Experience</h2>
     <p>From pioneering startups to innovative research projects, I bridge the gap between science and art.</p>
   </section>
 
+  <!-- Awards Gallery Section -->
+  <section id="awards">
+    <h2>Awards</h2>
+    <p>These accolades celebrate my journey and achievements. Click on an image to view details.</p>
+    <div class="awards-gallery">
+      <!-- Replace the src values with your actual award images -->
+      <img src="award1.jpg" alt="Award 1" />
+      <img src="award2.jpg" alt="Award 2" />
+      <img src="award3.jpg" alt="Award 3" />
+      <!-- Add more images as desired -->
+    </div>
+  </section>
+
+  <!-- Resume Section -->
   <section id="resume">
     <h2>Resume</h2>
     <p>Discover my journey and achievements in detail.</p>
     <button class="btn" id="openModalBtn">View Resume</button>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:rishabh_goel@hms.harvard.edu" style="color: #ffcc00;">rishabh_goel@hms.harvard.edu</a></p>

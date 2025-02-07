@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rishabh Goel - Biomedical Data Scientist & Entrepreneur</title>
-  <!-- Google Fonts for a modern look -->
+  <title>Rishabh Goel | Biomedical Data Scientist & Entrepreneur</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- AOS CSS for scroll animations -->
+  <!-- AOS CSS for scroll animations (optional) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    /* Base & Reset */
+    /* CSS Variables for easy theming */
+    :root {
+      --primary-color: #ffcc00;
+      --bg-color: #141e30;
+      --overlay-color: rgba(0,0,0,0.6);
+      --text-color: #eee;
+      --heading-color: #fff;
+      --nav-bg: rgba(255,255,255,0.97);
+      --nav-text: #333;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
+
+    /* Reset and Base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Open Sans', sans-serif;
-      background: #111;
-      color: #eee;
+      font-family: var(--font-body);
+      background: #fff;
+      color: var(--nav-text);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -25,96 +38,108 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 12px 20px;
+      background: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      transition: background 0.3s;
     }
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      padding: 1rem;
     }
+    nav ul li { margin: 0 15px; }
     nav ul li a {
-      color: #eee;
       text-decoration: none;
+      color: var(--nav-text);
       font-weight: 700;
       letter-spacing: 0.5px;
       transition: color 0.3s;
     }
-    nav ul li a:hover { color: #ffcc00; }
+    nav ul li a:hover { color: var(--primary-color); }
 
     /* Hero Section */
     header.hero {
       height: 100vh;
-      background: linear-gradient(135deg, #141e30, #243b55);
+      background: linear-gradient(135deg, var(--bg-color), #243b55);
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      color: var(--heading-color);
       padding: 0 20px;
     }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay-color);
+      z-index: 0;
+    }
     .hero-content {
-      background: rgba(0, 0, 0, 0.65);
-      padding: 2.5rem;
-      border-radius: 8px;
-      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
     header.hero h1 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-heading);
       font-size: 4rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      color: #fff;
+      margin-bottom: 20px;
     }
     header.hero h2 {
       font-size: 1.8rem;
-      color: #ffcc00;
-      margin-bottom: 20px;
+      color: var(--primary-color);
+      margin-bottom: 30px;
     }
     header.hero p {
-      max-width: 700px;
-      margin: 0 auto 30px;
-      font-size: 1.1rem;
-      line-height: 1.5;
+      font-size: 1.3rem;
+      margin-bottom: 30px;
       color: #ccc;
     }
     .hero-buttons {
       display: flex;
-      justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .btn {
-      padding: 12px 24px;
+      padding: 15px 30px;
+      background: var(--primary-color);
       border: none;
-      background: #ffcc00;
-      color: #111;
+      border-radius: 5px;
       font-size: 1rem;
       font-weight: 700;
-      border-radius: 4px;
       cursor: pointer;
       transition: background 0.3s;
+      color: #111;
     }
     .btn:hover { background: #e6b800; }
 
-    /* Sections */
+    /* Section Styles */
     section {
-      padding: 80px 20px;
+      padding: 100px 20px;
       text-align: center;
     }
     section h2 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-heading);
       font-size: 2.5rem;
       margin-bottom: 20px;
-      color: #ffcc00;
+      color: var(--bg-color);
     }
     section p {
-      max-width: 800px;
+      font-size: 1.2rem;
+      max-width: 700px;
       margin: 0 auto 20px;
-      font-size: 1.1rem;
-      color: #ccc;
+      color: #555;
     }
 
     /* About Section */
@@ -124,11 +149,11 @@
       align-items: center;
       gap: 20px;
     }
-    .about-container img.headshot {
+    .headshot {
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 4px solid #ffcc00;
+      border: 4px solid var(--primary-color);
       object-fit: cover;
     }
 
@@ -144,26 +169,28 @@
       width: 100%;
       border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .gallery img:hover { transform: scale(1.05); }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
-    /* Contact Section (simple contact info) */
+    /* Contact Section */
     .contact-info a {
-      color: #ffcc00;
+      color: var(--primary-color);
       text-decoration: none;
     }
 
     /* Footer */
     footer {
       padding: 20px;
-      background: #000;
+      background: var(--bg-color);
+      color: var(--heading-color);
       text-align: center;
-      font-size: 0.9rem;
-      color: #777;
     }
 
-    /* Modal Styles (for Resume) */
+    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
@@ -193,4 +220,160 @@
       border: none;
     }
     .modal .close {
-      position:
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 3rem; }
+      header.hero h2 { font-size: 1.5rem; }
+      header.hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Rishabh Goel</h1>
+      <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
+      <p>
+        I leverage multi-modal clinical and genomic data to drive transformative healthcare solutions.
+        With over 3 years of industry experience, my work has secured investments exceeding <strong>$1.8M</strong>
+        and grants over <strong>$749k</strong>.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Discover More</button>
+        <button class="btn" onclick="openModal('resume')">View Resume</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up" data-aos-delay="200">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot">
+      <p>
+        As a Biomedical Data Scientist and Entrepreneur, I specialize in integrating complex datasets to uncover insights that transform patient care.
+        My academic journey through Harvard Medical School and UC Berkeley, coupled with hands-on industry experience, empowers me to tackle real-world challenges in precision medicine.
+      </p>
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section id="awards" data-aos="fade-up" data-aos-delay="400">
+    <h2>Awards &amp; Recognitions</h2>
+    <p>
+      My contributions to biomedical data science have earned prestigious accolades.
+      Click on an award to learn more.
+    </p>
+    <div class="gallery">
+      <img src="award1.jpg" alt="Award 1" onclick="openModal('award1')">
+      <img src="award2.jpg" alt="Award 2" onclick="openModal('award2')">
+      <img src="award3.jpg" alt="Award 3" onclick="openModal('award3')">
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" data-aos="fade-up" data-aos-delay="600">
+    <h2>Resume</h2>
+    <p>
+      Explore my professional journey, expertise, and achievements in detail.
+    </p>
+    <a href="resume.pdf" target="_blank" class="btn">View Resume</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up" data-aos-delay="800">
+    <h2>Contact</h2>
+    <p class="contact-info">
+      Email: <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a><br>
+      Phone: 310-849-1687
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal for Resume -->
+  <div id="modal-resume" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('resume')">&times;</span>
+      <iframe src="resume.pdf"></iframe>
+    </div>
+  </div>
+
+  <!-- Modal for Award 1 -->
+  <div id="modal-award1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award1')">&times;</span>
+      <img src="award1.jpg" alt="Award 1">
+      <p>Details about Award 1 and its significance.</p>
+    </div>
+  </div>
+
+  <!-- Modal for Award 2 -->
+  <div id="modal-award2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award2')">&times;</span>
+      <img src="award2.jpg" alt="Award 2">
+      <p>Details about Award 2 and its significance.</p>
+    </div>
+  </div>
+
+  <!-- Modal for Award 3 -->
+  <div id="modal-award3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award3')">&times;</span>
+      <img src="award3.jpg" alt="Award 3">
+      <p>Details about Award 3 and its significance.</p>
+    </div>
+  </div>
+
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    function openModal(modalId) {
+      document.getElementById('modal-' + modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById('modal-' + modalId).style.display = 'none';
+    }
+
+    window.addEventListener('click', function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- Optional: AOS Initialization -->
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

@@ -1,379 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rishabh Goel | Biomedical Data Scientist & Entrepreneur</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- AOS CSS for scroll animations (optional) -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    /* CSS Variables for easy theming */
-    :root {
-      --primary-color: #ffcc00;
-      --bg-color: #141e30;
-      --overlay-color: rgba(0,0,0,0.6);
-      --text-color: #eee;
-      --heading-color: #fff;
-      --nav-bg: rgba(255,255,255,0.97);
-      --nav-text: #333;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Open Sans', sans-serif;
-    }
-
-    /* Reset and Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: #fff;
-      color: var(--nav-text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--nav-bg);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: background 0.3s;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-    }
-    nav ul li { margin: 0 15px; }
-    nav ul li a {
-      text-decoration: none;
-      color: var(--nav-text);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover { color: var(--primary-color); }
-
-    /* Hero Section */
-    header.hero {
-      height: 100vh;
-      background: linear-gradient(135deg, var(--bg-color), #243b55);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--heading-color);
-      padding: 0 20px;
-    }
-    header.hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--overlay-color);
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    header.hero h1 {
-      font-family: var(--font-heading);
-      font-size: 4rem;
-      margin-bottom: 20px;
-    }
-    header.hero h2 {
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      margin-bottom: 30px;
-    }
-    header.hero p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      color: #ccc;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn {
-      padding: 15px 30px;
-      background: var(--primary-color);
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.3s;
-      color: #111;
-    }
-    .btn:hover { background: #e6b800; }
-
-    /* Section Styles */
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
-    section h2 {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--bg-color);
-    }
-    section p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 20px;
-      color: #555;
-    }
-
-    /* About Section */
-    .about-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .headshot {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 4px solid var(--primary-color);
-      object-fit: cover;
-    }
-
-    /* Awards Section */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    /* Contact Section */
-    .contact-info a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-
-    /* Footer */
-    footer {
-      padding: 20px;
-      background: var(--bg-color);
-      color: var(--heading-color);
-      text-align: center;
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .modal-content {
-      position: relative;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 800px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-content iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-    }
-    .modal .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 2rem;
-      color: #333;
-      cursor: pointer;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      header.hero h1 { font-size: 3rem; }
-      header.hero h2 { font-size: 1.5rem; }
-      header.hero p { font-size: 1rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishabh Goel - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1f2937;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #111827;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        nav a:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        section {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border: 4px solid #2563eb;
+        }
+        h2 {
+            color: #1d4ed8;
+        }
+        .card {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .contact-info a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .resume-download {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .resume-download a {
+            background-color: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .resume-download a:hover {
+            background-color: #1d4ed8;
+        }
+        .intro {
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <header>
+        <h1>Rishabh Goel</h1>
+        <p>Biomedical Data Scientist</p>
+    </header>
 
-  <!-- Hero Section -->
-  <header id="hero" class="hero">
-    <div class="hero-content" data-aos="fade-up">
-      <h1>Rishabh Goel</h1>
-      <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
-      <p>
-        I leverage multi-modal clinical and genomic data to drive transformative healthcare solutions.
-        With over 3 years of industry experience, my work has secured investments exceeding <strong>$1.8M</strong>
-        and grants over <strong>$749k</strong>.
-      </p>
-      <div class="hero-buttons">
-        <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Discover More</button>
-        <button class="btn" onclick="openModal('resume')">View Resume</button>
-      </div>
-    </div>
-  </header>
+    <nav>
+        <a href="#profile">Profile</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#awards">Awards</a>
+        <a href="#publications">Publications</a>
+    </nav>
 
-  <!-- About Section -->
-  <section id="about" data-aos="fade-up" data-aos-delay="200">
-    <h2>About Me</h2>
-    <div class="about-container">
-      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot">
-      <p>
-        As a Biomedical Data Scientist and Entrepreneur, I specialize in integrating complex datasets to uncover insights that transform patient care.
-        My academic journey through Harvard Medical School and UC Berkeley, coupled with hands-on industry experience, empowers me to tackle real-world challenges in precision medicine.
-      </p>
-    </div>
-  </section>
+    <section>
+        <img src="headshot.jpg" alt="Rishabh Goel Headshot">
 
-  <!-- Awards Section -->
-  <section id="awards" data-aos="fade-up" data-aos-delay="400">
-    <h2>Awards &amp; Recognitions</h2>
-    <p>
-      My contributions to biomedical data science have earned prestigious accolades.
-      Click on an award to learn more.
-    </p>
-    <div class="gallery">
-      <img src="award1.jpg" alt="Award 1" onclick="openModal('award1')">
-      <img src="award2.jpg" alt="Award 2" onclick="openModal('award2')">
-      <img src="award3.jpg" alt="Award 3" onclick="openModal('award3')">
-    </div>
-  </section>
+        <div class="intro">
+            <p>Welcome to my portfolio! Here you'll find an overview of my academic background, professional experience, and technical skills. Feel free to download my resume below.</p>
+        </div>
 
-  <!-- Resume Section -->
-  <section id="resume" data-aos="fade-up" data-aos-delay="600">
-    <h2>Resume</h2>
-    <p>
-      Explore my professional journey, expertise, and achievements in detail.
-    </p>
-    <a href="resume.pdf" target="_blank" class="btn">View Resume</a>
-  </section>
+        <div class="contact-info card">
+            <p>📞 310-849-1687 | ✉️ <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a> | 📍 Boston, MA 02115</p>
+            <p><a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+        </div>
 
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up" data-aos-delay="800">
-    <h2>Contact</h2>
-    <p class="contact-info">
-      Email: <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a><br>
-      Phone: 310-849-1687
-    </p>
-  </section>
+        <div class="resume-download">
+            <a href="resume.pdf" download>Download My Resume (PDF)</a>
+        </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
-  </footer>
+        <div id="profile" class="card">
+            <h2>Professional Profile</h2>
+            <p>Biomedical data scientist and entrepreneur with 3+ years of industry experience leveraging multi-modal data analysis with clinical and genomic data, machine learning, and deep learning tools to drive innovative solutions in healthcare.</p>
+        </div>
 
-  <!-- Modal for Resume -->
-  <div id="modal-resume" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('resume')">&times;</span>
-      <iframe src="resume.pdf"></iframe>
-    </div>
-  </div>
+        <div id="education" class="card">
+            <h2>Education</h2>
+            <p><strong>Harvard Medical School</strong> - Masters of Medical Sciences in Biomedical Informatics (GPA: 4.0) | May 2026</p>
+            <p><strong>University of California, Berkeley</strong> - BA in Molecular & Cellular Biology: Biochemistry (GPA: 3.68) | BS in Business Administration | May 2022</p>
+        </div>
 
-  <!-- Modal for Award 1 -->
-  <div id="modal-award1" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('award1')">&times;</span>
-      <img src="award1.jpg" alt="Award 1">
-      <p>Details about Award 1 and its significance.</p>
-    </div>
-  </div>
+        <div id="experience" class="card">
+            <h2>Professional Experience</h2>
+            <p><strong>Co-founder, Doorstep.ai</strong> (Aug 2023 – Aug 2024)</p>
+            <ul>
+                <li>Raised ~$1.8 Million in investment from notable backers.</li>
+                <li>Led a team to develop AI-based visual guidance software for last-mile delivery.</li>
+            </ul>
 
-  <!-- Modal for Award 2 -->
-  <div id="modal-award2" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('award2')">&times;</span>
-      <img src="award2.jpg" alt="Award 2">
-      <p>Details about Award 2 and its significance.</p>
-    </div>
-  </div>
+            <p><strong>Biomedical Data Scientist, GEn1E Lifesciences</strong> (May 2022 – Mar 2024)</p>
+            <ul>
+                <li>Developed AI models for ARDS patient subphenotyping with 97%+ accuracy.</li>
+            </ul>
+        </div>
 
-  <!-- Modal for Award 3 -->
-  <div id="modal-award3" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('award3')">&times;</span>
-      <img src="award3.jpg" alt="Award 3">
-      <p>Details about Award 3 and its significance.</p>
-    </div>
-  </div>
+        <div id="skills" class="card">
+            <h2>Technical Skills</h2>
+            <p>Python, R, SQL, AWS, GCP, TensorFlow, PyTorch, Machine Learning, Data Visualization, Bioinformatics Tools</p>
+        </div>
 
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
+        <div id="awards" class="card">
+            <h2>Awards</h2>
+            <ul>
+                <li>Provisional Patents for Machine Learning Techniques</li>
+                <li>Best Undergraduate Research Project, ADSA Annual Meeting 2023</li>
+                <li>$749,000 BARDA Grant for Patient Stratification Using AI</li>
+            </ul>
+        </div>
 
-    function openModal(modalId) {
-      document.getElementById('modal-' + modalId).style.display = 'flex';
-    }
+        <div id="publications" class="card">
+            <h2>Publications</h2>
+            <ul>
+                <li>Development of a Machine Learning Model for ARDS Sub-phenotypes (2024)</li>
+                <li>Exploring Neural-ODEs for Pharmacokinetics Modeling (2023)</li>
+            </ul>
+        </div>
+    </section>
 
-    function closeModal(modalId) {
-      document.getElementById('modal-' + modalId).style.display = 'none';
-    }
-
-    window.addEventListener('click', function(event) {
-      document.querySelectorAll('.modal').forEach(modal => {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-    });
-  </script>
-
-  <!-- Optional: AOS Initialization -->
-  <script>
-    AOS.init();
-  </script>
+    <footer>
+        <p>&copy; 2024 Rishabh Goel. All rights reserved.</p>
+    </footer>
 </body>
 </html>

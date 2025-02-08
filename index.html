@@ -5,109 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rishabh Goel - Portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400&display=swap');
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f9fafb;
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
             color: #333;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
+
         header {
-            background-color: #1f2937;
+            background: url('https://source.unsplash.com/1600x900/?abstract,elegant') center/cover no-repeat;
             color: white;
-            padding: 20px;
+            padding: 80px 20px;
             text-align: center;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1.5px;
+            position: relative;
+            animation: fadeInDown 2s ease-out;
         }
+
         nav {
             display: flex;
             justify-content: center;
-            background-color: #111827;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
+
         nav a {
-            color: white;
-            padding: 14px 20px;
+            color: #444;
+            font-weight: bold;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: all 0.4s ease-in-out;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
+
         nav a:hover {
-            background-color: #2563eb;
+            background: #6a0dad;
             color: white;
+            transform: scale(1.1);
         }
+
         section {
-            padding: 20px;
-            max-width: 900px;
+            padding: 50px 20px;
+            max-width: 1100px;
             margin: auto;
+            animation: fadeIn 1.5s ease-in-out;
         }
+
         img {
             display: block;
-            margin: 20px auto;
-            border-radius: 50%;
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border: 4px solid #2563eb;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.6s ease;
         }
+
+        img:hover {
+            transform: rotate(2deg) scale(1.05);
+        }
+
         h2 {
-            color: #1d4ed8;
+            font-family: 'Playfair Display', serif;
+            color: #6a0dad;
+            position: relative;
+            margin-bottom: 20px;
         }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #6a0dad;
+            margin: 8px 0;
+            transition: width 0.4s ease-in-out;
+        }
+
+        h2:hover::after {
+            width: 120px;
+        }
+
         .card {
             background: white;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease-in-out;
+            transform: scale(1);
         }
+
         .card:hover {
-            transform: translateY(-10px);
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
-        .contact-info a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            background-color: #1f2937;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-        .resume-download {
-            text-align: center;
-            margin: 20px 0;
-        }
+
         .resume-download a {
-            background-color: #2563eb;
+            background-color: #6a0dad;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
+            border-radius: 12px;
+            display: inline-block;
+            transition: all 0.4s ease-in-out;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
         }
+
         .resume-download a:hover {
-            background-color: #1d4ed8;
+            background: #4b0082;
+            transform: translateY(-5px);
         }
-        .intro {
+
+        footer {
+            background: #222;
+            color: white;
             text-align: center;
-            margin: 20px 0;
-            font-style: italic;
-            color: #555;
+            padding: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            img {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Rishabh Goel</h1>
-        <p>Biomedical Data Scientist</p>
+        <p>Biomedical Data Scientist | Innovator | Entrepreneur</p>
     </header>
 
     <nav>
         <a href="#profile">Profile</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
         <a href="#skills">Skills</a>
         <a href="#awards">Awards</a>
         <a href="#publications">Publications</a>
@@ -115,15 +183,6 @@
 
     <section>
         <img src="headshot.jpg" alt="Rishabh Goel Headshot">
-
-        <div class="intro">
-            <p>Welcome to my portfolio! Here you'll find an overview of my academic background, professional experience, and technical skills. Feel free to download my resume below.</p>
-        </div>
-
-        <div class="contact-info card">
-            <p>📞 310-849-1687 | ✉️ <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a> | 📍 Boston, MA 02115</p>
-            <p><a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
-        </div>
 
         <div class="resume-download">
             <a href="resume.pdf" download>Download My Resume (PDF)</a>
@@ -146,33 +205,55 @@
             <ul>
                 <li>Raised ~$1.8 Million in investment from notable backers.</li>
                 <li>Led a team to develop AI-based visual guidance software for last-mile delivery.</li>
+                <li>Developed computer vision algorithms for precise wayfinding with 0.5 meters accuracy.</li>
+                <li>Secured non-dilutive grant awards from multiple venture funds and pitch competitions.</li>
             </ul>
 
             <p><strong>Biomedical Data Scientist, GEn1E Lifesciences</strong> (May 2022 – Mar 2024)</p>
             <ul>
-                <li>Developed AI models for ARDS patient subphenotyping with 97%+ accuracy.</li>
+                <li>Developed machine learning models for ARDS patient subphenotyping with 97%+ accuracy.</li>
+                <li>Contributed to a $749,000 grant award from BARDA's Division of Research, Innovation, and Ventures (DRIVe).</li>
+                <li>Co-authored journal articles and presented findings at major conferences.</li>
+            </ul>
+        </div>
+
+        <div id="research" class="card">
+            <h2>Research Experience</h2>
+            <p><strong>Computational Research Specialist, Dai Lab, Rice University</strong> (July 2023 – July 2024)</p>
+            <ul>
+                <li>Automated sequencing read alignment improving data processing efficiency by 5-fold.</li>
+                <li>Enhanced primer design software performance by 15% using optimization algorithms.</li>
+            </ul>
+
+            <p><strong>Data Discovery Project Research Fellow, Merck & Co</strong> (Dec 2021 – May 2022)</p>
+            <ul>
+                <li>Designed neural network models improving pharmacokinetics prediction accuracy by 4%.</li>
+                <li>Awarded "Best Undergraduate Research Project" at ADSA Annual Meeting 2023.</li>
             </ul>
         </div>
 
         <div id="skills" class="card">
             <h2>Technical Skills</h2>
-            <p>Python, R, SQL, AWS, GCP, TensorFlow, PyTorch, Machine Learning, Data Visualization, Bioinformatics Tools</p>
+            <p>Python, R, SQL, AWS, GCP, TensorFlow, PyTorch, Machine Learning, Data Visualization, Bioinformatics Tools.</p>
         </div>
 
         <div id="awards" class="card">
             <h2>Awards</h2>
             <ul>
-                <li>Provisional Patents for Machine Learning Techniques</li>
-                <li>Best Undergraduate Research Project, ADSA Annual Meeting 2023</li>
-                <li>$749,000 BARDA Grant for Patient Stratification Using AI</li>
+                <li>Provisional Patents for Machine Learning Techniques.</li>
+                <li>Best Undergraduate Research Project, ADSA Annual Meeting 2023.</li>
+                <li>$749,000 BARDA Grant for Patient Stratification Using AI.</li>
+                <li>$1.8 Million investment for Doorstep.ai from notable backers.</li>
+                <li>Multiple non-dilutive grant awards totaling $50,000 from venture funds and pitch competitions.</li>
             </ul>
         </div>
 
         <div id="publications" class="card">
-            <h2>Publications</h2>
+            <h2>Publications & Presentations</h2>
             <ul>
-                <li>Development of a Machine Learning Model for ARDS Sub-phenotypes (2024)</li>
-                <li>Exploring Neural-ODEs for Pharmacokinetics Modeling (2023)</li>
+                <li>Development of a Machine Learning Model for ARDS Sub-phenotypes (2024).</li>
+                <li>Exploring Neural-ODEs for Pharmacokinetics Modeling (2023).</li>
+                <li>Presentation at the 2024 ATS International Conference, San Diego.</li>
             </ul>
         </div>
     </section>

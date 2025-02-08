@@ -1,265 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishabh Goel - Portfolio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rishabh Goel | Biomedical Data Scientist & Entrepreneur</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- AOS CSS for subtle scroll animations (optional) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* ====================================================
+       CSS Variables for Theming
+    ==================================================== */
+    :root {
+      --primary: #ffcc00;
+      --bg-dark: #141e30;
+      --overlay: rgba(0, 0, 0, 0.55);
+      --text-light: #eee;
+      --nav-bg: rgba(255, 255, 255, 0.98);
+      --nav-text: #333;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
 
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, #ece9e6, #ffffff);
-            color: #333;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+    /* ====================================================
+       Reset & Base Styles
+    ==================================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: #fff;
+      color: var(--nav-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        header {
-            background: url('https://source.unsplash.com/1600x900/?abstract,elegant') center/cover no-repeat;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            font-size: 2.5em;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1.5px;
-            position: relative;
-            animation: fadeInDown 2s ease-out;
-        }
+    /* ====================================================
+       Navigation
+    ==================================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--nav-text);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: var(--primary); }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
+    /* ====================================================
+       Hero Section
+    ==================================================== */
+    header.hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-dark), #243b55);
+      color: var(--text-light);
+      padding: 0 20px;
+      overflow: hidden;
+    }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(135deg, var(--bg-dark), #243b55);
+      animation: gradientShift 10s ease-in-out infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+    @keyframes gradientShift {
+      0% { transform: translate(0%, 0%); }
+      50% { transform: translate(10%, 10%); }
+      100% { transform: translate(0%, 0%); }
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.5s forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header.hero h1 {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    header.hero h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+    header.hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      padding: 15px 30px;
+      background: var(--primary);
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: #111;
+    }
+    .btn:hover { background: #e6b800; }
 
-        nav a {
-            color: #444;
-            font-weight: bold;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.4s ease-in-out;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+    /* ====================================================
+       Resume & Info Sections
+    ==================================================== */
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+    section h2 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--bg-dark);
+    }
+    section p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      color: #555;
+    }
 
-        nav a:hover {
-            background: #6a0dad;
-            color: white;
-            transform: scale(1.1);
-        }
+    /* About Section */
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .headshot {
+      width: 200px;
+      height: 200px;
+      border-radius: 0; /* Full photo instead of a round one */
+      border: 4px solid var(--primary);
+      object-fit: cover;
+    }
 
-        section {
-            padding: 50px 20px;
-            max-width: 1100px;
-            margin: auto;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    /* Detailed Resume Sections */
+    .resume-section {
+      text-align: left;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      border-top: 2px solid #eee;
+    }
+    .resume-section h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--bg-dark);
+      margin-bottom: 10px;
+    }
+    .resume-section ul {
+      list-style: disc;
+      margin-left: 20px;
+      color: #555;
+    }
+    .resume-section li {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
 
-        img {
-            display: block;
-            margin: 30px auto;
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.6s ease;
-        }
+    /* ====================================================
+       Awards Section
+    ==================================================== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
-        img:hover {
-            transform: rotate(2deg) scale(1.05);
-        }
+    /* ====================================================
+       Interactive Fun Section
+    ==================================================== */
+    .fun-section {
+      padding: 100px 20px;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+    .fun-section h2 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--bg-dark);
+      margin-bottom: 20px;
+    }
+    .fun-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    #jokeDisplay {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #555;
+    }
+    /* Memory Card Game Styles */
+    #memoryGame {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+    .card {
+      background: #fff;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+      user-select: none;
+    }
+    .card.flipped {
+      background: var(--primary);
+      color: #111;
+      transform: scale(1.05);
+    }
 
-        h2 {
-            font-family: 'Playfair Display', serif;
-            color: #6a0dad;
-            position: relative;
-            margin-bottom: 20px;
-        }
+    /* ====================================================
+       Contact Section
+    ==================================================== */
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+    }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: #6a0dad;
-            margin: 8px 0;
-            transition: width 0.4s ease-in-out;
-        }
+    /* ====================================================
+       Footer
+    ==================================================== */
+    footer {
+      padding: 20px;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+    }
 
-        h2:hover::after {
-            width: 120px;
-        }
+    /* ====================================================
+       Modal Styles (for Resume & Award Details)
+    ==================================================== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      position: relative;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-content iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+    }
+    .modal .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: #333;
+      cursor: pointer;
+    }
 
-        .card {
-            background: white;
-            margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease-in-out;
-            transform: scale(1);
-        }
-
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .resume-download a {
-            background-color: #6a0dad;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 12px;
-            display: inline-block;
-            transition: all 0.4s ease-in-out;
-            text-decoration: none;
-        }
-
-        .resume-download a:hover {
-            background: #4b0082;
-            transform: translateY(-5px);
-        }
-
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            section {
-                padding: 30px 15px;
-            }
-
-            img {
-                max-width: 90%;
-            }
-        }
-    </style>
+    /* ====================================================
+       Responsive Adjustments
+    ==================================================== */
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 3rem; }
+      header.hero h2 { font-size: 1.5rem; }
+      header.hero p { font-size: 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Rishabh Goel</h1>
-        <p>Biomedical Data Scientist | Innovator | Entrepreneur</p>
-    </header>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resumeDetails">Resume Details</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#fun">Fun</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <a href="#profile">Profile</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#research">Research</a>
-        <a href="#skills">Skills</a>
-        <a href="#awards">Awards</a>
-        <a href="#publications">Publications</a>
-    </nav>
+  <!-- Hero Section -->
+  <header id="hero" class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1>Rishabh Goel</h1>
+      <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
+      <p>
+        I leverage multi-modal clinical and genomic data to drive transformative healthcare solutions.
+        With 3+ years of industry experience, my work has secured investments exceeding <strong>$1.8M</strong>
+        and grants over <strong>$749k</strong>.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Discover More</button>
+        <button class="btn" onclick="openModal('resume')">View Resume</button>
+      </div>
+    </div>
+  </header>
 
-    <section>
-        <img src="headshot.jpg" alt="Rishabh Goel Headshot">
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up" data-aos-delay="200">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot">
+      <p>
+        Biomedical Data Scientist and Entrepreneur with 3+ years of experience leveraging multi-modal data analysis, clinical and genomic data integration, machine learning techniques, and deep learning tools to drive innovative solutions in healthcare.
+      </p>
+    </div>
+  </section>
 
-        <div class="resume-download">
-            <a href="resume.pdf" download>Download My Resume (PDF)</a>
-        </div>
+  <!-- Resume Details Section -->
+  <section id="resumeDetails" data-aos="fade-up" data-aos-delay="300">
+    <h2>Resume Details</h2>
+    <!-- Professional Profile -->
+    <div class="resume-section">
+      <h3>Professional Profile</h3>
+      <p>
+        Biomedical Data Scientist and Entrepreneur with 3+ years of industry experience in leveraging multi-modal data analysis to drive innovative solutions in healthcare.
+      </p>
+    </div>
+    <!-- Education -->
+    <div class="resume-section">
+      <h3>Education</h3>
+      <ul>
+        <li><strong>Harvard Medical School, Boston, MA</strong> – Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0<br>
+            Coursework: Advanced Coding and Statistics for Biomedical Informatics; Precision Medicine: Integrating Clinical and Genomic Data; Foundations of Biomedical Informatics; Revolutionary Ventures.</li>
+        <li><strong>University of California, Berkeley, Berkeley, CA</strong> – Bachelor of Arts in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; Bachelor of Science in Business Administration (May 2022)<br>
+            Coursework: Biophysical Chemistry; Pathways Mechanisms and Regulation; Advanced Machine Learning Algorithms; Data Science; Structure and Interpretation of Computer Programs; Data Structures and Algorithms.</li>
+      </ul>
+    </div>
+    <!-- Professional Experience -->
+    <div class="resume-section">
+      <h3>Professional Experience</h3>
+      <ul>
+        <li><strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024)<br>
+            Raised ~$1.8M in investment, led a team of 3 engineers to build an AI-driven product for last-mile delivery, developed computer vision algorithms and machine learning models.</li>
+        <li><strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024)<br>
+            Developed machine learning models to identify ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards 2023; accepted into NVIDIA’s Inception Program.</li>
+      </ul>
+    </div>
+    <!-- Research Experience -->
+    <div class="resume-section">
+      <h3>Research Experience</h3>
+      <ul>
+        <li><strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024)<br>
+            Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.</li>
+        <li><strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022)<br>
+            Awarded a 3-month fellowship; designed a neural network model (Neural-ODEs) for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”</li>
+        <li><strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021)<br>
+            Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA) to validate disease hypotheses; built visualizations using R.</li>
+      </ul>
+    </div>
+    <!-- Technical Skills -->
+    <div class="resume-section">
+      <h3>Technical Skills</h3>
+      <ul>
+        <li><strong>Languages/Tools:</strong> Python, R, Jupyter Notebook, SQL, Matlab, Java, GitHub, AWS (S3, EC2, Athena), GCP, Google Colab</li>
+        <li><strong>Data Science Libraries:</strong> Pandas, Sklearn, SciPy, NumPy, PyTorch, TensorFlow, Matplotlib, BeautifulSoup, Plotly, Seaborn</li>
+        <li><strong>Bioinformatics Tools:</strong> Bulk RNA-Seq, ScRNA-Seq, Bioconductor, Public Databases (GEO, TCGA, Drugbank, PRIDE, Uniprot)</li>
+      </ul>
+    </div>
+    <!-- Awards -->
+    <div class="resume-section">
+      <h3>Awards & Recognitions</h3>
+      <ul>
+        <li>Provisional patent for “Techniques For Machine Learning-Assisted Precise Wayfinding”</li>
+        <li>Provisional patent for “Machine Learning Systems for ARDS Patient Sub-Phenotyping”</li>
+        <li>$749,000 grant from BARDA for Patient Stratification Using AI</li>
+        <li>$1.8M investment for Doorstep.ai</li>
+        <li>$50,000 grant awards from multiple venture funds and pitch competitions</li>
+        <li>Best Undergraduate Research Project at the 2023 ADSA Annual Meeting</li>
+        <li>Data Science Discovery Program Research Fellowship with Merck</li>
+      </ul>
+    </div>
+    <!-- Publications & Presentations -->
+    <div class="resume-section">
+      <h3>Publications &amp; Presentations</h3>
+      <ul>
+        <li>Mehta M, Goel R, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-Phenotypes” (manuscript submitted, CHEST-CRITCARE-D-24-00041, 2024)</li>
+        <li>Lal R, Goel R, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-Phenotypes” (Presented at the 2024 ATS International Conference, San Diego, 2024)</li>
+        <li>Goel, R. (2023). “Is Neural-ODE an Effective Method for Modeling PK Data in Real-world Clinical Settings?” (Academic Data Science Alliance, 2023)</li>
+      </ul>
+    </div>
+  </section>
 
-        <div id="profile" class="card">
-            <h2>Professional Profile</h2>
-            <p>Biomedical data scientist and entrepreneur with 3+ years of industry experience leveraging multi-modal data analysis with clinical and genomic data, machine learning, and deep learning tools to drive innovative solutions in healthcare.</p>
-        </div>
+  <!-- Awards Gallery Section -->
+  <section id="awardsGallery" data-aos="fade-up" data-aos-delay="500">
+    <h2>Awards Gallery</h2>
+    <p>Click on an award to see more details.</p>
+    <div class="gallery">
+      <img src="award1.jpg" alt="Award 1" onclick="openModal('award1')">
+      <img src="award2.jpg" alt="Award 2" onclick="openModal('award2')">
+      <img src="award3.jpg" alt="Award 3" onclick="openModal('award3')">
+    </div>
+  </section>
 
-        <div id="education" class="card">
-            <h2>Education</h2>
-            <p><strong>Harvard Medical School</strong> - Masters of Medical Sciences in Biomedical Informatics (GPA: 4.0) | May 2026</p>
-            <p><strong>University of California, Berkeley</strong> - BA in Molecular & Cellular Biology: Biochemistry (GPA: 3.68) | BS in Business Administration | May 2022</p>
-        </div>
+  <!-- Fun Interactive Section -->
+  <section id="fun" class="fun-section" data-aos="fade-up" data-aos-delay="700">
+    <h2>Have Some Fun!</h2>
+    <!-- Airhorn Button -->
+    <div class="fun-buttons">
+      <button class="btn" onclick="playAirhorn()">Airhorn!</button>
+      <button class="btn" onclick="fetchJoke()">Tell Me a Joke</button>
+    </div>
+    <div id="jokeDisplay">Click "Tell Me a Joke" for a random laugh!</div>
 
-        <div id="experience" class="card">
-            <h2>Professional Experience</h2>
-            <p><strong>Co-founder, Doorstep.ai</strong> (Aug 2023 – Aug 2024)</p>
-            <ul>
-                <li>Raised ~$1.8 Million in investment from notable backers.</li>
-                <li>Led a team to develop AI-based visual guidance software for last-mile delivery.</li>
-                <li>Developed computer vision algorithms for precise wayfinding with 0.5 meters accuracy.</li>
-                <li>Secured non-dilutive grant awards from multiple venture funds and pitch competitions.</li>
-            </ul>
+    <!-- Memory Card Game -->
+    <h2>Memory Card Game</h2>
+    <div id="memoryGame"></div>
+  </section>
 
-            <p><strong>Biomedical Data Scientist, GEn1E Lifesciences</strong> (May 2022 – Mar 2024)</p>
-            <ul>
-                <li>Developed machine learning models for ARDS patient subphenotyping with 97%+ accuracy.</li>
-                <li>Contributed to a $749,000 grant award from BARDA's Division of Research, Innovation, and Ventures (DRIVe).</li>
-                <li>Co-authored journal articles and presented findings at major conferences.</li>
-            </ul>
-        </div>
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up" data-aos-delay="800">
+    <h2>Contact</h2>
+    <p class="contact-info">
+      Email: <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a><br>
+      Phone: 310-849-1687<br>
+      Location: Boston, MA 02115<br>
+      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a> | <a href="https://github.com" target="_blank">GitHub</a>
+    </p>
+  </section>
 
-        <div id="research" class="card">
-            <h2>Research Experience</h2>
-            <p><strong>Computational Research Specialist, Dai Lab, Rice University</strong> (July 2023 – July 2024)</p>
-            <ul>
-                <li>Automated sequencing read alignment improving data processing efficiency by 5-fold.</li>
-                <li>Enhanced primer design software performance by 15% using optimization algorithms.</li>
-            </ul>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
+  </footer>
 
-            <p><strong>Data Discovery Project Research Fellow, Merck & Co</strong> (Dec 2021 – May 2022)</p>
-            <ul>
-                <li>Designed neural network models improving pharmacokinetics prediction accuracy by 4%.</li>
-                <li>Awarded "Best Undergraduate Research Project" at ADSA Annual Meeting 2023.</li>
-            </ul>
-        </div>
+  <!-- ====================================================
+       Modal for Resume & Awards
+  ==================================================== -->
+  <!-- Modal for Resume -->
+  <div id="modal-resume" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('resume')">&times;</span>
+      <iframe src="resume.pdf"></iframe>
+    </div>
+  </div>
+  <!-- Modal for Award 1 -->
+  <div id="modal-award1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award1')">&times;</span>
+      <img src="award1.jpg" alt="Award 1">
+      <p>Details about Award 1 and its significance.</p>
+    </div>
+  </div>
+  <!-- Modal for Award 2 -->
+  <div id="modal-award2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award2')">&times;</span>
+      <img src="award2.jpg" alt="Award 2">
+      <p>Details about Award 2 and its significance.</p>
+    </div>
+  </div>
+  <!-- Modal for Award 3 -->
+  <div id="modal-award3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('award3')">&times;</span>
+      <img src="award3.jpg" alt="Award 3">
+      <p>Details about Award 3 and its significance.</p>
+    </div>
+  </div>
 
-        <div id="skills" class="card">
-            <h2>Technical Skills</h2>
-            <p>Python, R, SQL, AWS, GCP, TensorFlow, PyTorch, Machine Learning, Data Visualization, Bioinformatics Tools.</p>
-        </div>
+  <!-- ====================================================
+       Interactive Elements Scripts
+  ==================================================== -->
+  <!-- Airhorn Audio -->
+  <audio id="airhornAudio" src="https://www.myinstants.com/media/sounds/airhorn.mp3"></audio>
 
-        <div id="awards" class="card">
-            <h2>Awards</h2>
-            <ul>
-                <li>Provisional Patents for Machine Learning Techniques.</li>
-                <li>Best Undergraduate Research Project, ADSA Annual Meeting 2023.</li>
-                <li>$749,000 BARDA Grant for Patient Stratification Using AI.</li>
-                <li>$1.8 Million investment for Doorstep.ai from notable backers.</li>
-                <li>Multiple non-dilutive grant awards totaling $50,000 from venture funds and pitch competitions.</li>
-            </ul>
-        </div>
+  <script>
+    // Play Airhorn Sound
+    function playAirhorn() {
+      document.getElementById('airhornAudio').play();
+    }
 
-        <div id="publications" class="card">
-            <h2>Publications & Presentations</h2>
-            <ul>
-                <li>Development of a Machine Learning Model for ARDS Sub-phenotypes (2024).</li>
-                <li>Exploring Neural-ODEs for Pharmacokinetics Modeling (2023).</li>
-                <li>Presentation at the 2024 ATS International Conference, San Diego.</li>
-            </ul>
-        </div>
-    </section>
+    // Joke Generator using Chuck Norris API
+    function fetchJoke() {
+      fetch("https://api.chucknorris.io/jokes/random")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('jokeDisplay').innerText = data.value;
+        })
+        .catch(error => {
+          document.getElementById('jokeDisplay').innerText = "Oops! No joke available right now.";
+          console.error("Error fetching joke:", error);
+        });
+    }
 
-    <footer>
-        <p>&copy; 2024 Rishabh Goel. All rights reserved.</p>
-    </footer>
+    // Memory Card Game
+    const emojis = ['😀','😎','🐶','🐱','🍕','🎉','🚀','🌟'];
+    let memoryCards = [...emojis, ...emojis]; // duplicate for pairs
+    memoryCards.sort(() => 0.5 - Math.random());
+    let flippedCards = [];
+    let matchedCards = 0;
+
+    const gameContainer = document.getElementById('memoryGame');
+
+    function createCard(cardValue) {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.dataset.value = cardValue;
+      card.innerText = "";
+      card.addEventListener('click', () => flipCard(card));
+      return card;
+    }
+
+    function setupMemoryGame() {
+      memoryCards.forEach(value => {
+        const card = createCard(value);
+        gameContainer.appendChild(card);
+      });
+    }
+
+    function flipCard(card) {
+      if (card.classList.contains('flipped') || flippedCards.length === 2) return;
+      card.classList.add('flipped');
+      card.innerText = card.dataset.value;
+      flippedCards.push(card);
+      if (flippedCards.length === 2) {
+        checkForMatch();
+      }
+    }
+
+    function checkForMatch() {
+      const [card1, card2] = flippedCards;
+      if (card1.dataset.value === card2.dataset.value) {
+        matchedCards += 2;
+        flippedCards = [];
+        if (matchedCards === memoryCards.length) {
+          setTimeout(() => alert("Congratulations! You've matched all the cards!"), 300);
+        }
+      } else {
+        setTimeout(() => {
+          card1.classList.remove('flipped');
+          card1.innerText = "";
+          card2.classList.remove('flipped');
+          card2.innerText = "";
+          flippedCards = [];
+        }, 1000);
+      }
+    }
+
+    setupMemoryGame();
+
+    // Modal Functions
+    function openModal(modalId) {
+      document.getElementById('modal-' + modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById('modal-' + modalId).style.display = 'none';
+    }
+
+    window.addEventListener('click', function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- AOS Initialization -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
 </body>
 </html>

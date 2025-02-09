@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rishabh Goel | Biomedical Data Scientist & Entrepreneur</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- AOS CSS (optional for scroll animations) -->
+  <!-- AOS CSS for scroll animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     /* ====================================================
@@ -15,12 +15,13 @@
     :root {
       --primary: #ffcc00;
       --bg-dark: #141e30;
-      --overlay: rgba(0, 0, 0, 0.55);
+      --overlay: rgba(0,0,0,0.55);
       --text-light: #eee;
       --nav-bg: rgba(255,255,255,0.98);
       --nav-text: #333;
       --font-heading: 'Montserrat', sans-serif;
       --font-body: 'Open Sans', sans-serif;
+      --transition: 0.3s;
     }
 
     /* ====================================================
@@ -46,7 +47,7 @@
       background: var(--nav-bg);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
-      transition: background 0.3s;
+      transition: background var(--transition);
     }
     nav ul {
       list-style: none;
@@ -60,12 +61,12 @@
       color: var(--nav-text);
       font-weight: 700;
       letter-spacing: 0.5px;
-      transition: color 0.3s;
+      transition: color var(--transition);
     }
     nav ul li a:hover { color: var(--primary); }
 
     /* ====================================================
-       Hero Section
+       Hero Section – Full-Screen Elegant Look
     ==================================================== */
     header.hero {
       position: relative;
@@ -87,7 +88,7 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(135deg, var(--bg-dark), #243b55);
-      animation: gradientShift 10s ease-in-out infinite;
+      animation: gradientShift 12s ease-in-out infinite;
       opacity: 0.7;
       z-index: 0;
     }
@@ -118,7 +119,7 @@
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Display headshot fully (rectangular) at the very top */
+    /* Headshot at top – full rectangular image */
     .hero-headshot {
       width: 200px;
       max-height: 200px;
@@ -155,13 +156,13 @@
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background var(--transition);
       color: #111;
     }
     .btn:hover { background: #e6b800; }
 
     /* ====================================================
-       Section Styles
+       Section Styles – Elegant & Spacious
     ==================================================== */
     section {
       padding: 100px 20px;
@@ -181,7 +182,7 @@
     }
 
     /* ====================================================
-       Resume Details Section
+       Resume Details Section – All Information
     ==================================================== */
     .resume-section {
       text-align: left;
@@ -200,17 +201,15 @@
       list-style: disc;
       margin-left: 20px;
       color: #555;
-      /* Remove nowrap to allow natural wrapping */
       white-space: normal;
     }
     .resume-section ul li {
       font-size: 0.9rem;
       margin-bottom: 8px;
-      /* Optionally, you can add a media query to adjust font-size if needed */
     }
 
     /* ====================================================
-       Awards Gallery
+       Awards Gallery – Subtle Hover Effects
     ==================================================== */
     .gallery {
       display: grid;
@@ -231,7 +230,7 @@
     }
 
     /* ====================================================
-       Fun Interactive Section
+       Fun Interactive Section – Playful Elements
     ==================================================== */
     .fun-section {
       padding: 100px 20px;
@@ -365,7 +364,7 @@
     </ul>
   </nav>
 
-  <!-- Hero Section (with headshot at top) -->
+  <!-- Hero Section -->
   <header id="hero" class="hero" data-aos="fade-up">
     <div class="hero-content">
       <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="hero-headshot">
@@ -406,32 +405,46 @@
     <div class="resume-section">
       <h3>Education</h3>
       <ul>
-        <li><strong>Harvard Medical School, Boston, MA</strong><br>
-            Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0</li>
-        <li><strong>University of California, Berkeley, Berkeley, CA</strong><br>
-            BA in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; BS in Business Administration (May 2022)</li>
+        <li>
+          <strong>Harvard Medical School, Boston, MA</strong><br>
+          Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0
+        </li>
+        <li>
+          <strong>University of California, Berkeley, Berkeley, CA</strong><br>
+          BA in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; BS in Business Administration (May 2022)
+        </li>
       </ul>
     </div>
     <!-- Professional Experience -->
     <div class="resume-section">
       <h3>Professional Experience</h3>
       <ul>
-        <li><strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024)<br>
-            Raised ~$1.8M in investment; led a team to build an AI-driven product for last-mile delivery; developed computer vision and machine learning algorithms.</li>
-        <li><strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024)<br>
-            Developed machine learning models for ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards; accepted into NVIDIA’s Inception Program.</li>
+        <li>
+          <strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024)<br>
+          Raised ~$1.8M in investment; led a team to build an AI-driven product for last-mile delivery; developed computer vision and machine learning algorithms.
+        </li>
+        <li>
+          <strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024)<br>
+          Developed machine learning models for ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards; accepted into NVIDIA’s Inception Program.
+        </li>
       </ul>
     </div>
     <!-- Research Experience -->
     <div class="resume-section">
       <h3>Research Experience</h3>
       <ul>
-        <li><strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024)<br>
-            Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.</li>
-        <li><strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022)<br>
-            Awarded a 3-month fellowship; designed a Neural-ODE model for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”</li>
-        <li><strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021)<br>
-            Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA); built visualizations using R.</li>
+        <li>
+          <strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024)<br>
+          Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.
+        </li>
+        <li>
+          <strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022)<br>
+          Awarded a 3-month fellowship; designed a Neural-ODE model for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”
+        </li>
+        <li>
+          <strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021)<br>
+          Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA); built visualizations using R.
+        </li>
       </ul>
     </div>
     <!-- Technical Skills -->

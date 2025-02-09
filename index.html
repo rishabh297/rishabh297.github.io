@@ -6,11 +6,11 @@
   <title>Rishabh Goel | Biomedical Data Scientist & Entrepreneur</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- AOS CSS for subtle scroll animations (optional) -->
+  <!-- AOS CSS (optional for scroll animations) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     /* ====================================================
-       CSS Variables for Theming
+       CSS Variables for easy theming
     ==================================================== */
     :root {
       --primary: #ffcc00;
@@ -24,7 +24,7 @@
     }
 
     /* ====================================================
-       Reset & Base Styles
+       Reset & Base
     ==================================================== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -44,7 +44,7 @@
       top: 0;
       width: 100%;
       background: var(--nav-bg);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
       transition: background 0.3s;
     }
@@ -118,6 +118,14 @@
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
+    /* NEW: Display headshot at top within hero */
+    .hero-headshot {
+      width: 200px;
+      max-height: 200px;
+      object-fit: contain; /* ensure full photo is visible */
+      margin-bottom: 20px;
+      border: 4px solid var(--primary);
+    }
     header.hero h1 {
       font-family: var(--font-heading);
       font-size: 4rem;
@@ -153,7 +161,7 @@
     .btn:hover { background: #e6b800; }
 
     /* ====================================================
-       Resume & Info Sections
+       Section Styles
     ==================================================== */
     section {
       padding: 100px 20px;
@@ -172,22 +180,9 @@
       color: #555;
     }
 
-    /* About Section */
-    .about-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .headshot {
-      width: 200px;
-      height: 200px;
-      border-radius: 0; /* Full photo instead of a round one */
-      border: 4px solid var(--primary);
-      object-fit: cover;
-    }
-
-    /* Detailed Resume Sections */
+    /* ====================================================
+       Resume Details Section
+    ==================================================== */
     .resume-section {
       text-align: left;
       max-width: 900px;
@@ -206,13 +201,17 @@
       margin-left: 20px;
       color: #555;
     }
-    .resume-section li {
+    /* NEW: Prevent long education titles from wrapping */
+    .resume-section ul li {
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       margin-bottom: 8px;
-      font-size: 1.1rem;
     }
 
     /* ====================================================
-       Awards Section
+       Awards Gallery
     ==================================================== */
     .gallery {
       display: grid;
@@ -233,7 +232,7 @@
     }
 
     /* ====================================================
-       Interactive Fun Section
+       Fun Interactive Section
     ==================================================== */
     .fun-section {
       padding: 100px 20px;
@@ -361,21 +360,21 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#resumeDetails">Resume Details</a></li>
-      <li><a href="#awards">Awards</a></li>
+      <li><a href="#awardsGallery">Awards</a></li>
       <li><a href="#fun">Fun</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (includes headshot at top) -->
   <header id="hero" class="hero" data-aos="fade-up">
     <div class="hero-content">
+      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="hero-headshot">
       <h1>Rishabh Goel</h1>
       <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
       <p>
         I leverage multi-modal clinical and genomic data to drive transformative healthcare solutions.
-        With 3+ years of industry experience, my work has secured investments exceeding <strong>$1.8M</strong>
-        and grants over <strong>$749k</strong>.
+        With 3+ years of experience, my work has secured investments exceeding <strong>$1.8M</strong> and grants over <strong>$749k</strong>.
       </p>
       <div class="hero-buttons">
         <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Discover More</button>
@@ -388,9 +387,9 @@
   <section id="about" data-aos="fade-up" data-aos-delay="200">
     <h2>About Me</h2>
     <div class="about-container">
-      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="headshot">
+      <!-- Headshot already used in hero; if needed, you can remove this duplicate -->
       <p>
-        Biomedical Data Scientist and Entrepreneur with 3+ years of experience leveraging multi-modal data analysis, clinical and genomic data integration, machine learning techniques, and deep learning tools to drive innovative solutions in healthcare.
+        Biomedical Data Scientist and Entrepreneur with 3+ years of experience leveraging multi-modal data analysis, clinical and genomic integration, machine learning techniques, and deep learning tools to drive innovative healthcare solutions.
       </p>
     </div>
   </section>
@@ -402,39 +401,32 @@
     <div class="resume-section">
       <h3>Professional Profile</h3>
       <p>
-        Biomedical Data Scientist and Entrepreneur with 3+ years of industry experience in leveraging multi-modal data analysis to drive innovative solutions in healthcare.
+        Biomedical Data Scientist and Entrepreneur with 3+ years of industry experience in leveraging multi-modal data analysis to drive transformative healthcare solutions.
       </p>
     </div>
     <!-- Education -->
     <div class="resume-section">
       <h3>Education</h3>
       <ul>
-        <li><strong>Harvard Medical School, Boston, MA</strong> – Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0<br>
-            Coursework: Advanced Coding and Statistics for Biomedical Informatics; Precision Medicine: Integrating Clinical and Genomic Data; Foundations of Biomedical Informatics; Revolutionary Ventures.</li>
-        <li><strong>University of California, Berkeley, Berkeley, CA</strong> – Bachelor of Arts in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; Bachelor of Science in Business Administration (May 2022)<br>
-            Coursework: Biophysical Chemistry; Pathways Mechanisms and Regulation; Advanced Machine Learning Algorithms; Data Science; Structure and Interpretation of Computer Programs; Data Structures and Algorithms.</li>
+        <li><strong>Harvard Medical School, Boston, MA</strong> – Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0</li>
+        <li><strong>University of California, Berkeley, Berkeley, CA</strong> – BA in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; BS in Business Administration (May 2022)</li>
       </ul>
     </div>
     <!-- Professional Experience -->
     <div class="resume-section">
       <h3>Professional Experience</h3>
       <ul>
-        <li><strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024)<br>
-            Raised ~$1.8M in investment, led a team of 3 engineers to build an AI-driven product for last-mile delivery, developed computer vision algorithms and machine learning models.</li>
-        <li><strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024)<br>
-            Developed machine learning models to identify ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards 2023; accepted into NVIDIA’s Inception Program.</li>
+        <li><strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024) – Raised ~$1.8M in investment; led a team to build an AI-driven product for last-mile delivery; developed computer vision and machine learning algorithms.</li>
+        <li><strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024) – Developed machine learning models for ARDS patient subphenotypes; received a $749k grant; finalist at Digital Health Hub Awards; accepted into NVIDIA’s Inception Program.</li>
       </ul>
     </div>
     <!-- Research Experience -->
     <div class="resume-section">
       <h3>Research Experience</h3>
       <ul>
-        <li><strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024)<br>
-            Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.</li>
-        <li><strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022)<br>
-            Awarded a 3-month fellowship; designed a neural network model (Neural-ODEs) for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”</li>
-        <li><strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021)<br>
-            Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA) to validate disease hypotheses; built visualizations using R.</li>
+        <li><strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024) – Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.</li>
+        <li><strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022) – Awarded a 3-month fellowship; designed a Neural-ODE model for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”</li>
+        <li><strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021) – Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA); built visualizations using R.</li>
       </ul>
     </div>
     <!-- Technical Skills -->
@@ -461,7 +453,7 @@
     </div>
     <!-- Publications & Presentations -->
     <div class="resume-section">
-      <h3>Publications &amp; Presentations</h3>
+      <h3>Publications & Presentations</h3>
       <ul>
         <li>Mehta M, Goel R, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-Phenotypes” (manuscript submitted, CHEST-CRITCARE-D-24-00041, 2024)</li>
         <li>Lal R, Goel R, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-Phenotypes” (Presented at the 2024 ATS International Conference, San Diego, 2024)</li>
@@ -484,14 +476,11 @@
   <!-- Fun Interactive Section -->
   <section id="fun" class="fun-section" data-aos="fade-up" data-aos-delay="700">
     <h2>Have Some Fun!</h2>
-    <!-- Airhorn Button -->
     <div class="fun-buttons">
       <button class="btn" onclick="playAirhorn()">Airhorn!</button>
       <button class="btn" onclick="fetchJoke()">Tell Me a Joke</button>
     </div>
     <div id="jokeDisplay">Click "Tell Me a Joke" for a random laugh!</div>
-
-    <!-- Memory Card Game -->
     <h2>Memory Card Game</h2>
     <div id="memoryGame"></div>
   </section>
@@ -513,7 +502,7 @@
   </footer>
 
   <!-- ====================================================
-       Modal for Resume & Awards
+       Modal for Resume & Award Details
   ==================================================== -->
   <!-- Modal for Resume -->
   <div id="modal-resume" class="modal">
@@ -548,11 +537,10 @@
   </div>
 
   <!-- ====================================================
-       Interactive Elements Scripts
+       Interactive Features Scripts
   ==================================================== -->
   <!-- Airhorn Audio -->
   <audio id="airhornAudio" src="https://www.myinstants.com/media/sounds/airhorn.mp3"></audio>
-
   <script>
     // Play Airhorn Sound
     function playAirhorn() {
@@ -646,7 +634,7 @@
     });
   </script>
 
-  <!-- AOS Initialization -->
+  <!-- AOS Animation Library -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });

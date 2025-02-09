@@ -118,7 +118,7 @@
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Display headshot at the very top (full rectangular image) */
+    /* Display headshot fully (rectangular) at the very top */
     .hero-headshot {
       width: 200px;
       max-height: 200px;
@@ -200,14 +200,13 @@
       list-style: disc;
       margin-left: 20px;
       color: #555;
+      /* Remove nowrap to allow natural wrapping */
+      white-space: normal;
     }
-    /* Prevent long titles from wrapping by reducing font-size and using ellipsis */
     .resume-section ul li {
       font-size: 0.9rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       margin-bottom: 8px;
+      /* Optionally, you can add a media query to adjust font-size if needed */
     }
 
     /* ====================================================
@@ -407,25 +406,32 @@
     <div class="resume-section">
       <h3>Education</h3>
       <ul>
-        <li><strong>Harvard Medical School, Boston, MA</strong> – Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0</li>
-        <li><strong>University of California, Berkeley, Berkeley, CA</strong> – BA in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; BS in Business Administration (May 2022)</li>
+        <li><strong>Harvard Medical School, Boston, MA</strong><br>
+            Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0</li>
+        <li><strong>University of California, Berkeley, Berkeley, CA</strong><br>
+            BA in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; BS in Business Administration (May 2022)</li>
       </ul>
     </div>
     <!-- Professional Experience -->
     <div class="resume-section">
       <h3>Professional Experience</h3>
       <ul>
-        <li><strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024) – Raised ~$1.8M in investment; led a team to build an AI-driven product for last-mile delivery; developed computer vision and machine learning algorithms.</li>
-        <li><strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024) – Developed machine learning models for ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards; accepted into NVIDIA’s Inception Program.</li>
+        <li><strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024)<br>
+            Raised ~$1.8M in investment; led a team to build an AI-driven product for last-mile delivery; developed computer vision and machine learning algorithms.</li>
+        <li><strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024)<br>
+            Developed machine learning models for ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards; accepted into NVIDIA’s Inception Program.</li>
       </ul>
     </div>
     <!-- Research Experience -->
     <div class="resume-section">
       <h3>Research Experience</h3>
       <ul>
-        <li><strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024) – Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.</li>
-        <li><strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022) – Awarded a 3-month fellowship; designed a Neural-ODE model for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”</li>
-        <li><strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021) – Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA); built visualizations using R.</li>
+        <li><strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024)<br>
+            Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.</li>
+        <li><strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022)<br>
+            Awarded a 3-month fellowship; designed a Neural-ODE model for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”</li>
+        <li><strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021)<br>
+            Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA); built visualizations using R.</li>
       </ul>
     </div>
     <!-- Technical Skills -->

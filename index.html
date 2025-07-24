@@ -3,659 +3,541 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rishabh Goel | Biomedical Data Scientist & Entrepreneur</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- AOS CSS for scroll animations -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>Rishabh Goel | Futuristic Boot Landing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Fira+Mono&display=swap" rel="stylesheet">
   <style>
-    /* ====================================================
-       CSS Variables for Theming
-    ==================================================== */
-    :root {
-      --primary: #ffcc00;
-      --bg-dark: #141e30;
-      --overlay: rgba(0,0,0,0.55);
-      --text-light: #eee;
-      --nav-bg: rgba(255,255,255,0.98);
-      --nav-text: #333;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Open Sans', sans-serif;
-      --transition: 0.3s;
-    }
-
-    /* ====================================================
-       Reset & Base
-    ==================================================== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: #fff;
-      color: var(--nav-text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ====================================================
-       Navigation
-    ==================================================== */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--nav-bg);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: background var(--transition);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      gap: 20px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: var(--nav-text);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: color var(--transition);
-    }
-    nav ul li a:hover { color: var(--primary); }
-
-    /* ====================================================
-       Hero Section – Full-Screen Elegant Look
-    ==================================================== */
-    header.hero {
-      position: relative;
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #181c24;
+      color: #eee;
+      font-family: 'Fira Mono', 'Montserrat', monospace, sans-serif;
+      letter-spacing: 0.01em;
+      width: 100vw;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(135deg, var(--bg-dark), #243b55);
-      color: var(--text-light);
-      padding: 0 20px;
-      overflow: hidden;
-    }
-    header.hero::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(135deg, var(--bg-dark), #243b55);
-      animation: gradientShift 12s ease-in-out infinite;
-      opacity: 0.7;
-      z-index: 0;
-    }
-    @keyframes gradientShift {
-      0% { transform: translate(0%, 0%); }
-      50% { transform: translate(10%, 10%); }
-      100% { transform: translate(0%, 0%); }
-    }
-    header.hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--overlay);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1.5s forwards;
-    }
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Headshot at top – full rectangular image */
-    .hero-headshot {
-      width: 200px;
-      max-height: 200px;
-      object-fit: contain;
-      margin-bottom: 20px;
-      border: 4px solid var(--primary);
-    }
-    header.hero h1 {
-      font-family: var(--font-heading);
-      font-size: 4rem;
-      margin-bottom: 20px;
-    }
-    header.hero h2 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 30px;
-    }
-    header.hero p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      color: #ccc;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn {
-      padding: 15px 30px;
-      background: var(--primary);
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background var(--transition);
-      color: #111;
-    }
-    .btn:hover { background: #e6b800; }
-
-    /* ====================================================
-       Section Styles – Elegant & Spacious
-    ==================================================== */
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
-    section h2 {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--bg-dark);
-    }
-    section p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 20px;
-      color: #555;
-    }
-
-    /* ====================================================
-       Resume Details Section – All Information
-    ==================================================== */
-    .resume-section {
-      text-align: left;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      border-top: 2px solid #eee;
-    }
-    .resume-section h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      color: var(--bg-dark);
-      margin-bottom: 10px;
-    }
-    .resume-section ul {
-      list-style: disc;
-      margin-left: 20px;
-      color: #555;
-      white-space: normal;
-    }
-    .resume-section ul li {
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
-
-    /* ====================================================
-       Awards Gallery – Subtle Hover Effects
-    ==================================================== */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* ====================================================
-       Fun Interactive Section – Playful Elements
-    ==================================================== */
-    .fun-section {
-      padding: 100px 20px;
-      background: #f9f9f9;
-      color: #333;
-      text-align: center;
-    }
-    .fun-section h2 {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      color: var(--bg-dark);
-      margin-bottom: 20px;
-    }
-    .fun-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    #jokeDisplay {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      color: #555;
-    }
-    /* Memory Card Game Styles */
-    #memoryGame {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      max-width: 600px;
-      margin: 40px auto;
-    }
-    .card {
-      background: #fff;
-      border: 2px solid #ddd;
-      border-radius: 5px;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: transform 0.3s;
-      user-select: none;
-    }
-    .card.flipped {
-      background: var(--primary);
-      color: #111;
-      transform: scale(1.05);
-    }
-
-    /* ====================================================
-       Contact Section
-    ==================================================== */
-    .contact-info a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    /* ====================================================
-       Footer
-    ==================================================== */
-    footer {
-      padding: 20px;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      text-align: center;
-    }
-
-    /* ====================================================
-       Modal Styles (for Resume & Award Details)
-    ==================================================== */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .modal-content {
-      position: relative;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 800px;
-      width: 100%;
-      max-height: 90vh;
+      overflow-x: hidden;
       overflow-y: auto;
     }
-    .modal-content iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
+    #boot-overlay {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #181c24;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s cubic-bezier(0.77,0,0.175,1);
     }
-    .modal .close {
+    #boot-percent {
       position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 2rem;
-      color: #333;
-      cursor: pointer;
+      top: 40px; right: 60px;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #ffcc00;
+      opacity: 0.92;
+      letter-spacing: 0.04em;
+      user-select: none;
     }
-
-    /* ====================================================
-       Responsive Adjustments
-    ==================================================== */
-    @media (max-width: 768px) {
-      header.hero h1 { font-size: 3rem; }
-      header.hero h2 { font-size: 1.5rem; }
-      header.hero p { font-size: 1rem; }
+    #boot-logs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      color: #eee;
+      opacity: 0.92;
+      min-height: 260px;
+    }
+    .boot-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 180px;
+    }
+    .boot-line {
+      color: #eee;
+      opacity: 0.82;
+      white-space: pre;
+      font-family: inherit;
+      font-size: 1.08rem;
+      transition: color 0.2s;
+    }
+    .boot-line.active {
+      color: #ffcc00;
+      opacity: 1;
+    }
+    #about-section {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #181c24;
+      color: #eee;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      flex-direction: column;
+      transition: opacity 1.2s cubic-bezier(0.77,0,0.175,1);
+    }
+    #about-blurb {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #eee;
+      background: rgba(24,28,36,0.92);
+      border-radius: 18px;
+      padding: 36px 32px 32px 32px;
+      box-shadow: 0 0 32px #0006;
+      font-family: 'Montserrat', 'Fira Mono', monospace;
+    }
+    #about-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    #about-img {
+      width: 420px;
+      max-width: 55vw;
+      height: 340px;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0008;
+      object-fit: cover;
+      object-position: center 40%;
+      background: #222;
+    }
+    #about-blurb {
+      flex: 1;
+      min-width: 240px;
+    }
+    @media (max-width: 900px) {
+      #boot-logs { grid-template-columns: 1fr 1fr; gap: 24px; }
+      #about-content { flex-direction: column; gap: 24px; padding: 24px 0; }
+      #about-img { width: 98vw; max-width: 520px; height: 260px; }
+    }
+    @media (max-width: 600px) {
+      #boot-logs { grid-template-columns: 1fr; gap: 10px; }
+      #boot-percent { top: 18px; right: 18px; font-size: 2.1rem; }
+      #about-blurb { font-size: 1rem; padding: 18px 10px 18px 10px; }
+    }
+    body {
+      background: #181c24;
+      color: #eee;
+      font-family: 'Fira Mono', 'Montserrat', monospace, sans-serif;
+      letter-spacing: 0.01em;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    #main-content {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    #about-section {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #181c24;
+      transition: opacity 0.8s;
+    }
+    #scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 32px;
+      color: #ffcc00;
+      font-size: 2.2rem;
+      opacity: 0.7;
+      animation: scrollCueBlink 1.2s infinite alternate;
+      cursor: pointer;
+      user-select: none;
+    }
+    @keyframes scrollCueBlink {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+    #projects-gallery {
+      width: 100vw;
+      min-height: 100vh;
+      background: #181c24;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 60px;
+      transition: opacity 0.8s;
+      /* Remove display:none and fixed positioning */
+      position: static;
+    }
+    /* ...existing project card/gallery styles... */
+    .project-card {
+      background: #23283a;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0007;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 40px #ffcc0033, 0 4px 32px #000a;
+    }
+    .project-cover {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #ffcc00, #ff9900);
+    }
+    .project-info {
+      padding: 28px 24px 22px 24px;
+    }
+    .project-title {
+      font-size: 1.35rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      font-size: 1.08rem;
+      color: #eee;
+      opacity: 0.92;
+    }
+    #projects-btn {
+      padding: 14px 38px;
+      background: #ffcc00;
+      color: #181c24;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #0003;
+      transition: background 0.2s;
+    }
+    #projects-btn:hover { background: #ffd84d; }
+    #project-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 700px;
+      width: 96vw;
+      background: #23283a;
+      border-radius: 18px;
+      box-shadow: 0 8px 48px #000a;
+      padding: 36px 24px 32px 24px;
+      position: relative;
+    }
+    #project-cover {
+      width: 100%;
+      max-width: 600px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffcc00, #ff9900);
+      margin-bottom: 28px;
+    }
+    #project-details h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 12px;
+    }
+    #project-details p {
+      font-size: 1.13rem;
+      color: #eee;
+      margin-bottom: 18px;
+    }
+    #project-meta {
+      font-size: 1.01rem;
+      color: #bbb;
+      margin-bottom: 18px;
+    }
+    #project-links a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin-right: 18px;
+      font-family: 'Fira Mono', monospace;
+      font-size: 1.01rem;
+    }
+    #close-project {
+      margin-top: 18px;
+      background: none;
+      color: #ffcc00;
+      border: 2px solid #ffcc00;
+      border-radius: 8px;
+      padding: 8px 28px;
+      font-size: 1rem;
+      font-family: 'Fira Mono', monospace;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    #close-project:hover { background: #ffcc00; color: #181c24; }
+    #project-page {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(24,28,36,0.98);
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s;
+    }
+    @media (max-width: 900px) {
+      #projects-list { grid-template-columns: 1fr; gap: 32px; }
+      #project-content { padding: 18px 4vw 18px 4vw; }
+      #project-cover { height: 180px; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#resumeDetails">Resume Details</a></li>
-      <li><a href="#awardsGallery">Awards</a></li>
-      <li><a href="#fun">Fun</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <header id="hero" class="hero" data-aos="fade-up">
-    <div class="hero-content">
-      <img src="headshot.jpg" alt="Headshot of Rishabh Goel" class="hero-headshot">
-      <h1>Rishabh Goel</h1>
-      <h2>Biomedical Data Scientist &amp; Entrepreneur</h2>
-      <p>
-        I leverage multi-modal clinical and genomic data to drive transformative healthcare solutions.
-        With 3+ years of experience, my work has secured investments exceeding <strong>$1.8M</strong> and grants over <strong>$749k</strong>.
-      </p>
-      <div class="hero-buttons">
-        <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Discover More</button>
-        <button class="btn" onclick="openModal('resume')">View Resume</button>
+  <div id="boot-overlay">
+    <div id="boot-percent"><span id="boot-num">0</span>%</div>
+    <div id="boot-logs">
+      <div class="boot-col" id="col-0"></div>
+      <div class="boot-col" id="col-1"></div>
+      <div class="boot-col" id="col-2"></div>
+    </div>
+  </div>
+  <div id="main-content">
+    <div id="about-section">
+      <div id="about-content">
+        <img id="about-img" src="mit 100k pitch.jpeg" alt="MIT 100K Pitch Competition" />
+        <div id="about-blurb">
+          <p>Hey, I'm Rishabh 👋<br>
+          Engineer. Founder. Builder of things that (hopefully) make life smarter.<br><br>
+          I work at the intersection of machine learning, product, and messy real-world data (clinical, genomic, sensor-based, you name it). Currently at Harvard Medical School, training LLMs to read patient records like doctors. Previously co-founded Doorstep.ai, where we raised ~$1.8M and built AI that helps delivery drivers find your door without getting lost (seriously).<br><br>
+          I’ve shipped tools used by pharma giants, secured federal grants, filed patents, and won a few research awards along the way. But more than anything, I like solving hard problems with fast feedback loops, and building stuff people actually use.</p>
+          <button id="projects-btn" style="margin-top:32px;" onclick="document.getElementById('projects-gallery').scrollIntoView({behavior: 'smooth'});">Projects</button>
+        </div>
       </div>
     </div>
-  </header>
-
-  <!-- About Section -->
-  <section id="about" data-aos="fade-up" data-aos-delay="200">
-    <h2>About Me</h2>
-    <div class="about-container">
-      <p>
-        Biomedical Data Scientist and Entrepreneur with 3+ years of experience leveraging multi-modal data analysis, clinical and genomic integration, machine learning techniques, and deep learning tools to drive innovative healthcare solutions.
-      </p>
+    <div id="scroll-cue" onclick="document.getElementById('projects-gallery').scrollIntoView({behavior: 'smooth'});">
+      <span>&#8595;</span>
+      <span style="font-size:1rem; margin-top:2px;">Scroll for Projects</span>
     </div>
-  </section>
-
-  <!-- Resume Details Section -->
-  <section id="resumeDetails" data-aos="fade-up" data-aos-delay="300">
-    <h2>Resume Details</h2>
-    <!-- Professional Profile -->
-    <div class="resume-section">
-      <h3>Professional Profile</h3>
-      <p>
-        Biomedical Data Scientist and Entrepreneur with 3+ years of industry experience in leveraging multi-modal data analysis to drive transformative healthcare solutions.
-      </p>
-    </div>
-    <!-- Education -->
-    <div class="resume-section">
-      <h3>Education</h3>
-      <ul>
-        <li>
-          <strong>Harvard Medical School, Boston, MA</strong><br>
-          Masters of Medical Sciences in Biomedical Informatics (May 2026), GPA: 4.0
-        </li>
-        <li>
-          <strong>University of California, Berkeley, Berkeley, CA</strong><br>
-          BA in Molecular and Cellular Biology (Biochemistry, Minor in Data Science), GPA: 3.68; BS in Business Administration (May 2022)
-        </li>
-      </ul>
-    </div>
-    <!-- Professional Experience -->
-    <div class="resume-section">
-      <h3>Professional Experience</h3>
-      <ul>
-        <li>
-          <strong>Co-founder, Doorstep.ai, San Francisco, CA</strong> (Aug 2023 – Aug 2024)<br>
-          Raised ~$1.8M in investment; led a team to build an AI-driven product for last-mile delivery; developed computer vision and machine learning algorithms.
-        </li>
-        <li>
-          <strong>Biomedical Data Scientist, GEn1E Lifesciences, Palo Alto, CA</strong> (May 2022 – Mar 2024)<br>
-          Developed machine learning models for ARDS patient subphenotypes; work received a $749k grant; finalist at Digital Health Hub Awards; accepted into NVIDIA’s Inception Program.
-        </li>
-      </ul>
-    </div>
-    <!-- Research Experience -->
-    <div class="resume-section">
-      <h3>Research Experience</h3>
-      <ul>
-        <li>
-          <strong>Computational Research Specialist, Dai Lab, Rice University, Houston, TX</strong> (Jul 2023 – Jul 2024)<br>
-          Automated sequencing read alignment using Bowtie 2; developed primer design software with MATLAB; improved pipeline efficiency and software performance.
-        </li>
-        <li>
-          <strong>Data Discovery Project Research Fellow, Merck & Co, Rahway, NJ</strong> (Dec 2021 – May 2022)<br>
-          Awarded a 3-month fellowship; designed a Neural-ODE model for pharmacokinetics prediction; improved accuracy by 4%; presented at the 2023 ADSA Annual Meeting, winning “Best Undergraduate Research Project.”
-        </li>
-        <li>
-          <strong>Biomedical Informatics Research Associate, Jegga Lab, Cincinnati Children’s Hospital, OH</strong> (May 2021 – Dec 2021)<br>
-          Developed a drug repurposing tool; conducted gene set enrichment analysis (GSEA); built visualizations using R.
-        </li>
-      </ul>
-    </div>
-    <!-- Technical Skills -->
-    <div class="resume-section">
-      <h3>Technical Skills</h3>
-      <ul>
-        <li><strong>Languages/Tools:</strong> Python, R, Jupyter Notebook, SQL, Matlab, Java, GitHub, AWS (S3, EC2, Athena), GCP, Google Colab</li>
-        <li><strong>Data Science Libraries:</strong> Pandas, Sklearn, SciPy, NumPy, PyTorch, TensorFlow, Matplotlib, BeautifulSoup, Plotly, Seaborn</li>
-        <li><strong>Bioinformatics Tools:</strong> Bulk RNA-Seq, ScRNA-Seq, Bioconductor, Public Databases (GEO, TCGA, Drugbank, PRIDE, Uniprot)</li>
-      </ul>
-    </div>
-    <!-- Awards -->
-    <div class="resume-section">
-      <h3>Awards & Recognitions</h3>
-      <ul>
-        <li>Provisional patent for “Techniques For Machine Learning-Assisted Precise Wayfinding”</li>
-        <li>Provisional patent for “Machine Learning Systems for ARDS Patient Sub-Phenotyping”</li>
-        <li>$749,000 grant from BARDA for Patient Stratification Using AI</li>
-        <li>$1.8M investment for Doorstep.ai</li>
-        <li>$50,000 grant awards from multiple venture funds and pitch competitions</li>
-        <li>Best Undergraduate Research Project at the 2023 ADSA Annual Meeting</li>
-        <li>Data Science Discovery Program Research Fellowship with Merck</li>
-      </ul>
-    </div>
-    <!-- Publications & Presentations -->
-    <div class="resume-section">
-      <h3>Publications & Presentations</h3>
-      <ul>
-        <li>Mehta M, Goel R, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-Phenotypes” (manuscript submitted, CHEST-CRITCARE-D-24-00041, 2024)</li>
-        <li>Lal R, Goel R, et al. “Development and Validation of a Prospective Machine Learning Model for the Identification of ARDS Sub-Phenotypes” (Presented at the 2024 ATS International Conference, San Diego, 2024)</li>
-        <li>Goel, R. (2023). “Is Neural-ODE an Effective Method for Modeling PK Data in Real-world Clinical Settings?” (Academic Data Science Alliance, 2023)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Awards Gallery Section -->
-  <section id="awardsGallery" data-aos="fade-up" data-aos-delay="500">
-    <h2>Awards Gallery</h2>
-    <p>Click on an award to see more details.</p>
-    <div class="gallery">
-      <img src="award1.jpg" alt="Award 1" onclick="openModal('award1')">
-      <img src="award2.jpg" alt="Award 2" onclick="openModal('award2')">
-      <img src="award3.jpg" alt="Award 3" onclick="openModal('award3')">
-    </div>
-  </section>
-
-  <!-- Fun Interactive Section -->
-  <section id="fun" class="fun-section" data-aos="fade-up" data-aos-delay="700">
-    <h2>Have Some Fun!</h2>
-    <div class="fun-buttons">
-      <button class="btn" onclick="playAirhorn()">Airhorn!</button>
-      <button class="btn" onclick="fetchJoke()">Tell Me a Joke</button>
-    </div>
-    <div id="jokeDisplay">Click "Tell Me a Joke" for a random laugh!</div>
-    <h2>Memory Card Game</h2>
-    <div id="memoryGame"></div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up" data-aos-delay="800">
-    <h2>Contact</h2>
-    <p class="contact-info">
-      Email: <a href="mailto:rishabh_goel@hms.harvard.edu">rishabh_goel@hms.harvard.edu</a><br>
-      Phone: 310-849-1687<br>
-      Location: Boston, MA 02115<br>
-      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a> | <a href="https://github.com" target="_blank">GitHub</a>
-    </p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Rishabh Goel. All rights reserved.</p>
-  </footer>
-
-  <!-- ====================================================
-       Modal for Resume & Award Details
-  ==================================================== -->
-  <!-- Modal for Resume -->
-  <div id="modal-resume" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('resume')">&times;</span>
-      <iframe src="resume.pdf"></iframe>
+    <div id="projects-gallery">
+      <h2 style="color:#ffcc00; font-family:'Montserrat',sans-serif; font-size:2.2rem; margin-bottom:36px;">Projects</h2>
+      <div id="projects-list"></div>
     </div>
   </div>
-  <!-- Modal for Award 1 -->
-  <div id="modal-award1" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('award1')">&times;</span>
-      <img src="award1.jpg" alt="Award 1">
-      <p>Details about Award 1 and its significance.</p>
+  <!-- Project Page Overlay (modal) remains as before -->
+  <div id="project-page">
+    <div id="project-content">
+      <img id="project-cover" src="" alt="Project Cover" />
+      <div id="project-details">
+        <h2 id="project-title"></h2>
+        <p id="project-desc"></p>
+        <div id="project-meta"></div>
+        <div id="project-links"></div>
+      </div>
+      <button id="close-project">Back</button>
     </div>
   </div>
-  <!-- Modal for Award 2 -->
-  <div id="modal-award2" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('award2')">&times;</span>
-      <img src="award2.jpg" alt="Award 2">
-      <p>Details about Award 2 and its significance.</p>
-    </div>
-  </div>
-  <!-- Modal for Award 3 -->
-  <div id="modal-award3" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('award3')">&times;</span>
-      <img src="award3.jpg" alt="Award 3">
-      <p>Details about Award 3 and its significance.</p>
-    </div>
-  </div>
-
-  <!-- ====================================================
-       Interactive Features Scripts
-  ==================================================== -->
-  <!-- Airhorn Audio -->
-  <audio id="airhornAudio" src="https://www.myinstants.com/media/sounds/airhorn.mp3"></audio>
   <script>
-    // Play Airhorn Sound
-    function playAirhorn() {
-      document.getElementById('airhornAudio').play();
+    // System log lines
+    const logLines = [
+      'SYSTEM INITIALIZING...',
+      'DATA PIPELINES: OK',
+      'ML MODELS: LOADED',
+      'GENOMIC DATA: SYNCED',
+      'SENSOR FEEDS: ACTIVE',
+      'LLMs: TRAINING IN PROGRESS',
+      'PRODUCT MODULE: DEPLOYED',
+      'PATENTS: FILED',
+      'GRANTS: SECURED',
+      'DELIVERY AI: ONLINE',
+      'USER FEEDBACK: POSITIVE',
+      'PROBLEM SOLVER: ACTIVE',
+      'SYSTEM STATUS: READY',
+      'AWARDS: RECEIVED',
+      'RESEARCH: PUBLISHED',
+      'FEDERAL GRANTS: APPROVED',
+      'FAST FEEDBACK: ENABLED',
+      'REAL-WORLD DATA: INGESTED',
+      'CLINICAL DATA: PROCESSED',
+      'MISSION: INNOVATE',
+      'MISSION: BUILD',
+      'MISSION: IMPACT',
+      'MISSION: COMPLETE',
+    ];
+    // Distribute log lines into columns
+    function distributeLogs(lines, cols) {
+      const out = Array.from({length: cols}, () => []);
+      lines.forEach((line, i) => out[i % cols].push(line));
+      return out;
     }
-
-    // Joke Generator using icanhazdadjoke API
-    function fetchJoke() {
-      fetch("https://icanhazdadjoke.com/", { headers: { "Accept": "application/json" } })
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('jokeDisplay').innerText = data.joke;
-        })
-        .catch(error => {
-          document.getElementById('jokeDisplay').innerText = "Oops! No joke available right now.";
-          console.error("Error fetching joke:", error);
-        });
-    }
-
-    // Memory Card Game
-    const emojis = ['😀','😎','🐶','🐱','🍕','🎉','🚀','🌟'];
-    let memoryCards = [...emojis, ...emojis]; // duplicate for pairs
-    memoryCards.sort(() => 0.5 - Math.random());
-    let flippedCards = [];
-    let matchedCards = 0;
-
-    const gameContainer = document.getElementById('memoryGame');
-
-    function createCard(cardValue) {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.dataset.value = cardValue;
-      card.innerText = "";
-      card.addEventListener('click', () => flipCard(card));
-      return card;
-    }
-
-    function setupMemoryGame() {
-      memoryCards.forEach(value => {
-        const card = createCard(value);
-        gameContainer.appendChild(card);
-      });
-    }
-
-    function flipCard(card) {
-      if (card.classList.contains('flipped') || flippedCards.length === 2) return;
-      card.classList.add('flipped');
-      card.innerText = card.dataset.value;
-      flippedCards.push(card);
-      if (flippedCards.length === 2) {
-        checkForMatch();
-      }
-    }
-
-    function checkForMatch() {
-      const [card1, card2] = flippedCards;
-      if (card1.dataset.value === card2.dataset.value) {
-        matchedCards += 2;
-        flippedCards = [];
-        if (matchedCards === memoryCards.length) {
-          setTimeout(() => alert("Congratulations! You've matched all the cards!"), 300);
-        }
-      } else {
-        setTimeout(() => {
-          card1.classList.remove('flipped');
-          card1.innerText = "";
-          card2.classList.remove('flipped');
-          card2.innerText = "";
-          flippedCards = [];
-        }, 1000);
-      }
-    }
-
-    setupMemoryGame();
-
-    // Modal Functions
-    function openModal(modalId) {
-      document.getElementById('modal-' + modalId).style.display = 'flex';
-    }
-
-    function closeModal(modalId) {
-      document.getElementById('modal-' + modalId).style.display = 'none';
-    }
-
-    window.addEventListener('click', function(event) {
-      document.querySelectorAll('.modal').forEach(modal => {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
+    const columns = distributeLogs(logLines, 3);
+    columns.forEach((col, i) => {
+      const colDiv = document.getElementById('col-' + i);
+      col.forEach((line, j) => {
+        const div = document.createElement('div');
+        div.className = 'boot-line';
+        div.textContent = line;
+        colDiv.appendChild(div);
       });
     });
-  </script>
+    // Animate boot percentage and log lines
+    let percent = 0;
+    let bootNum = document.getElementById('boot-num');
+    let bootOverlay = document.getElementById('boot-overlay');
+    let aboutSection = document.getElementById('about-section');
+    let logEls = Array.from(document.querySelectorAll('.boot-line'));
+    let logIdx = 0;
+    function animateBoot() {
+      let percentTarget = 100;
+      let interval = setInterval(() => {
+        if (percent < percentTarget) {
+          percent += Math.ceil(Math.random() * 3);
+          if (percent > percentTarget) percent = percentTarget;
+          bootNum.textContent = percent;
+          // Highlight log lines as we go
+          if (logIdx < logEls.length && percent > (logIdx * (100 / logEls.length))) {
+            logEls[logIdx].classList.add('active');
+            logIdx++;
+          }
+        } else {
+          clearInterval(interval);
+          setTimeout(() => {
+            bootOverlay.style.opacity = 0;
+            setTimeout(() => {
+              bootOverlay.style.display = 'none';
+              aboutSection.style.display = 'flex';
+              aboutSection.style.opacity = 0;
+              setTimeout(() => { aboutSection.style.opacity = 1; }, 30);
+            }, 1200);
+          }, 700);
+        }
+      }, 38);
+    }
+    animateBoot();
 
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
+    // Project functionality
+    const projects = [
+      {
+        title: 'Bond Health (LLM for Clinical EHR Summarization)',
+        desc: 'Built a Retrieval-Augmented Generation (RAG) pipeline using open-source LLMs to generate accurate, clinically relevant summaries from longitudinal EHRs. Integrated feedback loops with real physicians to improve model grounding and precision.',
+        cover: 'bond_health_llm_cover.png',
+        role: 'Lead LLM Engineer',
+        stack: 'Python, LangChain, Pydantic, SQL, Pandas, Streamlit, Airtable API, LLaMA 2, DeepSeek',
+        links: [
+          { label: 'GitHub (Private/Coming Soon)', url: '#' },
+          { label: 'Demo (Internal)', url: '#' }
+        ]
+      },
+      {
+        title: 'Doorstep.ai (Last-Mile Delivery AI)',
+        desc: 'Co-founded and scaled an AI-driven last-mile logistics startup that raised $1.8M. Built computer vision and motion-prediction models to guide drivers to customer doorsteps with sub-meter accuracy.',
+        cover: 'doorstep_ai_cover.png',
+        role: 'Co-founder & Head of AI',
+        stack: 'PyTorch, XGBoost, OpenCV, Python, AWS, GitHub Actions',
+        links: [
+          { label: 'Website', url: '#' },
+          { label: 'Pitch Deck (Available on Request)', url: '#' }
+        ]
+      },
+      {
+        title: 'ARDS Subphenotyping (GEn1E Lifesciences x BARDA)',
+        desc: 'Developed a support vector machine model to identify clinical subtypes of ARDS with 97%+ accuracy using high-dimensional biomarker and clinical data. Work led to a $749K BARDA grant and a paper under BMJ review.',
+        cover: 'ards_subtypes_cover.png',
+        role: 'Biomedical Data Scientist',
+        stack: 'Python, Scikit-learn, Seaborn, GSEA, GEO, TCGA',
+        links: [
+          { label: 'Manuscript (update if published)', url: '#' },
+          { label: 'Poster (ATS Conference)', url: '#' }
+        ]
+      },
+      {
+        title: 'Pharmacokinetics Prediction (Merck x UC Berkeley)',
+        desc: 'Built a Neural ODE model to predict pharmacokinetics (PK) in patients, improving accuracy by 4% over state-of-the-art methods. Presented at the ADSA 2023 and won Best Undergraduate Research Project.',
+        cover: 'pk_model_merck_cover.png',
+        role: 'Research Fellow',
+        stack: 'TensorFlow, Python, NumPy, Neural ODEs, GitHub',
+        links: [
+          { label: 'ADSA Publication', url: '#' }
+        ]
+      }
+    ];
+
+    const projectsList = document.getElementById('projects-list');
+    const projectPage = document.getElementById('project-page');
+    const projectCover = document.getElementById('project-cover');
+    const projectTitle = document.getElementById('project-title');
+    const projectDesc = document.getElementById('project-desc');
+    const projectMeta = document.getElementById('project-meta');
+    const projectLinks = document.getElementById('project-links');
+    const closeProject = document.getElementById('close-project');
+
+    function renderProjects() {
+      projectsList.innerHTML = '';
+      projects.forEach((proj, idx) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        const img = document.createElement('img');
+        img.className = 'project-cover';
+        img.src = proj.cover;
+        img.alt = proj.title + ' cover';
+        card.appendChild(img);
+        const info = document.createElement('div');
+        info.className = 'project-info';
+        const title = document.createElement('div');
+        title.className = 'project-title';
+        title.textContent = proj.title;
+        info.appendChild(title);
+        const desc = document.createElement('div');
+        desc.className = 'project-desc';
+        desc.textContent = proj.desc;
+        info.appendChild(desc);
+        card.appendChild(info);
+        card.addEventListener('click', () => openProject(idx));
+        projectsList.appendChild(card);
+      });
+    }
+
+    function openProject(idx) {
+      const proj = projects[idx];
+      projectCover.src = proj.cover;
+      projectCover.alt = proj.title + ' cover';
+      projectTitle.textContent = proj.title;
+      projectDesc.textContent = proj.desc;
+      projectMeta.innerHTML = `<b>Role:</b> ${proj.role}<br><b>Tech Stack:</b> ${proj.stack}`;
+      projectLinks.innerHTML = proj.links.map(l => `<a href="${l.url}" target="_blank">${l.label}</a>`).join(' ');
+      projectPage.style.display = 'flex';
+      setTimeout(() => { projectPage.style.opacity = 1; }, 30);
+    }
+
+    function closeProjectPage() {
+      projectPage.style.opacity = 0;
+      setTimeout(() => {
+        projectPage.style.display = 'none';
+      }, 400);
+    }
+
+    closeProject.addEventListener('click', closeProjectPage);
+
+    window.addEventListener('DOMContentLoaded', function() {
+      renderProjects();
+    });
   </script>
 </body>
 </html>

@@ -181,8 +181,9 @@
     }
     
     /* Projects Button */
-    #projects-btn {
+    #projects-btn, #education-btn {
       margin-top: 32px;
+      margin-right: 16px;
       padding: 14px 38px;
       background: #ffcc00;
       color: #181c24;
@@ -197,13 +198,20 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      display: inline-block;
     }
-    #projects-btn:hover {
+    
+    #education-btn {
+      margin-right: 0;
+    }
+    
+    #projects-btn:hover, #education-btn:hover {
       background: #ffd84d;
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3);
     }
-    #projects-btn::before {
+    
+    #projects-btn::before, #education-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -213,15 +221,31 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
       transition: left 0.5s;
     }
-    #projects-btn:hover::before {
+    
+    #projects-btn:hover::before, #education-btn:hover::before {
       left: 100%;
+    }
+    
+    .button-container {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .button-container.show {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     /* Projects Section */
     #projects-section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 20px 20px 40px 20px;
     }
     #projects-section h2 {
       color: #ffcc00;
@@ -400,6 +424,596 @@
       font-size: 0.9rem;
     }
     
+    /* Education Playground Journey */
+    #education-section {
+      max-width: 1200px;
+      margin: 0 auto 20px auto;
+      padding: 40px 20px 20px 20px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+    
+    #education-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #education-section h2 {
+      color: #ffcc00;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+    #education-section h2::after {
+      content: '✨';
+      position: absolute;
+      right: -40px;
+      top: -10px;
+      font-size: 1.5rem;
+      animation: sparkle 2s infinite;
+    }
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+      50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+    }
+    
+    .playground-timeline {
+      position: relative;
+      padding: 60px 0;
+      min-height: 800px;
+    }
+    
+    /* Magical Curved Path */
+    .playground-path {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .playground-path svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    
+    /* Enhanced journey path */
+    .journey-path {
+      fill: none;
+      stroke: url(#journeyGradient);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 25 15;
+      animation: pathFlow 12s infinite linear;
+    }
+    
+    @keyframes pathFlow {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 300; }
+    }
+    
+    /* Connection Dots at each school */
+    .connection-dot {
+      fill: url(#dotGradient);
+      stroke: #181c24;
+      stroke-width: 3;
+      filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.8));
+    }
+    
+    .current-dot {
+      fill: url(#dotGradient);
+      stroke: rgba(255, 204, 0, 0.9);
+      stroke-width: 4;
+      filter: drop-shadow(0 0 25px rgba(255, 204, 0, 1)) drop-shadow(0 0 50px rgba(255, 204, 0, 0.5));
+    }
+    
+    /* Flow particles moving along the path */
+    .flow-particle {
+      filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.6));
+    }
+    
+    /* Directional arrows along the path */
+    .path-arrow {
+      fill: rgba(255, 204, 0, 0.8);
+      animation: arrowFlow 8s infinite linear;
+    }
+    
+    @keyframes arrowFlow {
+      0% { opacity: 0; transform: scale(0.5); }
+      20% { opacity: 1; transform: scale(1); }
+      80% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+    
+    .path-arrow:nth-child(2) { animation-delay: 2s; }
+    .path-arrow:nth-child(3) { animation-delay: 4s; }
+    .path-arrow:nth-child(4) { animation-delay: 6s; }
+    
+    /* Floating Playground Elements */
+    .playground-element {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+      z-index: 2;
+    }
+    
+    .playground-element:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+    .playground-element:nth-child(2) { top: 30%; right: 20%; animation-delay: 2s; }
+    .playground-element:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; }
+    .playground-element:nth-child(4) { top: 80%; right: 15%; animation-delay: 1s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-20px) rotate(5deg); }
+      50% { transform: translateY(-10px) rotate(-5deg); }
+      75% { transform: translateY(-15px) rotate(3deg); }
+    }
+    
+    .playground-element::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.8), transparent);
+      border-radius: 50%;
+      animation: glow 3s ease-in-out infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.5); opacity: 1; }
+    }
+    
+    /* Robotic Butterflies */
+    .robo-butterfly {
+      position: absolute;
+      width: 40px;
+      height: 30px;
+      z-index: 5;
+      animation: butterflyFlight 12s infinite linear;
+    }
+    
+    .butterfly-body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, #ffcc00, #ffd84d);
+      border-radius: 2px;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+    }
+    
+    .butterfly-wing {
+      position: absolute;
+      background: rgba(255, 204, 0, 0.7);
+      border-radius: 50%;
+      animation: wingFlap 0.5s ease-in-out infinite;
+    }
+    
+    .wing-left {
+      top: 2px;
+      left: 8px;
+      width: 12px;
+      height: 18px;
+      transform-origin: right center;
+      background: linear-gradient(45deg, rgba(255, 204, 0, 0.8), rgba(255, 215, 100, 0.6));
+    }
+    
+    .wing-right {
+      top: 2px;
+      right: 8px;
+      width: 12px;
+      height: 18px;
+      transform-origin: left center;
+      background: linear-gradient(-45deg, rgba(255, 204, 0, 0.8), rgba(255, 215, 100, 0.6));
+    }
+    
+    @keyframes wingFlap {
+      0%, 100% { transform: rotateY(0deg) rotateX(10deg); }
+      50% { transform: rotateY(20deg) rotateX(-10deg); }
+    }
+    
+    /* Butterfly Flight Paths */
+    .butterfly-1 {
+      animation: butterflyPath1 15s infinite linear;
+      animation-delay: 0s;
+    }
+    
+    .butterfly-2 {
+      animation: butterflyPath2 18s infinite linear;
+      animation-delay: 3s;
+    }
+    
+    .butterfly-3 {
+      animation: butterflyPath3 20s infinite linear;
+      animation-delay: 6s;
+    }
+    
+    @keyframes butterflyPath1 {
+      0% { top: 15%; left: 10%; transform: rotate(45deg); }
+      25% { top: 40%; left: 80%; transform: rotate(135deg); }
+      50% { top: 70%; left: 20%; transform: rotate(225deg); }
+      75% { top: 50%; left: 70%; transform: rotate(315deg); }
+      100% { top: 15%; left: 10%; transform: rotate(405deg); }
+    }
+    
+    @keyframes butterflyPath2 {
+      0% { top: 80%; right: 10%; transform: rotate(-45deg); }
+      33% { top: 20%; right: 70%; transform: rotate(45deg); }
+      66% { top: 60%; right: 30%; transform: rotate(135deg); }
+      100% { top: 80%; right: 10%; transform: rotate(275deg); }
+    }
+    
+    @keyframes butterflyPath3 {
+      0% { top: 50%; left: 50%; transform: rotate(0deg); }
+      20% { top: 20%; left: 20%; transform: rotate(72deg); }
+      40% { top: 30%; left: 80%; transform: rotate(144deg); }
+      60% { top: 80%; left: 70%; transform: rotate(216deg); }
+      80% { top: 70%; left: 30%; transform: rotate(288deg); }
+      100% { top: 50%; left: 50%; transform: rotate(360deg); }
+    }
+    
+    /* Pixie Dust Trail */
+    .pixie-dust {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+    
+    .dust-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.9), rgba(255, 215, 100, 0.3));
+      border-radius: 50%;
+      animation: dustFloat 8s infinite ease-in-out;
+    }
+    
+    .dust-particle:nth-child(odd) {
+      background: radial-gradient(circle, rgba(100, 200, 255, 0.8), rgba(150, 220, 255, 0.3));
+    }
+    
+    @keyframes dustFloat {
+      0% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { 
+        transform: translateY(-100px) translateX(50px) scale(0.3);
+        opacity: 0;
+      }
+    }
+    
+    /* Playground School Stations */
+    .playground-station {
+      position: relative;
+      margin: 100px 0;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: stationAppear 1s forwards;
+      z-index: 4;
+    }
+    
+    .playground-station:nth-child(1) { animation-delay: 0.5s; }
+    .playground-station:nth-child(2) { animation-delay: 1s; }
+    .playground-station:nth-child(3) { animation-delay: 1.5s; }
+    
+    @keyframes stationAppear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Magical Platform for each school */
+    .school-platform {
+      width: 50%;
+      background: rgba(35, 40, 58, 0.95);
+      border-radius: 25px;
+      padding: 35px;
+      position: relative;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 204, 0, 0.3);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+      cursor: none;
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(255, 204, 0, 0.1);
+    }
+    
+    .school-platform::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+        rgba(255, 204, 0, 0.8), 
+        rgba(100, 200, 255, 0.6), 
+        rgba(255, 100, 200, 0.6),
+        rgba(255, 204, 0, 0.8));
+      border-radius: 27px;
+      z-index: -1;
+      opacity: 0;
+      animation: rainbowGlow 4s ease-in-out infinite;
+      background-size: 400% 400%;
+    }
+    
+    @keyframes rainbowGlow {
+      0%, 100% { background-position: 0% 50%; opacity: 0; }
+      50% { background-position: 100% 50%; opacity: 0.3; }
+    }
+    
+    .school-platform:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 15px 30px rgba(255, 204, 0, 0.2);
+      border-color: rgba(255, 204, 0, 0.6);
+    }
+    
+    .school-platform:hover::before {
+      opacity: 0.6;
+    }
+    
+    /* Alternating positions for playground feel */
+    .playground-station:nth-child(odd) .school-platform {
+      margin-left: 0;
+      text-align: right;
+    }
+    
+    .playground-station:nth-child(even) .school-platform {
+      margin-left: 50%;
+      text-align: left;
+    }
+    
+    /* Magical connecting bridges */
+    .playground-station::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 60px;
+      height: 8px;
+      background: linear-gradient(90deg, 
+        rgba(255, 204, 0, 0.8), 
+        rgba(255, 215, 100, 0.4));
+      border-radius: 4px;
+      animation: bridgeGlow 3s ease-in-out infinite;
+    }
+    
+    .playground-station:nth-child(odd)::after {
+      right: -60px;
+    }
+    
+    .playground-station:nth-child(even)::after {
+      left: -60px;
+    }
+    
+    @keyframes bridgeGlow {
+      0%, 100% { opacity: 0.6; transform: scaleX(1); }
+      50% { opacity: 1; transform: scaleX(1.1); }
+    }
+    
+    /* School Header with Enhanced Magic */
+    .magical-school-header {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 25px;
+      position: relative;
+    }
+    
+    .playground-station:nth-child(odd) .magical-school-header {
+      flex-direction: row-reverse;
+    }
+    
+    .magical-logo {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .magical-logo::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 204, 0, 0.3), transparent);
+      animation: logoSpin 4s linear infinite;
+      opacity: 0;
+    }
+    
+    .school-platform:hover .magical-logo::before {
+      opacity: 1;
+    }
+    
+    @keyframes logoSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .school-platform:hover .magical-logo {
+      transform: scale(1.15) rotateY(10deg);
+      box-shadow: 0 10px 25px rgba(255, 204, 0, 0.4);
+    }
+    
+    .magical-school-info h3 {
+      color: #ffcc00;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .magical-school-info h3::after {
+      content: '🎓';
+      position: absolute;
+      right: -30px;
+      top: -5px;
+      font-size: 1.2rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    .playground-station:nth-child(odd) .magical-school-info h3::after {
+      left: -30px;
+      right: auto;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .magical-dates {
+      color: #bbb;
+      font-size: 1.1rem;
+      font-family: 'Fira Mono', monospace;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+    
+    .magical-dates::before {
+      content: '⏳';
+      margin-right: 8px;
+    }
+    
+    /* Enhanced degree info */
+    .magical-degree-info {
+      margin-top: 20px;
+    }
+    
+    .magical-degree {
+      color: #eee;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .magical-degree::before {
+      content: '✨';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.9rem;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    .magical-gpa {
+      color: #ffcc00;
+      font-size: 1rem;
+      font-weight: 700;
+      opacity: 0.95;
+      background: rgba(255, 204, 0, 0.1);
+      padding: 4px 12px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    
+    .magical-location {
+      color: #999;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-top: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .magical-location::before {
+      content: '🌍';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    /* Current School Super Magic */
+    .playground-station.current .school-platform {
+      border-color: rgba(255, 204, 0, 0.8);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(255, 204, 0, 0.3);
+      animation: currentGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes currentGlow {
+      0%, 100% { 
+        box-shadow: 
+          0 20px 40px rgba(0, 0, 0, 0.3),
+          0 0 40px rgba(255, 204, 0, 0.3);
+      }
+      50% { 
+        box-shadow: 
+          0 25px 50px rgba(0, 0, 0, 0.4),
+          0 0 60px rgba(255, 204, 0, 0.5);
+      }
+    }
+    
+    .playground-station.current .school-platform::before {
+      opacity: 0.8;
+    }
+    
+    /* Responsive Playground */
+    @media (max-width: 900px) {
+      .playground-station:nth-child(odd) .school-platform,
+      .playground-station:nth-child(even) .school-platform {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+      }
+      
+      .playground-station:nth-child(odd) .magical-school-header {
+        flex-direction: row;
+      }
+      
+      .playground-station:nth-child(odd) .magical-school-info h3::after {
+        left: auto;
+        right: -30px;
+      }
+      
+      .playground-station::after {
+        display: none;
+      }
+      
+      .magical-logo {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .robo-butterfly {
+        width: 30px;
+        height: 25px;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       #boot-logs { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -409,6 +1023,16 @@
       .modal-content { padding: 20px; }
       html, body { cursor: auto; }
       #cursor, #cursor-trail { display: none; }
+      
+      .button-container {
+        justify-content: center;
+      }
+      
+      #projects-btn, #education-btn {
+        padding: 12px 28px;
+        font-size: 1rem;
+        margin-top: 0;
+      }
     }
     @media (max-width: 600px) {
       #boot-logs { grid-template-columns: 1fr; gap: 10px; }
@@ -445,7 +1069,152 @@
           <p id="typing-container">
             <span id="typing-text" class="typing-text"></span>
           </p>
-          <button id="projects-btn">View Projects</button>
+          <div class="button-container">
+            <button id="projects-btn">View Projects</button>
+            <button id="education-btn">Education Journey</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Playground Journey -->
+    <section id="education-section">
+      <h2>Education Journey</h2>
+      <div class="playground-timeline">
+        <div class="playground-path">
+          <svg viewBox="0 0 1000 1200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.9" />
+                <stop offset="30%" stop-color="#ffd84d" stop-opacity="1" />
+                <stop offset="70%" stop-color="#ffcc00" stop-opacity="1" />
+                <stop offset="100%" stop-color="#ff9f43" stop-opacity="0.8" />
+              </linearGradient>
+              <linearGradient id="dotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffd84d" />
+                <stop offset="100%" stop-color="#ffcc00" />
+              </linearGradient>
+              <filter id="pathGlow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            
+            <!-- Main Journey Path connecting all schools -->
+            <path class="journey-path" 
+                  d="M 150,150 
+                     Q 400,200 450,350
+                     Q 500,450 650,500
+                     Q 800,550 550,700
+                     Q 400,800 450,950
+                     Q 500,1050 750,1000" 
+                  filter="url(#pathGlow)" />
+            
+            <!-- Connection dots at each school position -->
+            <circle class="connection-dot" cx="150" cy="150" r="10">
+              <animate attributeName="r" values="8;15;8" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="connection-dot" cx="650" cy="500" r="10">
+              <animate attributeName="r" values="8;15;8" dur="3s" repeatCount="indefinite" begin="1s"/>
+            </circle>
+            <circle class="connection-dot current-dot" cx="750" cy="1000" r="12">
+              <animate attributeName="r" values="10;18;10" dur="2s" repeatCount="indefinite"/>
+              <animateTransform attributeName="transform" type="rotate" values="0 750 1000;360 750 1000" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            
+            <!-- Flowing directional indicators -->
+            <g class="flow-indicators">
+              <circle class="flow-particle" cx="0" cy="0" r="4" fill="rgba(255, 204, 0, 0.8)">
+                <animateMotion dur="15s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#journeyPath"/>
+                </animateMotion>
+              </circle>
+              <circle class="flow-particle" cx="0" cy="0" r="3" fill="rgba(255, 215, 100, 0.6)">
+                <animateMotion dur="15s" repeatCount="indefinite" rotate="auto" begin="3s">
+                  <mpath href="#journeyPath"/>
+                </animateMotion>
+              </circle>
+              <circle class="flow-particle" cx="0" cy="0" r="5" fill="rgba(255, 159, 67, 0.7)">
+                <animateMotion dur="15s" repeatCount="indefinite" rotate="auto" begin="6s">
+                  <mpath href="#journeyPath"/>
+                </animateMotion>
+              </circle>
+              <circle class="flow-particle" cx="0" cy="0" r="3" fill="rgba(100, 200, 255, 0.5)">
+                <animateMotion dur="15s" repeatCount="indefinite" rotate="auto" begin="9s">
+                  <mpath href="#journeyPath"/>
+                </animateMotion>
+              </circle>
+            </g>
+            
+            <!-- Hidden path for particle animation -->
+            <path id="journeyPath" 
+                  d="M 150,150 
+                     Q 400,200 450,350
+                     Q 500,450 650,500
+                     Q 800,550 550,700
+                     Q 400,800 450,950
+                     Q 500,1050 750,1000" 
+                  fill="none" stroke="none" opacity="0" />
+          </svg>
+        </div>
+        <div class="pixie-dust"></div>
+        <div class="robo-butterfly butterfly-1"></div>
+        <div class="robo-butterfly butterfly-2"></div>
+        <div class="robo-butterfly butterfly-3"></div>
+
+        <div class="playground-station">
+          <div class="school-platform">
+            <div class="magical-school-header">
+              <img src="doonschool.png" alt="Doon School" class="magical-logo">
+              <div class="magical-school-info">
+                <h3>The Doon School</h3>
+                <div class="magical-dates">February 2013 - May 2018</div>
+              </div>
+            </div>
+            <div class="magical-degree-info">
+              <div class="magical-degree">Senior School Certificate</div>
+              <div class="magical-location">Dehradun, India</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playground-station">
+          <div class="school-platform">
+            <div class="magical-school-header">
+              <img src="ucberkeley.png" alt="UC Berkeley" class="magical-logo">
+              <div class="magical-school-info">
+                <h3>University of California, Berkeley</h3>
+                <div class="magical-dates">August 2018 - May 2022</div>
+              </div>
+            </div>
+            <div class="magical-degree-info">
+              <div class="magical-degree">B.A. in Molecular and Cellular Biology: Biochemistry</div>
+              <div class="magical-gpa">GPA: 3.68</div>
+              <div class="magical-degree">B.S. in Business Administration</div>
+              <div class="magical-degree">Minor in Data Science</div>
+              <div class="magical-location">Berkeley, CA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playground-station current">
+          <div class="school-platform">
+            <div class="magical-school-header">
+              <img src="harvardmed.png" alt="Harvard Medical School" class="magical-logo">
+              <div class="magical-school-info">
+                <h3>Harvard Medical School</h3>
+                <div class="magical-dates">August 2024 - Present</div>
+              </div>
+            </div>
+            <div class="magical-degree-info">
+              <div class="magical-degree">Masters in Biomedical Informatics</div>
+              <div class="magical-gpa">Expected May 2026 • GPA: 4.0</div>
+              <div class="magical-location">Boston, MA</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -614,6 +1383,86 @@ I've shipped tools used by pharma giants, secured federal grants, filed patents,
       }
     }
 
+    // Create robotic butterflies
+    function createRoboButterflies() {
+      const playground = document.querySelector('.playground-timeline');
+      const butterflyClasses = ['butterfly-1', 'butterfly-2', 'butterfly-3'];
+      
+      butterflyClasses.forEach((className, index) => {
+        const butterfly = document.createElement('div');
+        butterfly.className = `robo-butterfly ${className}`;
+        
+        // Create butterfly body
+        const body = document.createElement('div');
+        body.className = 'butterfly-body';
+        
+        // Create butterfly wings
+        const leftWing = document.createElement('div');
+        leftWing.className = 'butterfly-wing wing-left';
+        
+        const rightWing = document.createElement('div');
+        rightWing.className = 'butterfly-wing wing-right';
+        
+        butterfly.appendChild(body);
+        butterfly.appendChild(leftWing);
+        butterfly.appendChild(rightWing);
+        
+        playground.appendChild(butterfly);
+      });
+    }
+
+    // Create pixie dust trail
+    function createPixieDust() {
+      const pixieDustContainer = document.querySelector('.pixie-dust');
+      
+      function spawnDustParticle(x, y) {
+        const dust = document.createElement('div');
+        dust.className = 'dust-particle';
+        dust.style.left = x + '%';
+        dust.style.top = y + '%';
+        dust.style.animationDelay = Math.random() * 2 + 's';
+        dust.style.animationDuration = (6 + Math.random() * 4) + 's';
+        
+        pixieDustContainer.appendChild(dust);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+          if (dust.parentNode) {
+            dust.parentNode.removeChild(dust);
+          }
+        }, 10000);
+      }
+      
+      // Continuously spawn pixie dust
+      setInterval(() => {
+        // Spawn dust at random locations along butterfly paths
+        for (let i = 0; i < 3; i++) {
+          const x = Math.random() * 100;
+          const y = Math.random() * 100;
+          spawnDustParticle(x, y);
+        }
+      }, 800);
+    }
+
+    // Create floating playground elements
+    function createPlaygroundElements() {
+      const playground = document.querySelector('.playground-timeline');
+      const emojis = ['🎓', '📚', '⭐', '🔬', '💡', '🚀', '🌟', '✨'];
+      
+      for (let i = 0; i < 8; i++) {
+        const element = document.createElement('div');
+        element.className = 'playground-element';
+        element.innerHTML = emojis[i % emojis.length];
+        element.style.left = Math.random() * 90 + '%';
+        element.style.top = Math.random() * 90 + '%';
+        element.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+        element.style.animationDelay = Math.random() * 6 + 's';
+        element.style.animationDuration = (4 + Math.random() * 4) + 's';
+        
+        playground.appendChild(element);
+      }
+    }
+
     // Typing animation
     function typeWriter(text, element, speed = 30) {
       let i = 0;
@@ -684,7 +1533,19 @@ I've shipped tools used by pharma giants, secured federal grants, filed patents,
               // Start typing animation
               setTimeout(() => {
                 const typingElement = document.getElementById('typing-text');
-                typeWriter(bioText, typingElement, 25);
+                typeWriter(bioText, typingElement, 15);
+                
+                // Show buttons after typing completes
+                setTimeout(() => {
+                  const buttonContainer = document.querySelector('.button-container');
+                  buttonContainer.classList.add('show');
+                }, bioText.length * 15 + 300); // Show buttons 0.3 seconds after typing completes
+                
+                // Show education section after buttons appear
+                setTimeout(() => {
+                  const educationSection = document.getElementById('education-section');
+                  educationSection.classList.add('show');
+                }, bioText.length * 15 + 1000); // Show education 1 second after typing completes
               }, 500);
             }, 1200);
           }, 700);
@@ -721,11 +1582,21 @@ I've shipped tools used by pharma giants, secured federal grants, filed patents,
     // Event listeners
     document.addEventListener('DOMContentLoaded', function() {
       createParticles();
+      createRoboButterflies();
+      createPixieDust();
+      createPlaygroundElements();
       animateBoot();
       
       // Projects button scroll
       document.getElementById('projects-btn').addEventListener('click', function() {
         document.getElementById('projects-section').scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+
+      // Education button scroll
+      document.getElementById('education-btn').addEventListener('click', function() {
+        document.getElementById('education-section').scrollIntoView({
           behavior: 'smooth'
         });
       });
@@ -748,7 +1619,7 @@ I've shipped tools used by pharma giants, secured federal grants, filed patents,
       });
 
       // Enhanced hover effects for interactive elements
-      document.querySelectorAll('button, .project-card').forEach(el => {
+      document.querySelectorAll('button, .project-card, .timeline-content, .school-platform').forEach(el => {
         el.addEventListener('mouseenter', () => {
           cursor.style.transform = 'scale(1.5)';
           cursor.style.background = 'rgba(255, 204, 0, 1)';

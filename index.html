@@ -6,19 +6,17 @@
   <title>Rishabh Goel | Futuristic Boot Landing</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Fira+Mono&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
       background: #181c24;
       color: #eee;
       font-family: 'Fira Mono', 'Montserrat', monospace, sans-serif;
       letter-spacing: 0.01em;
-      width: 100vw;
-      height: 100vh;
       overflow-x: hidden;
-      overflow-y: auto;
     }
+    
+    /* Boot Animation Styles */
     #boot-overlay {
       position: fixed;
       z-index: 9999;
@@ -69,39 +67,25 @@
       color: #ffcc00;
       opacity: 1;
     }
-    #about-section {
+    
+    /* Main Content Styles */
+    #main-content {
       display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: #181c24;
-      color: #eee;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-      flex-direction: column;
-      transition: opacity 1.2s cubic-bezier(0.77,0,0.175,1);
+      min-height: 100vh;
+      padding: 40px 20px;
     }
-    #about-blurb {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 1.25rem;
-      line-height: 1.7;
-      color: #eee;
-      background: rgba(24,28,36,0.92);
-      border-radius: 18px;
-      padding: 36px 32px 32px 32px;
-      box-shadow: 0 0 32px #0006;
-      font-family: 'Montserrat', 'Fira Mono', monospace;
+    
+    /* About Section */
+    #about-section {
+      max-width: 1000px;
+      margin: 0 auto 100px auto;
+      padding: 60px 0;
     }
     #about-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 48px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 0;
     }
     #about-img {
       width: 420px;
@@ -116,112 +100,14 @@
     #about-blurb {
       flex: 1;
       min-width: 240px;
-    }
-    @media (max-width: 900px) {
-      #boot-logs { grid-template-columns: 1fr 1fr; gap: 24px; }
-      #about-content { flex-direction: column; gap: 24px; padding: 24px 0; }
-      #about-img { width: 98vw; max-width: 520px; height: 260px; }
-    }
-    @media (max-width: 600px) {
-      #boot-logs { grid-template-columns: 1fr; gap: 10px; }
-      #boot-percent { top: 18px; right: 18px; font-size: 2.1rem; }
-      #about-blurb { font-size: 1rem; padding: 18px 10px 18px 10px; }
-    }
-    body {
-      background: #181c24;
+      font-size: 1.25rem;
+      line-height: 1.7;
       color: #eee;
-      font-family: 'Fira Mono', 'Montserrat', monospace, sans-serif;
-      letter-spacing: 0.01em;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      overflow-y: auto;
     }
-    #main-content {
-      width: 100vw;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    #about-section {
-      width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background: #181c24;
-      transition: opacity 0.8s;
-    }
-    #scroll-cue {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 32px;
-      color: #ffcc00;
-      font-size: 2.2rem;
-      opacity: 0.7;
-      animation: scrollCueBlink 1.2s infinite alternate;
-      cursor: pointer;
-      user-select: none;
-    }
-    @keyframes scrollCueBlink {
-      from { opacity: 0.3; }
-      to { opacity: 1; }
-    }
-    #projects-gallery {
-      width: 100vw;
-      min-height: 100vh;
-      background: #181c24;
-      color: #eee;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding-top: 60px;
-      transition: opacity 0.8s;
-      /* Remove display:none and fixed positioning */
-      position: static;
-    }
-    /* ...existing project card/gallery styles... */
-    .project-card {
-      background: #23283a;
-      border-radius: 18px;
-      box-shadow: 0 4px 32px #0007;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.18s, box-shadow 0.18s;
-    }
-    .project-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 8px 40px #ffcc0033, 0 4px 32px #000a;
-    }
-    .project-cover {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      background: linear-gradient(135deg, #ffcc00, #ff9900);
-    }
-    .project-info {
-      padding: 28px 24px 22px 24px;
-    }
-    .project-title {
-      font-size: 1.35rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      color: #ffcc00;
-      margin-bottom: 10px;
-    }
-    .project-desc {
-      font-size: 1.08rem;
-      color: #eee;
-      opacity: 0.92;
-    }
+    
+    /* Projects Button */
     #projects-btn {
+      margin-top: 32px;
       padding: 14px 38px;
       background: #ffcc00;
       color: #181c24;
@@ -236,81 +122,86 @@
       transition: background 0.2s;
     }
     #projects-btn:hover { background: #ffd84d; }
-    #project-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 700px;
-      width: 96vw;
+    
+    /* Projects Section */
+    #projects-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    #projects-section h2 {
+      color: #ffcc00;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+    .project-card {
       background: #23283a;
       border-radius: 18px;
-      box-shadow: 0 8px 48px #000a;
-      padding: 36px 24px 32px 24px;
-      position: relative;
+      box-shadow: 0 4px 32px #0007;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    #project-cover {
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 40px #ffcc0033, 0 4px 32px #000a;
+    }
+    .project-cover {
       width: 100%;
-      max-width: 600px;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ffcc00, #ff9900);
-      margin-bottom: 28px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
     }
-    #project-details h2 {
+    .project-info {
+      padding: 28px 24px;
+    }
+    .project-title {
+      font-size: 1.35rem;
       font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
+      font-weight: 700;
       color: #ffcc00;
       margin-bottom: 12px;
     }
-    #project-details p {
-      font-size: 1.13rem;
+    .project-desc {
+      font-size: 1.08rem;
       color: #eee;
-      margin-bottom: 18px;
+      opacity: 0.92;
+      line-height: 1.5;
     }
-    #project-meta {
-      font-size: 1.01rem;
+    .project-role {
+      margin-top: 12px;
+      font-size: 0.95rem;
       color: #bbb;
-      margin-bottom: 18px;
+      font-style: italic;
     }
-    #project-links a {
-      color: #ffcc00;
-      text-decoration: none;
-      margin-right: 18px;
-      font-family: 'Fira Mono', monospace;
-      font-size: 1.01rem;
-    }
-    #close-project {
-      margin-top: 18px;
-      background: none;
-      color: #ffcc00;
-      border: 2px solid #ffcc00;
-      border-radius: 8px;
-      padding: 8px 28px;
-      font-size: 1rem;
-      font-family: 'Fira Mono', monospace;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    #close-project:hover { background: #ffcc00; color: #181c24; }
-    #project-page {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(24,28,36,0.98);
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.7s;
-    }
+    
+    /* Responsive */
     @media (max-width: 900px) {
-      #projects-list { grid-template-columns: 1fr; gap: 32px; }
-      #project-content { padding: 18px 4vw 18px 4vw; }
-      #project-cover { height: 180px; }
+      #boot-logs { grid-template-columns: 1fr 1fr; gap: 24px; }
+      #about-content { flex-direction: column; gap: 24px; }
+      #about-img { width: 90vw; max-width: 420px; height: 260px; }
+      #about-blurb { font-size: 1rem; }
+    }
+    @media (max-width: 600px) {
+      #boot-logs { grid-template-columns: 1fr; gap: 10px; }
+      #boot-percent { top: 18px; right: 18px; font-size: 2.1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+  <!-- Boot Animation -->
   <div id="boot-overlay">
     <div id="boot-percent"><span id="boot-num">0</span>%</div>
     <div id="boot-logs">
@@ -319,41 +210,74 @@
       <div class="boot-col" id="col-2"></div>
     </div>
   </div>
+
+  <!-- Main Content -->
   <div id="main-content">
-    <div id="about-section">
+    <!-- About Section -->
+    <section id="about-section">
       <div id="about-content">
         <img id="about-img" src="mit 100k pitch.jpeg" alt="MIT 100K Pitch Competition" />
         <div id="about-blurb">
           <p>Hey, I'm Rishabh 👋<br>
           Engineer. Founder. Builder of things that (hopefully) make life smarter.<br><br>
           I work at the intersection of machine learning, product, and messy real-world data (clinical, genomic, sensor-based, you name it). Currently at Harvard Medical School, training LLMs to read patient records like doctors. Previously co-founded Doorstep.ai, where we raised ~$1.8M and built AI that helps delivery drivers find your door without getting lost (seriously).<br><br>
-          I’ve shipped tools used by pharma giants, secured federal grants, filed patents, and won a few research awards along the way. But more than anything, I like solving hard problems with fast feedback loops, and building stuff people actually use.</p>
-          <button id="projects-btn" style="margin-top:32px;" onclick="document.getElementById('projects-gallery').scrollIntoView({behavior: 'smooth'});">Projects</button>
+          I've shipped tools used by pharma giants, secured federal grants, filed patents, and won a few research awards along the way. But more than anything, I like solving hard problems with fast feedback loops, and building stuff people actually use.</p>
+          <button id="projects-btn">View Projects</button>
         </div>
       </div>
-    </div>
-    <div id="scroll-cue" onclick="document.getElementById('projects-gallery').scrollIntoView({behavior: 'smooth'});">
-      <span>&#8595;</span>
-      <span style="font-size:1rem; margin-top:2px;">Scroll for Projects</span>
-    </div>
-    <div id="projects-gallery">
-      <h2 style="color:#ffcc00; font-family:'Montserrat',sans-serif; font-size:2.2rem; margin-bottom:36px;">Projects</h2>
-      <div id="projects-list"></div>
-    </div>
-  </div>
-  <!-- Project Page Overlay (modal) remains as before -->
-  <div id="project-page">
-    <div id="project-content">
-      <img id="project-cover" src="" alt="Project Cover" />
-      <div id="project-details">
-        <h2 id="project-title"></h2>
-        <p id="project-desc"></p>
-        <div id="project-meta"></div>
-        <div id="project-links"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects-section">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-cover" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">
+            Bond Health
+          </div>
+          <div class="project-info">
+            <div class="project-title">Bond Health (LLM for Clinical EHR Summarization)</div>
+            <div class="project-desc">Built a Retrieval-Augmented Generation (RAG) pipeline using open-source LLMs to generate accurate, clinically relevant summaries from longitudinal EHRs. Integrated feedback loops with real physicians to improve model grounding and precision.</div>
+            <div class="project-role">Co-founder and CEO</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-cover" style="background: linear-gradient(135deg, #4834d4, #686de0);">
+            Doorstep.ai
+          </div>
+          <div class="project-info">
+            <div class="project-title">Doorstep.ai (Last-Mile Delivery AI)</div>
+            <div class="project-desc">Co-founded and scaled an AI-driven last-mile logistics startup that raised $1.8M. Built computer vision and motion-prediction models to guide drivers to customer doorsteps with sub-meter accuracy.</div>
+            <div class="project-role">Co-founder & Head of AI</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-cover" style="background: linear-gradient(135deg, #00d2d3, #54a0ff);">
+            ARDS Subphenotyping
+          </div>
+          <div class="project-info">
+            <div class="project-title">ARDS Subphenotyping (GEn1E Lifesciences x BARDA)</div>
+            <div class="project-desc">Developed a support vector machine model to identify clinical subtypes of ARDS with 97%+ accuracy using high-dimensional biomarker and clinical data. Work led to a $749K BARDA grant and a paper under BMJ review.</div>
+            <div class="project-role">Biomedical Data Scientist</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-cover" style="background: linear-gradient(135deg, #ff9ff3, #f368e0);">
+            Pharmacokinetics Prediction
+          </div>
+          <div class="project-info">
+            <div class="project-title">Pharmacokinetics Prediction (Merck x UC Berkeley)</div>
+            <div class="project-desc">Built a Neural ODE model to predict pharmacokinetics (PK) in patients, improving accuracy by 4% over state-of-the-art methods. Presented at the ADSA 2023 and won Best Undergraduate Research Project.</div>
+            <div class="project-role">Research Fellow</div>
+          </div>
+        </div>
       </div>
-      <button id="close-project">Back</button>
-    </div>
+    </section>
   </div>
+
   <script>
     // System log lines
     const logLines = [
@@ -381,12 +305,14 @@
       'MISSION: IMPACT',
       'MISSION: COMPLETE',
     ];
+
     // Distribute log lines into columns
     function distributeLogs(lines, cols) {
       const out = Array.from({length: cols}, () => []);
       lines.forEach((line, i) => out[i % cols].push(line));
       return out;
     }
+
     const columns = distributeLogs(logLines, 3);
     columns.forEach((col, i) => {
       const colDiv = document.getElementById('col-' + i);
@@ -397,13 +323,15 @@
         colDiv.appendChild(div);
       });
     });
-    // Animate boot percentage and log lines
+
+    // Boot animation
     let percent = 0;
     let bootNum = document.getElementById('boot-num');
     let bootOverlay = document.getElementById('boot-overlay');
-    let aboutSection = document.getElementById('about-section');
+    let mainContent = document.getElementById('main-content');
     let logEls = Array.from(document.querySelectorAll('.boot-line'));
     let logIdx = 0;
+
     function animateBoot() {
       let percentTarget = 100;
       let interval = setInterval(() => {
@@ -411,6 +339,7 @@
           percent += Math.ceil(Math.random() * 3);
           if (percent > percentTarget) percent = percentTarget;
           bootNum.textContent = percent;
+          
           // Highlight log lines as we go
           if (logIdx < logEls.length && percent > (logIdx * (100 / logEls.length))) {
             logEls[logIdx].classList.add('active');
@@ -422,121 +351,22 @@
             bootOverlay.style.opacity = 0;
             setTimeout(() => {
               bootOverlay.style.display = 'none';
-              aboutSection.style.display = 'flex';
-              aboutSection.style.opacity = 0;
-              setTimeout(() => { aboutSection.style.opacity = 1; }, 30);
+              mainContent.style.display = 'block';
             }, 1200);
           }, 700);
         }
       }, 38);
     }
-    animateBoot();
 
-    // Project functionality
-    const projects = [
-      {
-        title: 'Bond Health (LLM for Clinical EHR Summarization)',
-        desc: 'Built a Retrieval-Augmented Generation (RAG) pipeline using open-source LLMs to generate accurate, clinically relevant summaries from longitudinal EHRs. Integrated feedback loops with real physicians to improve model grounding and precision.',
-        cover: 'bond_health_llm_cover.png',
-        role: 'Lead LLM Engineer',
-        stack: 'Python, LangChain, Pydantic, SQL, Pandas, Streamlit, Airtable API, LLaMA 2, DeepSeek',
-        links: [
-          { label: 'GitHub (Private/Coming Soon)', url: '#' },
-          { label: 'Demo (Internal)', url: '#' }
-        ]
-      },
-      {
-        title: 'Doorstep.ai (Last-Mile Delivery AI)',
-        desc: 'Co-founded and scaled an AI-driven last-mile logistics startup that raised $1.8M. Built computer vision and motion-prediction models to guide drivers to customer doorsteps with sub-meter accuracy.',
-        cover: 'doorstep_ai_cover.png',
-        role: 'Co-founder & Head of AI',
-        stack: 'PyTorch, XGBoost, OpenCV, Python, AWS, GitHub Actions',
-        links: [
-          { label: 'Website', url: '#' },
-          { label: 'Pitch Deck (Available on Request)', url: '#' }
-        ]
-      },
-      {
-        title: 'ARDS Subphenotyping (GEn1E Lifesciences x BARDA)',
-        desc: 'Developed a support vector machine model to identify clinical subtypes of ARDS with 97%+ accuracy using high-dimensional biomarker and clinical data. Work led to a $749K BARDA grant and a paper under BMJ review.',
-        cover: 'ards_subtypes_cover.png',
-        role: 'Biomedical Data Scientist',
-        stack: 'Python, Scikit-learn, Seaborn, GSEA, GEO, TCGA',
-        links: [
-          { label: 'Manuscript (update if published)', url: '#' },
-          { label: 'Poster (ATS Conference)', url: '#' }
-        ]
-      },
-      {
-        title: 'Pharmacokinetics Prediction (Merck x UC Berkeley)',
-        desc: 'Built a Neural ODE model to predict pharmacokinetics (PK) in patients, improving accuracy by 4% over state-of-the-art methods. Presented at the ADSA 2023 and won Best Undergraduate Research Project.',
-        cover: 'pk_model_merck_cover.png',
-        role: 'Research Fellow',
-        stack: 'TensorFlow, Python, NumPy, Neural ODEs, GitHub',
-        links: [
-          { label: 'ADSA Publication', url: '#' }
-        ]
-      }
-    ];
-
-    const projectsList = document.getElementById('projects-list');
-    const projectPage = document.getElementById('project-page');
-    const projectCover = document.getElementById('project-cover');
-    const projectTitle = document.getElementById('project-title');
-    const projectDesc = document.getElementById('project-desc');
-    const projectMeta = document.getElementById('project-meta');
-    const projectLinks = document.getElementById('project-links');
-    const closeProject = document.getElementById('close-project');
-
-    function renderProjects() {
-      projectsList.innerHTML = '';
-      projects.forEach((proj, idx) => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        const img = document.createElement('img');
-        img.className = 'project-cover';
-        img.src = proj.cover;
-        img.alt = proj.title + ' cover';
-        card.appendChild(img);
-        const info = document.createElement('div');
-        info.className = 'project-info';
-        const title = document.createElement('div');
-        title.className = 'project-title';
-        title.textContent = proj.title;
-        info.appendChild(title);
-        const desc = document.createElement('div');
-        desc.className = 'project-desc';
-        desc.textContent = proj.desc;
-        info.appendChild(desc);
-        card.appendChild(info);
-        card.addEventListener('click', () => openProject(idx));
-        projectsList.appendChild(card);
+    // Projects button functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      animateBoot();
+      
+      document.getElementById('projects-btn').addEventListener('click', function() {
+        document.getElementById('projects-section').scrollIntoView({
+          behavior: 'smooth'
+        });
       });
-    }
-
-    function openProject(idx) {
-      const proj = projects[idx];
-      projectCover.src = proj.cover;
-      projectCover.alt = proj.title + ' cover';
-      projectTitle.textContent = proj.title;
-      projectDesc.textContent = proj.desc;
-      projectMeta.innerHTML = `<b>Role:</b> ${proj.role}<br><b>Tech Stack:</b> ${proj.stack}`;
-      projectLinks.innerHTML = proj.links.map(l => `<a href="${l.url}" target="_blank">${l.label}</a>`).join(' ');
-      projectPage.style.display = 'flex';
-      setTimeout(() => { projectPage.style.opacity = 1; }, 30);
-    }
-
-    function closeProjectPage() {
-      projectPage.style.opacity = 0;
-      setTimeout(() => {
-        projectPage.style.display = 'none';
-      }, 400);
-    }
-
-    closeProject.addEventListener('click', closeProjectPage);
-
-    window.addEventListener('DOMContentLoaded', function() {
-      renderProjects();
     });
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rishabh Goel · Founder, Researcher, Builder</title>
+  <title>Preview · Rishabh Goel (static)</title>
   <meta name="description" content="Rishabh Goel, entrepreneur and applied ML researcher building AI for clinical trials. Co-founder & CEO of Bond Health, finishing a Master's at Harvard Medical School. Published in NEJM AI; previously co-founded Doorstep.ai.">
   <meta property="og:title" content="Rishabh Goel · Founder, Researcher, Builder">
   <meta property="og:description" content="A portfolio told as a short story. Machine learning, product, and biomedical data, currently at Harvard Medical School.">
@@ -16,7 +16,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('js');</script>
   <style>
     /* ===== DESIGN SYSTEM ===== */
     :root {
@@ -488,9 +487,6 @@
 <body>
   <div class="grain"></div>
   <div class="aura"></div>
-  <div class="cur-dot"></div>
-  <div class="cur-ring"></div>
-  <div class="progress" id="progress"></div>
 
   <nav id="nav">
     <a href="#top" class="brand">RISHABH<b>.</b>GOEL</a>
@@ -790,118 +786,6 @@
     </footer>
   </section>
 
-  <!-- CONTENT-ANCHOR -->
-
-  <script>
-  (function () {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    /* Hero entrance */
-    window.addEventListener('load', function () {
-      document.getElementById('top').classList.add('loaded');
-    });
-    // fallback if load is slow / cached
-    setTimeout(function () {
-      var t = document.getElementById('top');
-      if (t) t.classList.add('loaded');
-    }, 600);
-
-    /* Reading progress + nav state */
-    var progress = document.getElementById('progress');
-    var nav = document.getElementById('nav');
-    function onScroll() {
-      var h = document.documentElement;
-      var max = h.scrollHeight - h.clientHeight;
-      var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
-      progress.style.width = p + '%';
-      nav.classList.toggle('scrolled', h.scrollTop > 40);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    /* Scroll reveals */
-    var reveals = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window && !reduce) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-      reveals.forEach(function (el) { io.observe(el); });
-    } else {
-      reveals.forEach(function (el) { el.classList.add('in'); });
-    }
-
-    /* Count-up numbers */
-    function animateCount(el) {
-      var target = parseFloat(el.getAttribute('data-count'));
-      var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
-      var pre = el.getAttribute('data-prefix') || '';
-      var suf = el.getAttribute('data-suffix') || '';
-      if (reduce) { el.textContent = pre + target.toFixed(dec) + suf; return; }
-      var dur = 1500, start = null;
-      function step(ts) {
-        if (!start) start = ts;
-        var t = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = pre + (target * eased).toFixed(dec) + suf;
-        if (t < 1) requestAnimationFrame(step);
-        else el.textContent = pre + target.toFixed(dec) + suf;
-      }
-      requestAnimationFrame(step);
-    }
-    var counters = document.querySelectorAll('[data-count]');
-    if ('IntersectionObserver' in window) {
-      var cio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
-        });
-      }, { threshold: 0.6 });
-      counters.forEach(function (el) { cio.observe(el); });
-    } else {
-      counters.forEach(animateCount);
-    }
-
-    /* Custom blend cursor */
-    var dot = document.querySelector('.cur-dot');
-    var ring = document.querySelector('.cur-ring');
-    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (fine && dot && ring) {
-      var mx = 0, my = 0, rx = 0, ry = 0;
-      document.addEventListener('mousemove', function (e) {
-        mx = e.clientX; my = e.clientY;
-        dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
-      });
-      (function loop() {
-        rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
-        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
-        requestAnimationFrame(loop);
-      })();
-      document.addEventListener('mouseover', function (e) {
-        if (e.target.closest('a, button, .entry, .num-cell, .stop-body, .marquee')) ring.classList.add('grow');
-      });
-      document.addEventListener('mouseout', function (e) {
-        if (e.target.closest('a, button, .entry, .num-cell, .stop-body, .marquee')) ring.classList.remove('grow');
-      });
-      document.addEventListener('mouseleave', function () { dot.style.opacity = 0; ring.style.opacity = 0; });
-      document.addEventListener('mouseenter', function () { dot.style.opacity = 1; ring.style.opacity = 1; });
-    }
-
-    /* Smooth in-page nav + back to top */
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      a.addEventListener('click', function (ev) {
-        var id = a.getAttribute('href');
-        if (id.length > 1) {
-          var el = document.querySelector(id);
-          if (el) { ev.preventDefault(); el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
-        }
-      });
-    });
-    var totop = document.getElementById('totop');
-    if (totop) totop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-    });
-  })();
-  </script>
+  <!-- Static preview: no JS. Reveal/cursor/progress behaviors are intentionally omitted. -->
 </body>
 </html>

@@ -424,6 +424,10 @@
     .stop-degrees div { padding: 4px 0; font-size: 1.02rem; }
     .stop-degrees div::before { content: '· '; color: var(--faint); }
     .stop-place { color: var(--dim); font-size: 0.92rem; margin-top: 12px; font-style: italic; font-family: var(--serif); }
+    .stop-photo { margin-top: 24px; max-width: 280px; }
+    .stop-photo img { width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--line); filter: grayscale(0.2) contrast(1.02); }
+    .stop-photo.wide { max-width: 440px; }
+    .stop-photo figcaption { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-top: 10px; }
     @media (max-width: 620px){
       .stop { grid-template-columns: 1fr; }
       .stop-year { text-align: left; padding-left: 30px; }
@@ -722,6 +726,9 @@
           <div class="stop-meta">Master's in Biomedical Informatics · GPA 4.0 · Expected May 2026</div>
           <div class="stop-degrees"><div>Founded Bond Health · published in NEJM AI</div></div>
           <div class="stop-place">Boston, Massachusetts</div>
+          <figure class="stop-photo">
+            <img src="graduation.jpg" alt="Rishabh Goel in Harvard cap and gown" loading="lazy" decoding="async">
+          </figure>
         </div>
       </div>
 
@@ -737,6 +744,10 @@
             <div>Minor in Data Science</div>
           </div>
           <div class="stop-place">Berkeley, California</div>
+          <figure class="stop-photo wide">
+            <img src="berkeley-launch.jpg" alt="Rishabh Goel winning first prize at the Berkeley Haas LAUNCH Accelerator for Doorstep.ai" loading="lazy" decoding="async">
+            <figcaption>First prize · Berkeley Haas LAUNCH, 2024</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -745,9 +756,13 @@
         <div class="stop-node"></div>
         <div class="stop-body">
           <div class="stop-school">The Doon School</div>
-          <div class="stop-meta">Senior School Certificate</div>
+          <div class="stop-meta">High School · IB Diploma</div>
           <div class="stop-degrees"><div>Foundations, where the curiosity started</div></div>
           <div class="stop-place">Dehradun, India</div>
+          <figure class="stop-photo wide">
+            <img src="doon-school.jpg" alt="Rishabh Goel with housemates at Tata House, The Doon School" loading="lazy" decoding="async">
+            <figcaption>Tata House · The Doon School</figcaption>
+          </figure>
         </div>
       </div>
     </div>
